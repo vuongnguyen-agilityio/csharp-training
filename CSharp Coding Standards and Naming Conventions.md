@@ -115,15 +115,9 @@ bool isCompleted;
 7. Do use noun or noun phrases to name a class.
 
 ```csharp
-public class Employee
-{
-}
-public class BusinessLocation
-{
-}
-public class DocumentCollection
-{
-}
+public class Employee {}
+public class BusinessLocation {}
+public class DocumentCollection {}
 ```
 
 ⚠️ ***Why: consistent with the Microsoft's .NET Framework and easy to remember.***
