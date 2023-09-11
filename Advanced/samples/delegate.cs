@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Advanced.samples
 {
-    internal class Delegate
+    internal class DelegateSample
     {
         // What Sample Do?
         // 1. Create sample delegate

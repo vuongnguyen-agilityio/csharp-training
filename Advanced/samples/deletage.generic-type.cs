@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace Advanced.samples
 {
-    internal class deletage
+    internal class DeletageGenericType
     {
         // Declare a delegate
-        delegate T Callback<T>();
+        public delegate T Callback<T>();
 
-        class SampleClass
+        public class SampleClass
         {
             public void InstanceMethodVoid()
             {
                 Console.WriteLine("A message from the instance method void.");
             }
 
-            public void InstanceMethodObjectNull()
+            public object InstanceMethodObjectNull()
             {
                 Console.WriteLine("A message from the instance method object null.");
+                return null;
             }
 
             public bool InstanceMethodBool()
@@ -30,28 +31,11 @@ namespace Advanced.samples
             }
 
             // return object:null instead void can avoid the generic type not allow void
-            public object StaticMethod()
+
+            public static object StaticMethod()
             {
                 Console.WriteLine("A message from the static method.");
                 return null;
-            }
-        }
-
-        class TestSampleClass
-        {
-            static void Main()
-            {
-                var sc = new SampleClass();
-
-                // Map the delegate to the instance method:
-                // Callback<void> d = sc.InstanceMethodVoid; // <== this callback will not work because void is not a type.
-                Callback<object> d = sc.StaticMethod;
-                Callback<bool> a = sc.InstanceMethodBool;
-                d();
-
-                // Map to the static method:
-                // d = SampleClass.StaticMethod;
-                // d();
             }
         }
     }

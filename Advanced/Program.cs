@@ -1,4 +1,6 @@
-﻿using static Advanced.samples.Delegate;
+﻿using Advanced.samples.BookTestClient;
+using static Advanced.samples.DelegateSample;
+using static Advanced.samples.DeletageGenericType;
 
 namespace Advanced
 {
@@ -25,6 +27,23 @@ namespace Advanced
             allMethodsDelegate -= d2;
 
             allMethodsDelegate("Hello World!");
+
+
+            // Do Sample with generic type
+            var sc = new SampleClass();
+
+            // Map the delegate to the instance method:
+            // Callback<void> d = sc.InstanceMethodVoid; // <== this callback will not work because void is not a type.
+            Callback<object> d = sc.InstanceMethodObjectNull;
+            Callback<bool> a = sc.InstanceMethodBool;
+            d();
+
+            // Map to the static method:
+            d = SampleClass.StaticMethod;
+            d();
+
+            // Do Sample with a bookstore
+            TestBookDB.RunTest();
         }
     }
 }
