@@ -23,11 +23,11 @@ namespace Advanced
         {
             try
             {
-                EventSamples s = EventSamples.EventBaseClass;
+                MethodSamples s = MethodSamples.ExtensionMethod;
                 RunSample(ref s);
             } catch (Exception ex)
             {
-                Console.WriteLine("Sample threw Error: ", ex);
+                Console.WriteLine("Sample threw Error: " + ex.Message);
             }
         }
 
