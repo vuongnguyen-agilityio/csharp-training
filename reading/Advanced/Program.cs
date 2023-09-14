@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Advanced.samples.BookTestClient;
-using static Advanced.samples.EventSamples;
-using static Advanced.samples.DelegateSample;
-using static Advanced.samples.DeletageGenericType;
-using static Advanced.samples.ExtensionsMethodSample;
-using static Advanced.samples.EventBaseClassSample;
-using static Advanced.samples.AttributeClasses;
+﻿using Advanced.samples.BookTestClient;
 using Advanced.samples;
 
 namespace Advanced
@@ -25,7 +17,7 @@ namespace Advanced
         {
             try
             {
-                ClassSamples s = ClassSamples.AttributeClasses;
+                DelegateSamples s = DelegateSamples.Delegate;
                 RunSample(ref s);
             } catch (Exception ex)
             {
@@ -42,42 +34,14 @@ namespace Advanced
             {
                 case DelegateSamples.Delegate:
                     {
-                        // What Sample Do?
-                        // 1. Create sample delegate
-                        // 2. Assign methods to delegate
-                        // 3. UnAssign methods from delegate
-                        var obj = new MethodClass();
-                        Callback d1 = obj.Method1;
-                        Callback d2 = obj.Method2;
-                        Callback d3 = DelegateMethod;
-
-                        //Both types of assignment are valid.
-                        Callback allMethodsDelegate = d1 + d2;
-                        allMethodsDelegate += d3;
-
-                        allMethodsDelegate("Hello World!");
-
-                        allMethodsDelegate -= d2;
-
-                        allMethodsDelegate("Hello World!");
+                        DelegateSample delegateSample = new DelegateSample();
+                        delegateSample.RunTest();
                         break;
                     }
                 case DelegateSamples.DelegateGenericType:
                     {
-                        // What Sample Do?
-                        // 1. Create sample delegate with generic type
-                        // 2. Call Instance method using generic type
-                        // 3. Call Static method
-                        var sc = new SampleClass();
-
-                        // Callback<void> d = sc.InstanceMethodVoid; // <== this callback will not work because void is not a type.
-                        Callback<object> d = sc.InstanceMethodObjectNull;
-                        Callback<bool> a = sc.InstanceMethodBool;
-                        d();
-
-                        // Map to the static method:
-                        d = SampleClass.StaticMethod;
-                        d();
+                        DeletageGenericType delegateGenericType = new DeletageGenericType();
+                        delegateGenericType.RunTest();
                         break;
                     }
                 case DelegateSamples.DelegateBookStore:
@@ -89,48 +53,20 @@ namespace Advanced
                     }
                 case EventSamples.Event:
                     {
-                        // What Sample Do?
-                        // 1. Create a Pub/Sub event
-                        var pub = new Publisher();
-                        var sub1 = new Subscriber("sub1", pub);
-                        var sub2 = new Subscriber("sub2", pub);
-
-                        // Call the method that raises the event.
-                        pub.DoSomething();
-
-                        // Keep the console window open
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadLine();
+                        EventSample eventSample = new EventSample();
+                        eventSample.RunTest();
                         break;
                     }
                 case EventSamples.EventBaseClass:
                     {
-                        // What Sample Do?
-                        // 1. Create a standard way to declare events in a base class
-                        //Create the event publishers and subscriber
-                        var circle = new Circle(54);
-                        var rectangle = new Rectangle(12, 9);
-                        var container = new ShapeContainer();
-
-                        // Add the shapes to the container.
-                        container.AddShape(circle);
-                        container.AddShape(rectangle);
-
-                        // Cause some events to be raised.
-                        circle.Update(57);
-                        rectangle.Update(7, 7);
-
-                        // Keep the console window open in debug mode.
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
+                        EventBaseClassSample eventBaseClassSample = new EventBaseClassSample();
+                        eventBaseClassSample.RunTest();
                         break;
                     }
                 case MethodSamples.ExtensionMethod:
                     {
-                        // What Sample Do?
-                        // 1. Create a extension method to count word in a string
-                        string str = "Hello Extension Methods";
-                        int i = str.WordCount();
+                        ExtensionMethodSample methodSample = new ExtensionMethodSample();
+                        methodSample.RunTest();
                         break;
                     }
                 case ClassSamples.AttributeClasses:

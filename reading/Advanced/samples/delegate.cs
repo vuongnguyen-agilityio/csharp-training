@@ -11,7 +11,7 @@ namespace Advanced.samples
         // What Sample Do?
         // 1. Create sample delegate
         // 2. Assign methods to delegate
-        // 3. Unassign methods from delegate
+        // 3. UnAssign methods from delegate
 
         // Create a method for a delegate.
         public static void DelegateMethod(string message)
@@ -31,6 +31,24 @@ namespace Advanced.samples
             }
         }
 
-        public delegate void Callback(string message);
+        delegate void Callback(string message);
+
+        public void RunTest()
+        {
+            var obj = new MethodClass();
+            Callback d1 = obj.Method1;
+            Callback d2 = obj.Method2;
+            Callback d3 = DelegateMethod;
+
+            //Both types of assignment are valid.
+            Callback allMethodsDelegate = d1 + d2;
+            allMethodsDelegate += d3;
+
+            allMethodsDelegate("Hello World!");
+
+            allMethodsDelegate -= d2;
+
+            allMethodsDelegate("Hello World!");
+        }
     }
 }

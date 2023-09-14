@@ -1,6 +1,6 @@
 ﻿namespace Advanced.samples
 {
-    internal class EventSamples
+    internal class EventSample
     {
         // Define a class to hold custom event info
         public class CustomEventArgs : EventArgs
@@ -72,6 +72,22 @@
             {
                 Console.WriteLine($"Handling this message: {e.Message}");
             }
+        }
+
+        public void RunTest()
+        {
+            // What Sample Do?
+            // 1. Create a Pub/Sub event
+            var pub = new Publisher();
+            var sub1 = new Subscriber("sub1", pub);
+            var sub2 = new Subscriber("sub2", pub);
+
+            // Call the method that raises the event.
+            pub.DoSomething();
+
+            // Keep the console window open
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
         }
     }
 }
