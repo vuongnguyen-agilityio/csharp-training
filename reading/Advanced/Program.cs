@@ -6,6 +6,8 @@ using static Advanced.samples.DelegateSample;
 using static Advanced.samples.DeletageGenericType;
 using static Advanced.samples.ExtensionsMethodSample;
 using static Advanced.samples.EventBaseClassSample;
+using static Advanced.samples.AttributeClasses;
+using Advanced.samples;
 
 namespace Advanced
 {
@@ -14,8 +16,8 @@ namespace Advanced
      */
     public enum DelegateSamples { Delegate, DelegateGenericType, DelegateBookStore };
     public enum EventSamples { Event, EventBaseClass };
-
     public enum MethodSamples { ExtensionMethod };
+    public enum ClassSamples { AttributeClasses };
 
     internal class Program
     {
@@ -23,7 +25,7 @@ namespace Advanced
         {
             try
             {
-                MethodSamples s = MethodSamples.ExtensionMethod;
+                ClassSamples s = ClassSamples.AttributeClasses;
                 RunSample(ref s);
             } catch (Exception ex)
             {
@@ -129,6 +131,12 @@ namespace Advanced
                         // 1. Create a extension method to count word in a string
                         string str = "Hello Extension Methods";
                         int i = str.WordCount();
+                        break;
+                    }
+                case ClassSamples.AttributeClasses:
+                    {
+                        AttributeClasses attributeClasses = new AttributeClasses();
+                        attributeClasses.RunTest();
                         break;
                     }
                 default:
