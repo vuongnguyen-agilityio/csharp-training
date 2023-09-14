@@ -38,5 +38,24 @@ namespace Advanced.samples
                 return null;
             }
         }
+
+        public void RunTest()
+        {
+            // What Sample Do?
+            // 1. Create sample delegate with generic type
+            // 2. Call Instance method using generic type
+            // 3. Call Static method
+            var sc = new SampleClass();
+
+            // Callback<void> d = sc.InstanceMethodVoid; // <== this callback will not work because void is not a type.
+            Callback<object> d = sc.InstanceMethodObjectNull;
+            Callback<bool> a = sc.InstanceMethodBool;
+            d();
+
+            // Map to the static method:
+            d = SampleClass.StaticMethod;
+            d();
+        }
+
     }
 }

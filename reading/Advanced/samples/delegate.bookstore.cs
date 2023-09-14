@@ -115,8 +115,8 @@ namespace Advanced.samples
                         // a PriceTotaller object:
                         PriceTotaller totaller = new PriceTotaller();
 
-                        // Create a new delegate object associated with the nonstatic
-                        // method AddBookToTotal on the object totaller:
+                        // Create a new delegate object associated with the non-static
+                        // method AddBookToTotal on the object totaler:
                         bookDB.ProcessPaperbackBooks(totaller.AddBookToTotal);
 
                         Console.WriteLine("Average Paperback Book Price: ${0:#.##}",
