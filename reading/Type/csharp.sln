@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Type", "Type.csproj", "{9B4ECFFB-2EA8-4FAC-960B-793DE6E21561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced", "..\Advanced\Advanced.csproj", "{B7CB345D-087C-47A2-82EF-DB8D3C3B67C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advanced", "..\Advanced\Advanced.csproj", "{B7CB345D-087C-47A2-82EF-DB8D3C3B67C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet", "..\DotNet\DotNet.csproj", "{2C3BDCA4-AC9D-420C-BE7D-F586B3751FE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B7CB345D-087C-47A2-82EF-DB8D3C3B67C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7CB345D-087C-47A2-82EF-DB8D3C3B67C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7CB345D-087C-47A2-82EF-DB8D3C3B67C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3BDCA4-AC9D-420C-BE7D-F586B3751FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3BDCA4-AC9D-420C-BE7D-F586B3751FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3BDCA4-AC9D-420C-BE7D-F586B3751FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3BDCA4-AC9D-420C-BE7D-F586B3751FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
