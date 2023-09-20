@@ -1,4 +1,5 @@
-﻿using DotNet.samples;
+﻿using DotNet.exercises;
+using DotNet.samples;
 
 namespace Advanced
 {
@@ -8,13 +9,15 @@ namespace Advanced
     public enum DotNetSamples { Fundamental };
     public enum CollectionSamples { Collection };
 
+    public enum LINQExercises { LINQ };
+
     internal class Program
     {
         static void Main()
         {
             try
             {
-                CollectionSamples s = CollectionSamples.Collection;
+                LINQExercises s = LINQExercises.LINQ;
                 RunSample(ref s);
             }
             catch (Exception ex)
@@ -40,6 +43,12 @@ namespace Advanced
                     {
                         Collection collectionSample = new Collection();
                         collectionSample.RunTest();
+                        break;
+                    }
+                case LINQExercises.LINQ:
+                    {
+                        LINQ30Exercises lINQ30Exercises = new LINQ30Exercises();
+                        lINQ30Exercises.RunTest();
                         break;
                     }
                 default:
