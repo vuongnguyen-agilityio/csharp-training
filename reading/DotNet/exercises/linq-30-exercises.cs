@@ -99,7 +99,7 @@ namespace DotNet.exercises
         dynamic[] CountRepeatNumberInArray(int[] numbers)
         {
             dynamic[] res = numbers.GroupBy(num => num).Select(repeatNumbers => new { num = repeatNumbers.ElementAt(0), repeatCounter = repeatNumbers.Count() }).ToArray();
-            
+
             // Print results
             res.ToList().ForEach(repeatCounter => Console.WriteLine(JsonSerializer.Serialize(repeatCounter)));
 
@@ -121,7 +121,7 @@ namespace DotNet.exercises
         dynamic[] CountRepeatCharracterinString(string str)
         {
             dynamic[] res = str.ToCharArray().GroupBy(charracter => charracter).Select(repeatChars => new { charracter = repeatChars.ElementAt(0), repeatCounter = repeatChars.Count() }).ToArray();
-            
+
             // Print results
             res.ToList().ForEach(repeatChars => Console.WriteLine(JsonSerializer.Serialize(repeatChars)));
 
@@ -145,7 +145,7 @@ namespace DotNet.exercises
         void PrintDaysOfWeek()
         {
             string[] dayWeek = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-            
+
             // Print results
             dayWeek.ToList().ForEach(day => Console.Write(day + ", "));
         }
@@ -188,7 +188,7 @@ namespace DotNet.exercises
 
             // Print results
             matchedStrings.ToList().ForEach(str => Console.Write(str + " "));
-            
+
             return matchedStrings;
         }
 
@@ -293,7 +293,7 @@ namespace DotNet.exercises
         string ConvertStringArrayToString(string[] strs)
         {
             string res = string.Join(", ", strs);
-            
+
             // Print results
             Console.Write(res);
 
@@ -369,7 +369,7 @@ namespace DotNet.exercises
         long CalcFileSize(string filePath)
         {
             long res = new FileInfo(filePath).Length;
-            Console.WriteLine($"The Average file size is {Math.Round((Decimal)res/1024, 2)} KB");
+            Console.WriteLine($"The Average file size is {Math.Round((Decimal)res / 1024, 2)} KB");
             return res;
         }
 
@@ -456,7 +456,7 @@ namespace DotNet.exercises
              * Char: m
              * Char: q
              */
-            List<char> ListChars04 = new List<char> { 'm', 'n', 'o', 'p', 'q'};
+            List<char> ListChars04 = new List<char> { 'm', 'n', 'o', 'p', 'q' };
             ListChars04.RemoveRange(1, 3);
             // Print results
             ListChars04.ForEach(item => Console.Write(item + " "));
@@ -470,7 +470,6 @@ namespace DotNet.exercises
 
 
         /*
-         * TODO:
          * 22. Write a program in C# Sharp to find the strings for a specific minimum length
          * 
          * Test Data :
@@ -486,6 +485,209 @@ namespace DotNet.exercises
          * The items of minimum 5 characters are :
          * Item: string
          */
+        string[] FindMinimumLength(string[] strs, int specificLength = 1)
+        {
+            string[] res = strs.Where(str => str.Length >= specificLength).ToArray();
+
+            // Print results
+            res.ToList().ForEach(str => Console.Write(str + " "));
+            Console.WriteLine();
+
+            return res;
+        }
+
+        /*
+         * 23-24: Write a program in C# Sharp to generate a Cartesian Product of two sets, three sets
+         * 
+         * Input:
+         * char[] charset = { 'X', 'Y', 'Z' };
+         * int[] numset = { 1, 2, 3, 4 };
+         * string[] colorset = { "Green", "Orange" };
+         * 
+         * Expected Output :
+         * The Cartesian Product are :
+         * { letterList = X, numberList = 1 }
+         * { letterList = X, numberList = 2 }
+         * { letterList = X, numberList = 3 }
+         * { letterList = X, numberList = 4 }
+         * 
+         * { letter = X, number = 1, colour = Green }
+         * { letter = X, number = 1, colour = Orange }
+         * { letter = X, number = 2, colour = Green }
+         * { letter = X, number = 2, colour = Orange }
+         * { letter = X, number = 3, colour = Green }
+         * { letter = X, number = 3, colour = Orange }
+         * { letter = Y, number = 1, colour = Green }
+         * { letter = Y, number = 1, colour = Orange }
+         */
+        void GenerateCartesianProduct()
+        {
+            // Two sets
+            char[] charset = { 'X', 'Y', 'Z' };
+            int[] numset = { 1, 2, 3, 4 };
+
+            var res = charset.SelectMany(letterList => numset.Select(numberList => new { letterList, numberList }));
+
+            // Print results
+            res.ToList().ForEach(item => Console.WriteLine($"{{letterList = {item.letterList}, numberList = {item.numberList}}}"));
+            Console.WriteLine();
+
+            // Three sets
+            string[] colorset = { "Green", "Orange" };
+
+            var res1 = res.SelectMany(item => colorset.Select(colour => new { item.letterList, item.numberList, colour }));
+
+            // Print results
+            res1.ToList().ForEach(item => Console.WriteLine($"{{letter = {item.letterList}, number = {item.numberList}, colour = {item.colour}}}"));
+            Console.WriteLine();
+        }
+
+        /*
+         * 25. Write a program in C# Sharp to generate an Inner Join between two data sets
+         * Input:
+         * List<Item_mast> itemlist = new List<Item_mast>
+         * {  
+         * new Item_mast { ItemId = 1, ItemDes = "Biscuit  " }, 
+         * new Item_mast { ItemId = 2, ItemDes = "Chocolate" }, 
+         * new Item_mast { ItemId = 3, ItemDes = "Butter   " },  
+         * new Item_mast { ItemId = 4, ItemDes = "Brade    " },  
+         * new Item_mast { ItemId = 5, ItemDes = "Honey    " }  
+         * }; 
+         * 
+         * List<Purchase> purchlist = new List<Purchase>
+         * {  
+         * new Purchase { InvNo=100, ItemId = 3,  PurQty = 800 }, 
+         * new Purchase { InvNo=101, ItemId = 2,  PurQty = 650 }, 
+         * new Purchase { InvNo=102, ItemId = 3,  PurQty = 900 },  
+         * new Purchase { InvNo=103, ItemId = 4,  PurQty = 700 },
+         * new Purchase { InvNo=104, ItemId = 3,  PurQty = 900 },  
+         * new Purchase { InvNo=105, ItemId = 4,  PurQty = 650 },  		   
+         * new Purchase { InvNo=106, ItemId = 1,  PurQty = 458 }  
+         * }; 
+         * 
+         * Expected Output :
+         * Item ID         Item Name       Purchase Quantity                                                             
+         * -------------------------------------------------------                                                       
+         * 1               Biscuit                 458                                                                   
+         * 2               Chocolate               650                                                                   
+         * 3               Butter                  800                                                                   
+         * 3               Butter                  900                                                                   
+         * 3               Butter                  900                                                                   
+         * 4               Brade                   700                                                                   
+         * 4               Brade                   650
+         */
+        void GenerateInnerJoinTwoDataSet()
+        {
+            List<dynamic> itemlist = new List<dynamic>
+            {
+                new { ItemId = 1, ItemDes = "Biscuit  " },
+                new { ItemId = 2, ItemDes = "Chocolate" },
+                new { ItemId = 3, ItemDes = "Butter   " },
+                new { ItemId = 4, ItemDes = "Brade    " },
+                new { ItemId = 5, ItemDes = "Honey    " }
+            };
+            List<dynamic> purchlist = new List<dynamic>
+            {
+                new { InvNo = 100, ItemId = 3,  PurQty = 800 },
+                new { InvNo = 101, ItemId = 2,  PurQty = 650 },
+                new { InvNo = 102, ItemId = 3,  PurQty = 900 },
+                new { InvNo = 103, ItemId = 4,  PurQty = 700 },
+                new { InvNo = 104, ItemId = 3,  PurQty = 900 },
+                new { InvNo = 105, ItemId = 4,  PurQty = 650 },
+                new { InvNo = 106, ItemId = 1,  PurQty = 458 }
+            };
+
+            var res = itemlist.Join(purchlist, item => item.ItemId, purch => purch.ItemId, (item, purch) => new { ItemId = item.ItemId, item.ItemDes, purch.PurQty });
+            // Print results
+            Console.Write("Item ID" + "\t" + "Item Name" + "\t" + "Purchase Quantity" + "\n");
+            Console.Write("------------------------------------------------\n");
+            res.ToList().ForEach(item => Console.WriteLine($"{item.ItemId}\t{item.ItemDes}\t\t\t{item.PurQty}"));
+        }
+
+        /*
+         * 26. Write a program in C# Sharp to generate a Left Join between two data sets
+         * * Input:
+         * List<Item_mast> itemlist = new List<Item_mast>
+         * {  
+         * new Item_mast { ItemId = 1, ItemDes = "Biscuit  " }, 
+         * new Item_mast { ItemId = 2, ItemDes = "Chocolate" }, 
+         * new Item_mast { ItemId = 3, ItemDes = "Butter   " },  
+         * new Item_mast { ItemId = 4, ItemDes = "Brade    " },  
+         * new Item_mast { ItemId = 5, ItemDes = "Honey    " }  
+         * }; 
+         * 
+         * List<Purchase> purchlist = new List<Purchase>
+         * {  
+         * new Purchase { InvNo=100, ItemId = 3,  PurQty = 800 }, 
+         * new Purchase { InvNo=101, ItemId = 2,  PurQty = 650 }, 
+         * new Purchase { InvNo=102, ItemId = 3,  PurQty = 900 },  
+         * new Purchase { InvNo=103, ItemId = 4,  PurQty = 700 },
+         * new Purchase { InvNo=104, ItemId = 3,  PurQty = 900 },  
+         * new Purchase { InvNo=105, ItemId = 4,  PurQty = 650 },  		   
+         * new Purchase { InvNo=106, ItemId = 1,  PurQty = 458 }  
+         * }; 
+         * 
+         * Expected Output :
+         * Here is the list after joining  :                                                                                                                                                                                
+         * Item ID         Item Name       Purchase Quantity                                                             
+         * -------------------------------------------------------                                                       
+         * 1               Biscuit                 458                                                                   
+         * 2               Chocolate               650                                                                   
+         * 3               Butter                  800                                                                   
+         * 3               Butter                  900                                                                   
+         * 3               Butter                  900                                                                   
+         * 4               Brade                   700                                                                   
+         * 4               Brade                   650                                                                   
+         * 5               Honey                   0 
+         */
+        public class ItemMast
+        {
+            public int ItemId { get; set; }
+            public string ItemDes { get; set; }
+            public static List<ItemMast> GetAll()
+            {
+                return new List<ItemMast>()
+                {
+                    new ItemMast { ItemId = 1, ItemDes = "Biscuit  " },
+                    new ItemMast { ItemId = 2, ItemDes = "Chocolate" },
+                    new ItemMast { ItemId = 3, ItemDes = "Butter   " },
+                    new ItemMast { ItemId = 4, ItemDes = "Brade    " },
+                    new ItemMast { ItemId = 5, ItemDes = "Honey    " }
+                };
+            }
+        };
+
+        public class Purchlist
+        {
+            public int InvNo { get; set; }
+            public int ItemId { get; set; }
+            public int PurQty { get; set; }
+
+
+            public static List<Purchlist> GetAll()
+            {
+                return new List<Purchlist>()
+                {
+                    new Purchlist { InvNo = 100, ItemId = 3,  PurQty = 800 },
+                    new Purchlist { InvNo = 101, ItemId = 2,  PurQty = 650 },
+                    new Purchlist { InvNo = 102, ItemId = 3,  PurQty = 900 },
+                    new Purchlist { InvNo = 103, ItemId = 4,  PurQty = 700 },
+                    new Purchlist { InvNo = 104, ItemId = 3,  PurQty = 900 },
+                    new Purchlist { InvNo = 105, ItemId = 4,  PurQty = 650 },
+                    new Purchlist { InvNo = 106, ItemId = 1,  PurQty = 458 }
+                };
+            }
+        };
+        // FIXME: This func still got error syntax
+        void GenerateLeftJoinTwoDataSet()
+        {
+
+            var res = ItemMast.GetAll().GroupJoin(Purchlist.GetAll(), item => item.ItemId, purch => purch.ItemId, (item, purch) => new { item, purch}).SelectMany(x => x.PurQty.DefaultIfEmpty(), (item, purch) => new { item.Id, purch });
+            // Print results
+            Console.Write("Item ID" + "\t" + "Item Name" + "\t" + "Purchase Quantity" + "\n");
+            Console.Write("------------------------------------------------\n");
+            res.ToList().ForEach(item => Console.WriteLine($"{item.ItemId}\t{item.ItemDes}\t\t\t{item.PurQty}"));
+        }
 
         public void RunTest()
         {
@@ -564,8 +766,29 @@ namespace DotNet.exercises
             CalcFileSize($"{Directory.GetCurrentDirectory().Replace("bin\\Debug\\net7.0", "exercises\\linq-30-exercises.cs")}");
             Console.WriteLine();
 
-            Console.WriteLine("17. Start RemoveCharInList: ");
+            Console.WriteLine("17-18-19-21. Start RemoveCharInList: ");
             RemoveCharInList();
+            Console.WriteLine();
+
+            /*
+            * Duplicated with #3
+            * 20. Find the number and its square of an array which is more than 20
+            */
+
+            Console.WriteLine("22. Start FindMinimumLength: ");
+            FindMinimumLength(new string[] { "this", "is", "a", "string" }, 5);
+            Console.WriteLine();
+
+            Console.WriteLine("23-24. Start GenerateCartesianProduct: ");
+            GenerateCartesianProduct();
+            Console.WriteLine();
+
+            Console.WriteLine("25. Start GenerateInnerJoinTwoDataSet: ");
+            GenerateInnerJoinTwoDataSet();
+            Console.WriteLine();
+
+            Console.WriteLine("26. Start GenerateLeftJoinTwoDataSet: ");
+            GenerateLeftJoinTwoDataSet();
             Console.WriteLine();
         }
     }
