@@ -7,6 +7,8 @@ using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;
 using System.Reflection;
 using System.IO;
+using System.ComponentModel;
+using static DotNet.exercises.LINQ30Exercises;
 
 namespace DotNet.exercises
 {
@@ -544,70 +546,11 @@ namespace DotNet.exercises
 
         /*
          * 25. Write a program in C# Sharp to generate an Inner Join between two data sets
-         * Input:
-         * List<Item_mast> itemlist = new List<Item_mast>
-         * {  
-         * new Item_mast { ItemId = 1, ItemDes = "Biscuit  " }, 
-         * new Item_mast { ItemId = 2, ItemDes = "Chocolate" }, 
-         * new Item_mast { ItemId = 3, ItemDes = "Butter   " },  
-         * new Item_mast { ItemId = 4, ItemDes = "Brade    " },  
-         * new Item_mast { ItemId = 5, ItemDes = "Honey    " }  
-         * }; 
-         * 
-         * List<Purchase> purchlist = new List<Purchase>
-         * {  
-         * new Purchase { InvNo=100, ItemId = 3,  PurQty = 800 }, 
-         * new Purchase { InvNo=101, ItemId = 2,  PurQty = 650 }, 
-         * new Purchase { InvNo=102, ItemId = 3,  PurQty = 900 },  
-         * new Purchase { InvNo=103, ItemId = 4,  PurQty = 700 },
-         * new Purchase { InvNo=104, ItemId = 3,  PurQty = 900 },  
-         * new Purchase { InvNo=105, ItemId = 4,  PurQty = 650 },  		   
-         * new Purchase { InvNo=106, ItemId = 1,  PurQty = 458 }  
-         * }; 
-         * 
-         * Expected Output :
-         * Item ID         Item Name       Purchase Quantity                                                             
-         * -------------------------------------------------------                                                       
-         * 1               Biscuit                 458                                                                   
-         * 2               Chocolate               650                                                                   
-         * 3               Butter                  800                                                                   
-         * 3               Butter                  900                                                                   
-         * 3               Butter                  900                                                                   
-         * 4               Brade                   700                                                                   
-         * 4               Brade                   650
-         */
-        void GenerateInnerJoinTwoDataSet()
-        {
-            List<dynamic> itemlist = new List<dynamic>
-            {
-                new { ItemId = 1, ItemDes = "Biscuit  " },
-                new { ItemId = 2, ItemDes = "Chocolate" },
-                new { ItemId = 3, ItemDes = "Butter   " },
-                new { ItemId = 4, ItemDes = "Brade    " },
-                new { ItemId = 5, ItemDes = "Honey    " }
-            };
-            List<dynamic> purchlist = new List<dynamic>
-            {
-                new { InvNo = 100, ItemId = 3,  PurQty = 800 },
-                new { InvNo = 101, ItemId = 2,  PurQty = 650 },
-                new { InvNo = 102, ItemId = 3,  PurQty = 900 },
-                new { InvNo = 103, ItemId = 4,  PurQty = 700 },
-                new { InvNo = 104, ItemId = 3,  PurQty = 900 },
-                new { InvNo = 105, ItemId = 4,  PurQty = 650 },
-                new { InvNo = 106, ItemId = 1,  PurQty = 458 }
-            };
-
-            var res = itemlist.Join(purchlist, item => item.ItemId, purch => purch.ItemId, (item, purch) => new { ItemId = item.ItemId, item.ItemDes, purch.PurQty });
-            // Print results
-            Console.Write("Item ID" + "\t" + "Item Name" + "\t" + "Purchase Quantity" + "\n");
-            Console.Write("------------------------------------------------\n");
-            res.ToList().ForEach(item => Console.WriteLine($"{item.ItemId}\t{item.ItemDes}\t\t\t{item.PurQty}"));
-        }
-
-        /*
          * 26. Write a program in C# Sharp to generate a Left Join between two data sets
+         * 27. Write a program in C# Sharp to generate a Right Outer Join between two data sets
+         * 
          * * Input:
-         * List<Item_mast> itemlist = new List<Item_mast>
+         * List<Item_mast> itemList = new List<Item_mast>
          * {  
          * new Item_mast { ItemId = 1, ItemDes = "Biscuit  " }, 
          * new Item_mast { ItemId = 2, ItemDes = "Chocolate" }, 
@@ -616,7 +559,7 @@ namespace DotNet.exercises
          * new Item_mast { ItemId = 5, ItemDes = "Honey    " }  
          * }; 
          * 
-         * List<Purchase> purchlist = new List<Purchase>
+         * List<Purchase> purchList = new List<Purchase>
          * {  
          * new Purchase { InvNo=100, ItemId = 3,  PurQty = 800 }, 
          * new Purchase { InvNo=101, ItemId = 2,  PurQty = 650 }, 
@@ -625,20 +568,7 @@ namespace DotNet.exercises
          * new Purchase { InvNo=104, ItemId = 3,  PurQty = 900 },  
          * new Purchase { InvNo=105, ItemId = 4,  PurQty = 650 },  		   
          * new Purchase { InvNo=106, ItemId = 1,  PurQty = 458 }  
-         * }; 
-         * 
-         * Expected Output :
-         * Here is the list after joining  :                                                                                                                                                                                
-         * Item ID         Item Name       Purchase Quantity                                                             
-         * -------------------------------------------------------                                                       
-         * 1               Biscuit                 458                                                                   
-         * 2               Chocolate               650                                                                   
-         * 3               Butter                  800                                                                   
-         * 3               Butter                  900                                                                   
-         * 3               Butter                  900                                                                   
-         * 4               Brade                   700                                                                   
-         * 4               Brade                   650                                                                   
-         * 5               Honey                   0 
+         * };
          */
         public class ItemMast
         {
@@ -657,36 +587,231 @@ namespace DotNet.exercises
             }
         };
 
-        public class Purchlist
+        public class PurchList
         {
             public int InvNo { get; set; }
             public int ItemId { get; set; }
             public int PurQty { get; set; }
 
 
-            public static List<Purchlist> GetAll()
+            public static List<PurchList> GetAll()
             {
-                return new List<Purchlist>()
+                return new List<PurchList>()
                 {
-                    new Purchlist { InvNo = 100, ItemId = 3,  PurQty = 800 },
-                    new Purchlist { InvNo = 101, ItemId = 2,  PurQty = 650 },
-                    new Purchlist { InvNo = 102, ItemId = 3,  PurQty = 900 },
-                    new Purchlist { InvNo = 103, ItemId = 4,  PurQty = 700 },
-                    new Purchlist { InvNo = 104, ItemId = 3,  PurQty = 900 },
-                    new Purchlist { InvNo = 105, ItemId = 4,  PurQty = 650 },
-                    new Purchlist { InvNo = 106, ItemId = 1,  PurQty = 458 }
+                    new PurchList { InvNo = 100, ItemId = 3,  PurQty = 800 },
+                    new PurchList { InvNo = 101, ItemId = 2,  PurQty = 650 },
+                    new PurchList { InvNo = 102, ItemId = 3,  PurQty = 900 },
+                    new PurchList { InvNo = 103, ItemId = 4,  PurQty = 700 },
+                    new PurchList { InvNo = 104, ItemId = 3,  PurQty = 900 },
+                    new PurchList { InvNo = 105, ItemId = 4,  PurQty = 650 },
+                    new PurchList { InvNo = 106, ItemId = 1,  PurQty = 458 }
                 };
             }
         };
-        // FIXME: This func still got error syntax
-        void GenerateLeftJoinTwoDataSet()
-        {
 
-            var res = ItemMast.GetAll().GroupJoin(Purchlist.GetAll(), item => item.ItemId, purch => purch.ItemId, (item, purch) => new { item, purch}).SelectMany(x => x.PurQty.DefaultIfEmpty(), (item, purch) => new { item.Id, purch });
+        /*
+         * 25. Write a program in C# Sharp to generate an Inner Join between two data sets
+         * Expected Output :
+         * Item ID         Item Name       Purchase Quantity                                                             
+         * -------------------------------------------------------                                                       
+         * 1               Biscuit                 458                                                                   
+         * 2               Chocolate               650                                                                   
+         * 3               Butter                  800                                                                   
+         * 3               Butter                  900                                                                   
+         * 3               Butter                  900                                                                   
+         * 4               Brade                   700                                                                   
+         * 4               Brade                   650
+         */
+        void GenerateInnerJoinTwoDataSet()
+        {
+            var res = ItemMast.GetAll().Join(PurchList.GetAll(), item => item.ItemId, purch => purch.ItemId, (item, purch) => new { item.ItemId, item.ItemDes, purch.PurQty });
             // Print results
             Console.Write("Item ID" + "\t" + "Item Name" + "\t" + "Purchase Quantity" + "\n");
             Console.Write("------------------------------------------------\n");
             res.ToList().ForEach(item => Console.WriteLine($"{item.ItemId}\t{item.ItemDes}\t\t\t{item.PurQty}"));
+        }
+
+        /*
+         * 26. Write a program in C# Sharp to generate a Left Join between two data sets
+         * Expected Output :
+         * Here is the list after joining  :                                                                                                                                                                                
+         * Item ID         Item Name       Purchase Quantity                                                             
+         * -------------------------------------------------------                                                       
+         * 1               Biscuit                 458                                                                   
+         * 2               Chocolate               650                                                                   
+         * 3               Butter                  800                                                                   
+         * 3               Butter                  900                                                                   
+         * 3               Butter                  900                                                                   
+         * 4               Brade                   700                                                                   
+         * 4               Brade                   650                                                                   
+         * 5               Honey                   0 
+         */
+        void GenerateLeftJoinTwoDataSet()
+        {
+
+            var res = ItemMast
+                .GetAll()
+                .GroupJoin(
+                    PurchList.GetAll(),
+                    item => item.ItemId,
+                    purch => purch.ItemId,
+                    (item, purchs) => new { item, purchs}
+                )
+                .SelectMany(
+                    x => x.purchs.DefaultIfEmpty(),
+                    (groupedItems, purch) => new { groupedItems.item.ItemId, groupedItems.item.ItemDes, purch?.PurQty }
+                );
+            // Print results
+            Console.Write("Item ID" + "\t" + "Item Name" + "\t" + "Purchase Quantity" + "\n");
+            Console.Write("------------------------------------------------\n");
+            res.ToList().ForEach(item => Console.WriteLine($"{item.ItemId}\t{item.ItemDes}\t\t\t{item.PurQty}"));
+        }
+
+        /*
+         * 27. Write a program in C# Sharp to generate a Right Outer Join between two data sets
+         * 
+         * Expected Output
+         * Here is the list after joining  :                                                                             
+         * 
+         * Item ID         Item Name       Purchase Quantity                                                             
+         * -------------------------------------------------------                                                       
+         * 3               Butter                  800                                                                   
+         * 5               Honey                   650                                                                   
+         * 3               Butter                  900                                                                   
+         * 4               Brade                   700                                                                   
+         * 3               Butter                  900                                                                   
+         * 4               Brade                   650                                                                   
+         * 1               Biscuit                 458   
+         */
+        void GenerateRightOuterJoinTwoDataSet()
+        {
+
+            var res = PurchList
+                .GetAll()
+                .GroupJoin(
+                    ItemMast.GetAll(),
+                    purch => purch.ItemId,
+                    item => item.ItemId,
+                    (purch, items) => new { purch, items}
+                )
+                .SelectMany(
+                    x => x.items.DefaultIfEmpty(),
+                    (groupedItems, item) => new { groupedItems.purch.ItemId, item?.ItemDes, groupedItems.purch?.PurQty }
+                );
+            // Print results
+            Console.Write("Item ID" + "\t" + "Item Name" + "\t" + "Purchase Quantity" + "\n");
+            Console.Write("------------------------------------------------\n");
+            res.ToList().ForEach(item => Console.WriteLine($"{item.ItemId}\t{item.ItemDes}\t\t\t{item.PurQty}"));
+        }
+
+        /*
+         * 28. Write a program in C# Sharp to display the list of items in the array according to the length of the string then by name in ascending order
+         * Input:
+         * string[] cities = { "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS" };  
+         * 
+         * Expected Output :
+         * Here is the arranged list :
+         * ROME
+         * PARIS
+         * LONDON
+         * ZURICH
+         * NAIROBI
+         * ABU DHABI
+         * AMSTERDAM
+         * NEW DELHI
+         * CALIFORNIA
+         */
+        string[] SortCitiesByLengthAndName(string[] cities)
+        {
+            string[] res = cities.OrderBy(city => city.Length).ThenBy(city => city).ToArray();
+           
+            // Print results
+            res.ToList().ForEach(str => Console.Write(str + " "));
+            Console.WriteLine();
+
+            return res;
+        }
+
+        /*
+         * 29. Write a program in C# Sharp to split a collection of strings into some groups
+         * Input:
+         * string[] cities = { "ROME","LONDON","NAIROBI","CALIFORNIA", "ZURICH","NEW DELHI","AMSTERDAM", "ABU DHABI", "PARIS","NEW YORK" }; 
+         * 
+         * Expected Output :
+         * Here is the group of cities :
+         * 
+         * ROME; LONDON; NAIROBI
+         * -- here is a group of cities --
+         * 
+         * CALIFORNIA; ZURICH; NEW DELHI
+         * -- here is a group of cities --
+         * 
+         * AMSTERDAM; ABU DHABI; PARIS
+         * -- here is a group of cities --
+         * 
+         * NEW YORK
+         * -- here is a group of cities --
+         */
+        List<List<string>> SplitCitiesToGroup(string[] cities)
+        {
+            List<List<string>> res = cities
+                .Select((x, i) => new { Index = i, Value = x })
+                .GroupBy(x => x.Index/3).Select(x => x.Select(v => v.Value).ToList()).ToList();
+
+            // Print results
+            res.ForEach(list => {
+                Console.WriteLine(string.Join("; ", list.ToArray()));
+                Console.WriteLine("-- here is a group of cities --");
+            });
+            Console.WriteLine();
+
+            return res;
+        }
+
+        /*
+         * 30. Write a program in C# Sharp to arrange the distinct elements in the list in ascending order
+         * Input:
+         * List<Item_mast> itemList = new List<Item_mast>
+         * {  
+         * new Item_mast { ItemId = 1, ItemDes = "Biscuit  " }, 
+         * new Item_mast { ItemId = 2, ItemDes = "Chocolate" }, 
+         * new Item_mast { ItemId = 3, ItemDes = "Butter   " },  
+         * new Item_mast { ItemId = 4, ItemDes = "Brade    " },  
+         * new Item_mast { ItemId = 5, ItemDes = "Honey    " }  
+         * }; 
+         * 
+         * Expected Output :
+         * Biscuit
+         * Brade
+         * Butter
+         * Honey
+         */
+        public class ItemMastDistinct
+        {
+            public int ItemId { get; set; }
+            public string ItemDes { get; set; }
+            public static List<ItemMastDistinct> GetAll()
+            {
+                return new List<ItemMastDistinct>()
+                {
+                    new ItemMastDistinct() { ItemId = 1, ItemDes = "Biscuit  " },
+                    new ItemMastDistinct() { ItemId = 2, ItemDes = "Honey    " },
+                    new ItemMastDistinct() { ItemId = 3, ItemDes = "Butter   " },
+                    new ItemMastDistinct() { ItemId = 4, ItemDes = "Brade    " },
+                    new ItemMastDistinct() { ItemId = 5, ItemDes = "Honey    " },
+                    new ItemMastDistinct() { ItemId = 6, ItemDes = "Biscuit  " }
+                };
+            }
+        };
+        string[] SortDistinctItemDesByAsc()
+        {
+            string[] res = ItemMastDistinct.GetAll().Select(x => x.ItemDes).Distinct().OrderBy(x => x).ToArray();
+            
+            // Print results
+            res.ToList().ForEach(str => Console.Write(str + " "));
+            Console.WriteLine();
+
+            return res;
         }
 
         public void RunTest()
@@ -789,6 +914,22 @@ namespace DotNet.exercises
 
             Console.WriteLine("26. Start GenerateLeftJoinTwoDataSet: ");
             GenerateLeftJoinTwoDataSet();
+            Console.WriteLine();
+
+            Console.WriteLine("27. Start GenerateRightOuterJoinTwoDataSet: ");
+            GenerateRightOuterJoinTwoDataSet();
+            Console.WriteLine();
+
+            Console.WriteLine("28. Start SortCitiesByLengthAndName: ");
+            SortCitiesByLengthAndName(new string[] { "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS" });
+            Console.WriteLine();
+
+            Console.WriteLine("29. Start SplitCitiesToGroup: ");
+            SplitCitiesToGroup(new string[] { "ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS", "NEW YORK" });
+            Console.WriteLine();
+
+            Console.WriteLine("30. Start SortDistinctItemDesByAsc: ");
+            SortDistinctItemDesByAsc();
             Console.WriteLine();
         }
     }
