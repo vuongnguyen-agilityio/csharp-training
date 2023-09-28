@@ -6,7 +6,7 @@ namespace Advanced
     /**
      * Define enum Samples into separate topic
      */
-    public enum DotNetSamples { Fundamental, XMLSample };
+    public enum DotNetSamples { Fundamental, XMLSample, DiagnosticsSample };
     public enum CollectionSamples { Collection };
 
     public enum LINQExercises { LINQ };
@@ -17,7 +17,7 @@ namespace Advanced
         {
             try
             {
-                DotNetSamples s = DotNetSamples.XMLSample;
+                DotNetSamples s = DotNetSamples.DiagnosticsSample;
                 RunSample(ref s);
             }
             catch (Exception ex)
@@ -55,6 +55,12 @@ namespace Advanced
                     {
                         XMLSample xmlSample = new XMLSample();
                         xmlSample.RunTest();
+                        break;
+                    }
+                case DotNetSamples.DiagnosticsSample:
+                    {
+                        DiagnosticsSample diagnosticsSample = new DiagnosticsSample();
+                        diagnosticsSample.RunTest();
                         break;
                     }
                 default:

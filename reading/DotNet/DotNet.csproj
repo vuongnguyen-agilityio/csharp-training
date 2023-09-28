@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\vuong\Desktop\training\csharp-training\reading\DotNet\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\vuong\Desktop\training\csharp-training\reading\DotNet\.editorconfig" />
+  </ItemGroup>
+
 </Project>
