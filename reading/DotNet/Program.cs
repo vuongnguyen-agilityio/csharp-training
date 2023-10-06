@@ -6,7 +6,7 @@ namespace Advanced
     /**
      * Define enum Samples into separate topic
      */
-    public enum DotNetSamples { Fundamental, XMLSample, DiagnosticsSample };
+    public enum DotNetSamples { Fundamental, XMLSample, DiagnosticsSample, AsynchronousSample };
     public enum CollectionSamples { Collection };
 
     public enum LINQExercises { LINQ };
@@ -17,7 +17,7 @@ namespace Advanced
         {
             try
             {
-                DotNetSamples s = DotNetSamples.DiagnosticsSample;
+                DotNetSamples s = DotNetSamples.AsynchronousSample;
                 RunSample(ref s);
             }
             catch (Exception ex)
@@ -61,6 +61,12 @@ namespace Advanced
                     {
                         DiagnosticsSample diagnosticsSample = new DiagnosticsSample();
                         diagnosticsSample.RunTest();
+                        break;
+                    }
+                case DotNetSamples.AsynchronousSample:
+                    {
+                        Asynchronous asynchronousSample = new Asynchronous();
+                        asynchronousSample.RunTest().GetAwaiter().GetResult();
                         break;
                     }
                 default:
