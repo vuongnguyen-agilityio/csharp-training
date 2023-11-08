@@ -4,7 +4,7 @@ using TodoApi.Models;
 
 namespace TodoApi.Services
 {
-    public class TodoTasksService
+    public class TodoTasksService : ITodoTasksService
     {
         private readonly IMongoCollection<TodoTask> _todoTasksCollection;
 
