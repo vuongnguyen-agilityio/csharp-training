@@ -8,9 +8,9 @@ namespace TodoApi.Controllers
     [Route("api/[controller]")]
     public class TodoTasksController : ControllerBase
     {
-        private readonly TodoTasksService _todoTasksService;
+        private readonly ITodoTasksService _todoTasksService;
 
-        public TodoTasksController(TodoTasksService todoTasksService) =>
+        public TodoTasksController(ITodoTasksService todoTasksService) =>
             _todoTasksService = todoTasksService;
 
         [HttpGet]
