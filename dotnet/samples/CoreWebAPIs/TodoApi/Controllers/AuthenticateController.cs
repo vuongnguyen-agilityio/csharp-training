@@ -1,7 +1,9 @@
 ﻿using JWTAuthentication.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Timeouts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -30,6 +32,7 @@ namespace JWTAuthentication.Controllers
 
         [HttpPost]
         [Route("login")]
+        [RequestTimeout(milliseconds: 0)]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var user = await userManager.FindByNameAsync(model.Username);
