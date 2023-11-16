@@ -1,11 +1,15 @@
 using JWTAuthentication.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Timeouts;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Net;
 using System.Text;
+using System.Threading.RateLimiting;
 using TodoApi.Models;
 using TodoApi.Services;
 
@@ -19,8 +23,6 @@ builder.Services.AddSingleton<ITodoTasksService, TodoTasksService>();
 
 builder.Services.AddControllers();
 
-builder.Services.AddControllers();
-
 // For Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
 
@@ -29,7 +31,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// Adding Authentication
+// Adding Authentication using JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,7 +48,7 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+        ValidAudience = builder.Configuration["JWT:ValidAudience"], // <-- Protect Secrets in Development
         ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
     };
@@ -101,6 +103,37 @@ builder.Services.AddSwaggerGen(s =>
 
 });
 
+// Configure permanent redirects in production
+if (!builder.Environment.IsDevelopment())
+{
+    builder.Services.AddHttpsRedirection(options =>
+    {
+        options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+        options.HttpsPort = 443;
+    });
+}
+
+// Add sample for request timeout
+builder.Services.AddRequestTimeouts(options => {
+    // Default policy 1.5s
+    options.DefaultPolicy =
+        new RequestTimeoutPolicy { Timeout = TimeSpan.FromMilliseconds(1500) };
+    
+    // Custom policy
+    options.AddPolicy("MyPolicy", TimeSpan.FromSeconds(2));
+});
+
+// Add sample for request rate limiter
+// ! request can process in every 5 seconds
+builder.Services.AddRateLimiter(_ => _
+    .AddFixedWindowLimiter(policyName: "fixed", options =>
+    {
+        options.PermitLimit = 1;
+        options.Window = TimeSpan.FromSeconds(5);
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 0;
+    }));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -116,5 +149,23 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseRequestTimeouts();
+app.UseRateLimiter();
+
+// API for test timeout and rate limiter
+app.MapGet("/test-timeout", async (HttpContext context) => {
+    try
+    {
+        await Task.Delay(TimeSpan.FromSeconds(10), context.RequestAborted);
+    }
+    catch
+    {
+        return Results.Content("Timeout!", "text/plain");
+    }
+
+    return Results.Content("No timeout!", "text/plain");
+}).RequireRateLimiting("fixed");
+// Returns "Timeout!" due to default policy.
 
 app.Run();
