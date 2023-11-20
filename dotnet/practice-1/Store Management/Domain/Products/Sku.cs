@@ -1,5 +1,6 @@
 ﻿namespace Domain.Products
 {
+    // This is a generated of 8 integer value
     public record Sku
     {
         private const int DefaultLength = 8;

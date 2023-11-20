@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Users;
 
 namespace Domain.PurchaseHistories
 {
-    internal class PurchaseHistory
+    public class PurchaseHistory
     {
+        public PurchaseHistory(PurchaseHistoryId id, UserId userId, Money amount)
+        {
+            Id = id;
+            UserId = userId;
+            Amount = amount;
+        }
+
+        public PurchaseHistoryId Id { get; private set; }
+
+        public UserId UserId { get; private set; }
+
+        public Money Amount { get; private set; }
     }
 }
