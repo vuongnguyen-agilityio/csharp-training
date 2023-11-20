@@ -12,7 +12,7 @@ namespace Presentation.Configurations
 
             builder.Property(p => p.Id).HasConversion(
                 productId => productId.Value,
-                value => new ProductId(value));
+                value => new UserId(value));
             builder.Property(p => p.Sku).HasConversion(
                 sku => sku.Value,
                 value => Sku.Create(value)!);
