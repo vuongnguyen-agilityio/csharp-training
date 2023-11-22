@@ -2,7 +2,8 @@
 
 namespace Application.Data
 {
-    internal sealed class UnitOfWork: IUnitOfWork
+    public interface IUnitOfWork
     {
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

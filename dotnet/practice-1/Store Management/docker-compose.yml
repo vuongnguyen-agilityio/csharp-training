@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  webapi:
+    image: ${DOCKER_REGISTRY-}webapi
+    container_name: store-management-api
+    build:
+      context: .
+      dockerfile: WebApi/Dockerfile

@@ -1,4 +1,5 @@
-﻿using Domain.Products;
+﻿using Application.Data;
+using Domain.Products;
 using MediatR;
 
 namespace Application.Products.Create
@@ -6,14 +7,16 @@ namespace Application.Products.Create
     internal sealed class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
     {
         private readonly IProductRepository _repository;
-        // TODO: Implement UnitOfWork;
-        //private readonly IUnitOfWork _unitOfWork;
 
-        public CreateProductCommandHandler(IProductRepository repository)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public CreateProductCommandHandler(IProductRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
+            _unitOfWork = unitOfWork;
         }
-        public Task Handle(CreateProductCommand request, CancellationToken cancellationToken)
+
+        public async Task Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             var product = new Product(
                 new ProductId(Guid.NewGuid()),
@@ -23,8 +26,7 @@ namespace Application.Products.Create
 
             _repository.Add(product);
 
-            // TODO: Implement UnitOfWork
-            return Task.CompletedTask;
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }
