@@ -1,5 +1,6 @@
 using Application;
-using Infrastructure;
+using Carter;
+//using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Presentation;
 using Serilog;
@@ -8,15 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddApplication()
-    .AddInfrastructure()
-    .AddPresentation();
+    .AddPresentation(builder.Configuration);
+    //.AddInfrastructure()
+
+builder.Services.AddCarter();
 
 // Add API versioning
 // E.g: URL based Versioning
@@ -45,8 +47,8 @@ app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
-app.MapControllers();
+app.MapCarter();
 
 app.Run();
