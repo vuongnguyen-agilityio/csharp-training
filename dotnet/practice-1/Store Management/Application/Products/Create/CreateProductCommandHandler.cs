@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Products.Create
 {
-    internal sealed class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
+    internal class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
     {
         private readonly IProductRepository _repository;
 

@@ -1,5 +1,4 @@
-﻿
-namespace Domain.Users
+﻿namespace Domain.Users
 {
     public record UserId(Guid Value);
 }
