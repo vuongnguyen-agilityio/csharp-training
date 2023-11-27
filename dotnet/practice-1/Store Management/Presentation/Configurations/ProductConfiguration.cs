@@ -8,7 +8,7 @@ namespace Presentation.Configurations
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.HasKey(p => p.Id);
+            builder.HasKey(x => x.Id);
 
             builder.Property(p => p.Id).HasConversion(
                 productId => productId.Value,

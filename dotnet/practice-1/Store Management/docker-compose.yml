@@ -7,14 +7,3 @@ services:
     build:
       context: .
       dockerfile: WebApi/Dockerfile
-  storemanagement.db:
-    image: postgres:latest
-    container_name: store-management-db
-    environment:
-      - POSTGRES_DB=storemanagement
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    volumes:
-      - ./.containers/db:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
