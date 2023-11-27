@@ -11,6 +11,8 @@
             Password = password;
         }
 
+        private User() {}
+
         public UserId Id { get; private set; }
 
         public string Email { get; private set; }
@@ -20,5 +22,16 @@
         public string Password { get; private set; }
 
         public UserRole Role { get; private set; } = UserRole.User;
+
+        public void Update(string name, string password)
+        {
+            Name = name;
+            Password = password;
+        }
+
+        public void UpdateRole(UserRole role)
+        {
+            Role = role;
+        }
     }
 }

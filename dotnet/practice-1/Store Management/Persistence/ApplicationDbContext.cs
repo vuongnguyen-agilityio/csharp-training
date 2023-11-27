@@ -1,6 +1,7 @@
 ﻿using Application.Data;
 using Domain.Primitives;
 using Domain.Products;
+using Domain.Users;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,8 @@ namespace Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
+
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Product> Products { get; set; }
 
