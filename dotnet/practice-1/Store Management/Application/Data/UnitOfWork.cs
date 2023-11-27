@@ -1,6 +1,4 @@
-﻿using Arch.EntityFrameworkCore.UnitOfWork;
-
-namespace Application.Data
+﻿namespace Application.Data
 {
     public interface IUnitOfWork
     {

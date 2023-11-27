@@ -1,10 +1,11 @@
 ﻿using Application.Data;
 using Domain.Primitives;
 using Domain.Products;
+using Domain.Users;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Presentation
+namespace Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
     {
@@ -20,6 +21,8 @@ namespace Presentation
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
+
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Product> Products { get; set; }
 

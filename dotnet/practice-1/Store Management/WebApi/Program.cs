@@ -2,8 +2,9 @@ using Application;
 using Carter;
 //using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Presentation;
+using Persistence;
 using Serilog;
+using Web.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    .AddApplication()
-    .AddPresentation(builder.Configuration);
+    .AddPersistence(builder.Configuration)
+    .AddApplication();
     //.AddInfrastructure()
 
 builder.Services.AddCarter();
@@ -41,6 +42,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigrations();
 }
 
 app.UseSerilogRequestLogging();

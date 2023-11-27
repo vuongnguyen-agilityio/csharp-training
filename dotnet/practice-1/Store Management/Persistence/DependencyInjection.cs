@@ -1,15 +1,16 @@
 ﻿using Application.Data;
 using Domain.Products;
+using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Repositories;
+using Persistence.Repositories;
 
-namespace Presentation
+namespace Persistence
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddPresentation(
+        public static IServiceCollection AddPersistence(
             this IServiceCollection services,
             IConfiguration configuration)
         {
@@ -24,6 +25,8 @@ namespace Presentation
                 sp.GetRequiredService<ApplicationDbContext>());
 
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
