@@ -4,7 +4,7 @@ using Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Presentation
+namespace Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
     {

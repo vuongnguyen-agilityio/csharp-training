@@ -2,7 +2,7 @@ using Application;
 using Carter;
 //using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Presentation;
+using Persistence;
 using Serilog;
 using Web.API.Extensions;
 
@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    .AddPresentation(builder.Configuration)
+    .AddPersistence(builder.Configuration)
     .AddApplication();
     //.AddInfrastructure()
 

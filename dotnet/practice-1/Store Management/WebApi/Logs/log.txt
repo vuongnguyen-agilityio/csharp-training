@@ -4464,3 +4464,236 @@ LIMIT 1
 2023-11-27 08:27:58.056 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
 2023-11-27 08:27:58.056 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
 2023-11-27 08:27:58.058 +00:00 [INF] Request finished HTTP/2 GET https://localhost:54208/products/35ae16cf-ba96-4f21-98af-2d6e5d71d646 - 200 null application/json; charset=utf-8 28.5554ms
+2023-11-27 10:19:39.739 +00:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2023-11-27 10:19:40.125 +00:00 [DBG] The property 'Money.ProductId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-11-27 10:19:40.212 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-27 10:19:40.221 +00:00 [DBG] Creating DbConnection.
+2023-11-27 10:19:40.250 +00:00 [DBG] Created DbConnection. (27ms).
+2023-11-27 10:19:40.254 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.432 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.434 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.446 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (6ms).
+2023-11-27 10:19:40.455 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-27 10:19:40.460 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (4ms).
+2023-11-27 10:19:40.461 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (7ms).
+2023-11-27 10:19:40.461 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.549 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.555 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-27 10:19:40.602 +00:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-27 10:19:40.604 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.605 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (1ms).
+2023-11-27 10:19:40.615 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.616 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.616 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-27 10:19:40.617 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-27 10:19:40.617 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2023-11-27 10:19:40.618 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-27 10:19:40.624 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-27 10:19:40.629 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.631 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 5ms reading results.
+2023-11-27 10:19:40.631 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.632 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:40.634 +00:00 [DBG] Migrating using database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.634 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.689 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.690 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.690 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:40.691 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-27 10:19:40.691 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2023-11-27 10:19:40.692 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (1ms).
+2023-11-27 10:19:40.692 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.693 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.693 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-27 10:19:40.694 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-27 10:19:40.695 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.695 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:40.696 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.746 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.746 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.747 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:40.748 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-27 10:19:40.749 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2023-11-27 10:19:40.749 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (0ms).
+2023-11-27 10:19:40.750 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.750 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.751 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-27 10:19:40.752 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-27 10:19:40.753 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.753 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:40.754 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.754 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.755 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-27 10:19:40.755 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-27 10:19:40.755 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-27 10:19:40.756 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-27 10:19:40.757 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-27 10:19:40.757 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.757 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 0ms reading results.
+2023-11-27 10:19:40.758 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.758 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:40.769 +00:00 [INF] No migrations were applied. The database is already up to date.
+2023-11-27 10:19:40.771 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-27 10:19:40.773 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:40.774 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:40.791 +00:00 [DBG] Found module Web.API.Endpoints.Products
+2023-11-27 10:19:40.800 +00:00 [DBG] Hosting starting
+2023-11-27 10:19:40.936 +00:00 [DBG] Using development certificate: CN=localhost (Thumbprint: B3AD14F7F2F8E371A4BA2B72EB69376AA4BAEF90)
+2023-11-27 10:19:41.050 +00:00 [INF] Now listening on: http://[::]:8080
+2023-11-27 10:19:41.051 +00:00 [INF] Now listening on: https://[::]:8081
+2023-11-27 10:19:41.051 +00:00 [DBG] Loaded hosting startup assembly WebApi
+2023-11-27 10:19:41.052 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-27 10:19:41.052 +00:00 [INF] Hosting environment: Development
+2023-11-27 10:19:41.053 +00:00 [INF] Content root path: /app
+2023-11-27 10:19:41.053 +00:00 [DBG] Hosting started
+2023-11-27 10:19:42.606 +00:00 [DBG] Connection id "0HMVF69FHLDUI" accepted.
+2023-11-27 10:19:42.608 +00:00 [DBG] Connection id "0HMVF69FHLDUI" started.
+2023-11-27 10:19:42.608 +00:00 [DBG] Connection id "0HMVF69FHLDUJ" accepted.
+2023-11-27 10:19:42.610 +00:00 [DBG] Connection id "0HMVF69FHLDUJ" started.
+2023-11-27 10:19:42.668 +00:00 [DBG] Connection id "0HMVF69FHLDUI" received FIN.
+2023-11-27 10:19:42.692 +00:00 [DBG] Connection 0HMVF69FHLDUJ established using the following protocol: "Tls13"
+2023-11-27 10:19:42.692 +00:00 [DBG] Connection 0HMVF69FHLDUI established using the following protocol: "Tls13"
+2023-11-27 10:19:42.723 +00:00 [DBG] Connection id "0HMVF69FHLDUI" is closed. The last processed stream ID was 0.
+2023-11-27 10:19:42.725 +00:00 [DBG] Connection id "0HMVF69FHLDUI" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-11-27 10:19:42.732 +00:00 [DBG] The connection queue processing loop for 0HMVF69FHLDUI completed.
+2023-11-27 10:19:42.757 +00:00 [DBG] Connection id "0HMVF69FHLDUI" stopped.
+2023-11-27 10:19:42.789 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/swagger - null null
+2023-11-27 10:19:42.791 +00:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-11-27 10:19:42.848 +00:00 [DBG] No candidates found for the request path '/swagger'
+2023-11-27 10:19:42.849 +00:00 [DBG] Request did not match any endpoints
+2023-11-27 10:19:42.874 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/swagger - 301 0 null 81.5103ms
+2023-11-27 10:19:42.881 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/swagger/index.html - null null
+2023-11-27 10:19:42.882 +00:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2023-11-27 10:19:42.883 +00:00 [DBG] Request did not match any endpoints
+2023-11-27 10:19:42.929 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/swagger/index.html - 200 null text/html;charset=utf-8 47.1901ms
+2023-11-27 10:19:42.963 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/swagger/swagger-ui.css - null null
+2023-11-27 10:19:42.964 +00:00 [DBG] No candidates found for the request path '/swagger/swagger-ui.css'
+2023-11-27 10:19:43.006 +00:00 [DBG] Request did not match any endpoints
+2023-11-27 10:19:43.006 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/swagger/swagger-ui-standalone-preset.js - null null
+2023-11-27 10:19:43.006 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/swagger/swagger-ui-bundle.js - null null
+2023-11-27 10:19:43.007 +00:00 [DBG] No candidates found for the request path '/swagger/swagger-ui-standalone-preset.js'
+2023-11-27 10:19:43.007 +00:00 [DBG] No candidates found for the request path '/swagger/swagger-ui-bundle.js'
+2023-11-27 10:19:43.008 +00:00 [DBG] Request did not match any endpoints
+2023-11-27 10:19:43.009 +00:00 [DBG] Request did not match any endpoints
+2023-11-27 10:19:43.110 +00:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-11-27 10:19:43.154 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/swagger/swagger-ui.css - 200 144929 text/css 212.325ms
+2023-11-27 10:19:43.158 +00:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-11-27 10:19:43.159 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/swagger/swagger-ui-standalone-preset.js - 200 312163 text/javascript 173.8002ms
+2023-11-27 10:19:43.208 +00:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-11-27 10:19:43.208 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/swagger/swagger-ui-bundle.js - 200 1061536 text/javascript 223.1271ms
+2023-11-27 10:19:43.505 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/swagger/favicon-32x32.png - null null
+2023-11-27 10:19:43.505 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/swagger/v1/swagger.json - null null
+2023-11-27 10:19:43.506 +00:00 [DBG] No candidates found for the request path '/swagger/favicon-32x32.png'
+2023-11-27 10:19:43.507 +00:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2023-11-27 10:19:43.507 +00:00 [DBG] Request did not match any endpoints
+2023-11-27 10:19:43.507 +00:00 [DBG] Request did not match any endpoints
+2023-11-27 10:19:43.508 +00:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-11-27 10:19:43.509 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/swagger/favicon-32x32.png - 200 628 image/png 4.0014ms
+2023-11-27 10:19:43.514 +00:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2023-11-27 10:19:43.594 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 89.5048ms
+2023-11-27 10:19:47.134 +00:00 [INF] Request starting HTTP/2 GET https://localhost:57656/products - null null
+2023-11-27 10:19:47.138 +00:00 [DBG] 1 candidate(s) found for the request path '/products'
+2023-11-27 10:19:47.140 +00:00 [DBG] Request matched endpoint 'HTTP: GET products'
+2023-11-27 10:19:47.141 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-27 10:19:47.149 +00:00 [INF] Executing endpoint 'HTTP: GET products'
+2023-11-27 10:19:47.174 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-27 10:19:47.194 +00:00 [DBG] Compiling query expression: 
+'DbSet<Product>()
+    .Select(p => new ProductResponse(
+        p.Id.Value, 
+        p.Name, 
+        p.Sku.Value, 
+        p.Price.Currency, 
+        p.Price.Amount
+    ))'
+2023-11-27 10:19:47.331 +00:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<ProductResponse>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> 0
+            1 -> 1
+            2 -> 2
+            3 -> 3
+            4 -> 4
+        SELECT p.Id, p.Name, p.Sku, p.Price_Currency, p.Price_Amount
+        FROM Products AS p), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, ProductResponse>, 
+    Persistence.ApplicationDbContext, 
+    False, 
+    False, 
+    True
+)'
+2023-11-27 10:19:47.364 +00:00 [DBG] Creating DbConnection.
+2023-11-27 10:19:47.365 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-27 10:19:47.370 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:47.373 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:47.375 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-27 10:19:47.375 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-27 10:19:47.376 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2023-11-27 10:19:47.377 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Sku", p."Price_Currency", p."Price_Amount"
+FROM "Products" AS p
+2023-11-27 10:19:47.391 +00:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Sku", p."Price_Currency", p."Price_Amount"
+FROM "Products" AS p
+2023-11-27 10:19:47.408 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:47.409 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 17ms reading results.
+2023-11-27 10:19:47.411 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:47.412 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-27 10:19:47.414 +00:00 [INF] Setting HTTP status code 200.
+2023-11-27 10:19:47.425 +00:00 [INF] Writing value of type 'List`1' as Json.
+2023-11-27 10:19:47.429 +00:00 [INF] Executed endpoint 'HTTP: GET products'
+2023-11-27 10:19:47.431 +00:00 [INF] HTTP GET /products responded 200 in 287.2373 ms
+2023-11-27 10:19:47.433 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-27 10:19:47.437 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-27 10:19:47.439 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (1ms).
+2023-11-27 10:19:47.440 +00:00 [INF] Request finished HTTP/2 GET https://localhost:57656/products - 200 null application/json; charset=utf-8 307.2309ms

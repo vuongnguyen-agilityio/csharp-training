@@ -1,7 +1,7 @@
 ﻿using Domain.Products;
 using Microsoft.EntityFrameworkCore;
 
-namespace Presentation.Repositories
+namespace Persistence.Repositories
 {
     internal sealed class ProductRepository : IProductRepository
     {
