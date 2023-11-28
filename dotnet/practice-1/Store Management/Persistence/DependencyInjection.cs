@@ -1,4 +1,5 @@
 ﻿using Application.Data;
+using Domain.Carts;
 using Domain.Products;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,8 @@ namespace Persistence
             services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<ICartRepository, CartRepository>();
 
             return services;
         }
