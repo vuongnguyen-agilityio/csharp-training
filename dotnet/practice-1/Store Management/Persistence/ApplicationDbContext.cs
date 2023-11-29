@@ -2,6 +2,8 @@
 using Domain.Carts;
 using Domain.Primitives;
 using Domain.Products;
+using Domain.PurchaseHistories;
+using Domain.PurchaseHistoryItems;
 using Domain.Users;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +30,10 @@ namespace Persistence
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Cart> Carts { get; set; }
+
+        public DbSet<PurchaseHistory> PurchaseHistories { get; set; }
+
+        public DbSet<PurchaseHistoryItem> PurchaseHistoryItems { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

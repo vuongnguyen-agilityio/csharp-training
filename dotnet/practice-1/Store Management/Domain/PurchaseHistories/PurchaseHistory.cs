@@ -11,10 +11,18 @@ namespace Domain.PurchaseHistories
             Amount = amount;
         }
 
+        private PurchaseHistory() { }
+
         public PurchaseHistoryId Id { get; private set; }
 
         public UserId UserId { get; private set; }
 
         public Money Amount { get; private set; }
+
+        public void Update(UserId userId, Money amount)
+        {
+            UserId = userId;
+            Amount = amount;
+        }
     }
 }
