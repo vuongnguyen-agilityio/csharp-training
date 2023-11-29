@@ -1,6 +1,8 @@
 ﻿using Application.Data;
 using Domain.Carts;
 using Domain.Products;
+using Domain.PurchaseHistories;
+using Domain.PurchaseHistoryItems;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +32,10 @@ namespace Persistence
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<ICartRepository, CartRepository>();
+
+            services.AddScoped<IPurchaseHistoryRepository, PurchaseHistoryRepository>();
+
+            services.AddScoped<IPurchaseHistoryItemRepository, PurchaseHistoryItemRepository>();
 
             return services;
         }
