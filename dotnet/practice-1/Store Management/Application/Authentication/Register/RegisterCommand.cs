@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace Application.Users.Create
+namespace Application.Authentication.Register
 {
-    public record CreateUserCommand(
+    public record RegisterCommand(
         string Email,
         string Name,
         string Password) : IRequest;

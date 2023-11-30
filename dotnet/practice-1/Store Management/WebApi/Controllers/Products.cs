@@ -1,32 +1,37 @@
-﻿using Application.Products.Create;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using MediatR;
+
+using Domain.Products;
+using Application.Products.Create;
 using Application.Products.Delete;
 using Application.Products.Get;
 using Application.Products.List;
 using Application.Products.Update;
-using Carter;
-using Domain.Products;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
-namespace Web.API.Endpoints;
-
-public class Products : ICarterModule
+namespace Web.API.Endpoints
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+    [Authorize]
+    [ApiController]
+    [Route("[controller]")]
+    public class ProductController : ControllerBase
     {
-        app.MapPost("products", async (CreateProductCommand command, ISender sender) =>
+        [HttpPost]
+        public async Task<IResult> CreateProduct(CreateProductCommand command, ISender sender)
         {
             await sender.Send(command);
 
             return Results.Ok();
-        });
+        }
 
-        app.MapGet("products", async (ISender sender) =>
+        [HttpGet(Name = "GetProduct")]
+        public async Task<IResult> Get(ISender sender)
         {
             return Results.Ok(await sender.Send(new ListProductQuery()));
-        });
+        }
 
-        app.MapGet("products/{id:guid}", async (Guid id, ISender sender) =>
+        [HttpGet("{id:guid}")]
+        public async Task<IResult> GetById(Guid id, ISender sender)
         {
             try
             {
@@ -36,9 +41,10 @@ public class Products : ICarterModule
             {
                 return Results.NotFound(e.Message);
             }
-        });
+        }
 
-        app.MapPut("products/{id:guid}", async (Guid id, [FromBody] UpdateProductRequest request, ISender sender) =>
+        [HttpPut("{id:guid}")]
+        public async Task<IResult> UpdateById(Guid id, [FromBody] UpdateProductRequest request, ISender sender)
         {
             var command = new UpdateProductCommand(
                 new ProductId(id),
@@ -50,9 +56,10 @@ public class Products : ICarterModule
             await sender.Send(command);
 
             return Results.NoContent();
-        });
+        }
 
-        app.MapDelete("products/{id:guid}", async (Guid id, ISender sender) =>
+        [HttpDelete("{id:guid}")]
+        public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
             try
             {
@@ -64,6 +71,6 @@ public class Products : ICarterModule
             {
                 return Results.NotFound(e.Message);
             }
-        });
+        }
     }
 }
