@@ -2,6 +2,7 @@ using Application;
 using Carter;
 //using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 using Persistence;
 using Serilog;
 using Web.API.Extensions;
@@ -12,12 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Store Management API",
+        Description = "An ASP.NET Core Web API for managing store",
+    });
+});
 
 builder.Services
     .AddPersistence(builder.Configuration)
     .AddApplication();
-    //.AddInfrastructure()
+//.AddInfrastructure()
+
+builder.Services.AddControllers();
 
 builder.Services.AddCarter();
 
@@ -48,6 +59,8 @@ if (app.Environment.IsDevelopment())
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
+
+app.MapControllers();
 
 //app.UseAuthorization();
 

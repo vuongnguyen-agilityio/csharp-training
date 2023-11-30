@@ -1,5 +1,4 @@
-﻿using Domain.Users;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.Users.Create
 {

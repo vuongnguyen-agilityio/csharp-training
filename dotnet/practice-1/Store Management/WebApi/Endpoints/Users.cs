@@ -1,33 +1,35 @@
-﻿using Application.Users.Create;
+﻿using Microsoft.AspNetCore.Mvc;
+using MediatR;
+
+using Domain.Users;
+using Application.Users.Create;
 using Application.Users.Delete;
 using Application.Users.Get;
 using Application.Users.List;
 using Application.Users.Update;
-using Carter;
-using Domain.Users;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
-namespace Web.API.Endpoints;
-
-public class Users : ICarterModule
+namespace Web.API.Endpoints
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+    [ApiController]
+    [Route("[controller]")]
+    public class UserController : ControllerBase
     {
-        app.MapPost("register", async (CreateUserCommand command, ISender sender) =>
+        [HttpPost(Name = "Register")]
+        public async Task<IResult> Register(CreateUserCommand command, ISender sender)
         {
             await sender.Send(command);
 
             return Results.Ok();
-        });
+        }
 
-        app.MapGet("users", async (ISender sender) =>
+        [HttpGet(Name = "GetUser")]
+        public Task<List<UserResponse>> Get(ISender sender)
         {
-            return Results.Ok(await sender.Send(new ListUserQuery()));
-        });
+            return sender.Send(new ListUserQuery());
+        }
 
-        // Admin Role
-        app.MapGet("users/{id:guid}", async (Guid id, ISender sender) =>
+        [HttpGet("{id:guid}")]
+        public async Task<IResult> GetById(Guid id, ISender sender)
         {
             try
             {
@@ -37,10 +39,10 @@ public class Users : ICarterModule
             {
                 return Results.NotFound(e.Message);
             }
-        });
+        }
 
-        // Admin Role
-        app.MapPut("users/{id:guid}", async (Guid id, [FromBody] UpdateUserRequest request, ISender sender) =>
+        [HttpPut("{id:guid}")]
+        public async Task<IResult> UpdateById(Guid id, [FromBody] UpdateUserRequest request, ISender sender)
         {
             var command = new UpdateUserCommand(
                 new UserId(id),
@@ -50,10 +52,10 @@ public class Users : ICarterModule
             await sender.Send(command);
 
             return Results.NoContent();
-        });
+        }
 
-        // Admin Role
-        app.MapDelete("users/{id:guid}", async (Guid id, ISender sender) =>
+        [HttpDelete("{id:guid}")]
+        public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
             try
             {
@@ -65,6 +67,6 @@ public class Users : ICarterModule
             {
                 return Results.NotFound(e.Message);
             }
-        });
+        }
     }
 }
