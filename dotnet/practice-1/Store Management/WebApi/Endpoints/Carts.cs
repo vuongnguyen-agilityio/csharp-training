@@ -1,35 +1,36 @@
-﻿using Application.Carts.Create;
-using Application.Carts.Delete;
-using Application.Carts.Get;
-using Application.Carts.List;
-using Application.Carts.Update;
-using Carter;
+﻿using Microsoft.AspNetCore.Mvc;
+using MediatR;
+
 using Domain.Carts;
 using Domain.Products;
 using Domain.Users;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+using Application.Carts.Create;
+using Application.Carts.Delete;
+using Application.Carts.List;
+using Application.Carts.Update;
 
-namespace Web.API.Endpoints;
-
-public class Carts : ICarterModule
+namespace Web.API.Endpoints
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+    [ApiController]
+    [Route("[controller]")]
+    public class CartController : ControllerBase
     {
-        app.MapPost("carts", async (CreateCartCommand command, ISender sender) =>
+        [HttpPost]
+        public async Task<IResult> Create(CreateCartCommand command, ISender sender)
         {
             await sender.Send(command);
 
             return Results.Ok();
-        });
+        }
 
-        // FIXME: The FromBody not work in GET method. Changing to FromQuery but still got error parsing complex query object
-        app.MapGet("carts", async ([FromBody] ListCartQuery query, ISender sender) =>
+        [HttpGet]
+        public async Task<IResult> Get([FromQuery] ListCartQuery query, ISender sender)
         {
             return Results.Ok(await sender.Send(new ListCartQuery(new UserId(query.UserId.Value))));
-        });
+        }
 
-        app.MapPut("carts", async ([FromBody] UpdateCartRequest body, ISender sender) =>
+        [HttpPut]
+        public async Task<IResult> UpdateById([FromBody] UpdateCartRequest body, ISender sender)
         {
             var command = new UpdateCartCommand(
                 new UserId(body.UserId.Value),
@@ -39,10 +40,10 @@ public class Carts : ICarterModule
             await sender.Send(command);
 
             return Results.NoContent();
-        });
+        }
 
-        // FIXME: The FromForm not work in DELETE method
-        app.MapDelete("carts", async ([FromForm] DeleteCartCommand request, ISender sender) =>
+        [HttpDelete]
+        public async Task<IResult> DeleteById([FromQuery] DeleteCartCommand request, ISender sender)
         {
             try
             {
@@ -54,6 +55,6 @@ public class Carts : ICarterModule
             {
                 return Results.NotFound(e.Message);
             }
-        });
+        }
     }
 }

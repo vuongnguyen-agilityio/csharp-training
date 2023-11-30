@@ -10953,3 +10953,830 @@ LIMIT 1
 2023-11-30 03:44:32.867 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
 2023-11-30 03:44:32.868 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
 2023-11-30 03:44:32.869 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/Product/35ae16cf-ba96-4f21-98af-2d6e5d71d646 - 200 null application/json; charset=utf-8 76.4427ms
+2023-11-30 04:04:00.245 +00:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2023-11-30 04:04:00.731 +00:00 [DBG] The property 'Product.Price#Money.ProductId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-11-30 04:04:00.733 +00:00 [DBG] The property 'Money.PurchaseHistoryId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-11-30 04:04:00.733 +00:00 [DBG] The property 'PurchaseHistoryItem.Price#Money.PurchaseHistoryItemId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-11-30 04:04:00.827 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:04:00.840 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:04:00.870 +00:00 [DBG] Created DbConnection. (29ms).
+2023-11-30 04:04:00.875 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.002 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.004 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.012 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (5ms).
+2023-11-30 04:04:01.018 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-30 04:04:01.022 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (3ms).
+2023-11-30 04:04:01.023 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (6ms).
+2023-11-30 04:04:01.024 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.107 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.112 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:04:01.160 +00:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:04:01.161 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.163 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (1ms).
+2023-11-30 04:04:01.171 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.172 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.172 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:04:01.173 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:04:01.173 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:04:01.174 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:04:01.177 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:04:01.182 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.184 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 5ms reading results.
+2023-11-30 04:04:01.184 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.185 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:04:01.186 +00:00 [DBG] Migrating using database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.187 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.245 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.245 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.246 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:04:01.246 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-30 04:04:01.247 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:04:01.247 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:04:01.248 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.248 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.249 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:04:01.250 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:04:01.251 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.251 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:04:01.252 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.307 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.308 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.308 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:04:01.308 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-30 04:04:01.309 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:04:01.309 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:04:01.309 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.310 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.310 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:04:01.312 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:04:01.312 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.312 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:04:01.313 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.313 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.314 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:04:01.314 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:04:01.314 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:04:01.315 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:04:01.316 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:04:01.316 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.317 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 0ms reading results.
+2023-11-30 04:04:01.317 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.317 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:04:01.325 +00:00 [INF] No migrations were applied. The database is already up to date.
+2023-11-30 04:04:01.326 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:04:01.328 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:04:01.329 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:04:01.363 +00:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-11-30 04:04:01.417 +00:00 [DBG] Found module Web.API.Endpoints.PurchaseHistories
+2023-11-30 04:04:01.420 +00:00 [DBG] Hosting starting
+2023-11-30 04:04:01.558 +00:00 [DBG] Using development certificate: CN=localhost (Thumbprint: B3AD14F7F2F8E371A4BA2B72EB69376AA4BAEF90)
+2023-11-30 04:04:01.663 +00:00 [INF] Now listening on: http://[::]:8080
+2023-11-30 04:04:01.663 +00:00 [INF] Now listening on: https://[::]:8081
+2023-11-30 04:04:01.664 +00:00 [DBG] Loaded hosting startup assembly WebApi
+2023-11-30 04:04:01.664 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-30 04:04:01.665 +00:00 [INF] Hosting environment: Development
+2023-11-30 04:04:01.665 +00:00 [INF] Content root path: /app
+2023-11-30 04:04:01.666 +00:00 [DBG] Hosting started
+2023-11-30 04:04:01.818 +00:00 [DBG] Connection id "0HMVHB5HFPNFE" accepted.
+2023-11-30 04:04:01.820 +00:00 [DBG] Connection id "0HMVHB5HFPNFE" started.
+2023-11-30 04:04:01.847 +00:00 [DBG] Connection 0HMVHB5HFPNFE established using the following protocol: "Tls13"
+2023-11-30 04:04:01.887 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/swagger/index.html - null null
+2023-11-30 04:04:01.890 +00:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-11-30 04:04:01.914 +00:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2023-11-30 04:04:01.915 +00:00 [DBG] Request did not match any endpoints
+2023-11-30 04:04:02.014 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/swagger/index.html - 200 null text/html;charset=utf-8 128.4339ms
+2023-11-30 04:04:02.318 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/swagger/v1/swagger.json - null null
+2023-11-30 04:04:02.320 +00:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2023-11-30 04:04:02.320 +00:00 [DBG] Request did not match any endpoints
+2023-11-30 04:04:02.408 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 89.3608ms
+2023-11-30 04:05:12.717 +00:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2023-11-30 04:05:13.137 +00:00 [DBG] The property 'Product.Price#Money.ProductId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-11-30 04:05:13.138 +00:00 [DBG] The property 'Money.PurchaseHistoryId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-11-30 04:05:13.138 +00:00 [DBG] The property 'PurchaseHistoryItem.Price#Money.PurchaseHistoryItemId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-11-30 04:05:13.230 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:05:13.239 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:05:13.266 +00:00 [DBG] Created DbConnection. (25ms).
+2023-11-30 04:05:13.271 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.399 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.401 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.409 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (4ms).
+2023-11-30 04:05:13.414 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-30 04:05:13.419 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (4ms).
+2023-11-30 04:05:13.420 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (7ms).
+2023-11-30 04:05:13.421 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.510 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.515 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:05:13.561 +00:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:05:13.562 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.564 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (1ms).
+2023-11-30 04:05:13.572 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.573 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.573 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:05:13.574 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:13.574 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:13.575 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:05:13.578 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:05:13.583 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.585 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 5ms reading results.
+2023-11-30 04:05:13.585 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.586 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:13.587 +00:00 [DBG] Migrating using database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.588 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.643 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.644 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.644 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:13.645 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-30 04:05:13.645 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:05:13.646 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:05:13.646 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.646 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.647 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:05:13.648 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:05:13.648 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.649 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:13.649 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.710 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.711 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.711 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:13.712 +00:00 [DBG] Creating DbCommand for 'ExecuteScalar'.
+2023-11-30 04:05:13.712 +00:00 [DBG] Created DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:05:13.713 +00:00 [DBG] Initialized DbCommand for 'ExecuteScalar' (0ms).
+2023-11-30 04:05:13.713 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.713 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.714 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:05:13.715 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2023-11-30 04:05:13.716 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.716 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:13.717 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.717 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.718 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:05:13.718 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:13.718 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:13.719 +00:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:05:13.721 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2023-11-30 04:05:13.721 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.722 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 0ms reading results.
+2023-11-30 04:05:13.722 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.722 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:13.730 +00:00 [INF] No migrations were applied. The database is already up to date.
+2023-11-30 04:05:13.732 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:05:13.734 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:13.735 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:13.772 +00:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.Versioning.ApiVersionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-11-30 04:05:13.826 +00:00 [DBG] Found module Web.API.Endpoints.PurchaseHistories
+2023-11-30 04:05:13.829 +00:00 [DBG] Hosting starting
+2023-11-30 04:05:13.977 +00:00 [DBG] Using development certificate: CN=localhost (Thumbprint: B3AD14F7F2F8E371A4BA2B72EB69376AA4BAEF90)
+2023-11-30 04:05:14.088 +00:00 [INF] Now listening on: http://[::]:8080
+2023-11-30 04:05:14.089 +00:00 [INF] Now listening on: https://[::]:8081
+2023-11-30 04:05:14.089 +00:00 [DBG] Loaded hosting startup assembly WebApi
+2023-11-30 04:05:14.090 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-30 04:05:14.090 +00:00 [INF] Hosting environment: Development
+2023-11-30 04:05:14.091 +00:00 [INF] Content root path: /app
+2023-11-30 04:05:14.091 +00:00 [DBG] Hosting started
+2023-11-30 04:05:14.226 +00:00 [DBG] Connection id "0HMVHB672B170" accepted.
+2023-11-30 04:05:14.228 +00:00 [DBG] Connection id "0HMVHB672B170" started.
+2023-11-30 04:05:14.252 +00:00 [DBG] Connection 0HMVHB672B170 established using the following protocol: "Tls13"
+2023-11-30 04:05:14.315 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/swagger/index.html - null null
+2023-11-30 04:05:14.318 +00:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-11-30 04:05:14.343 +00:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2023-11-30 04:05:14.344 +00:00 [DBG] Request did not match any endpoints
+2023-11-30 04:05:14.416 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/swagger/index.html - 200 null text/html;charset=utf-8 101.523ms
+2023-11-30 04:05:14.726 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/swagger/v1/swagger.json - null null
+2023-11-30 04:05:14.728 +00:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2023-11-30 04:05:14.728 +00:00 [DBG] Request did not match any endpoints
+2023-11-30 04:05:14.822 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 95.9381ms
+2023-11-30 04:05:19.781 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/Cart - null null
+2023-11-30 04:05:19.785 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:05:19.789 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.Get (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:05:19.798 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:19.801 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:05:19.805 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:19.822 +00:00 [INF] Route matched with {action = "Get", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] Get(Application.Carts.List.ListCartQuery, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:05:19.823 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:05:19.824 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:05:19.824 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:19.825 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:05:19.825 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:19.827 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:19.828 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:19.831 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:19.833 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' using the name '' in request data ...
+2023-11-30 04:05:19.835 +00:00 [DBG] Attempting to bind parameter 'UserId' of type 'Domain.Users.UserId' using the name 'UserId' in request data ...
+2023-11-30 04:05:19.837 +00:00 [DBG] Could not bind to model of type 'Domain.Users.UserId' as there were no values in the request for any of the properties.
+2023-11-30 04:05:19.839 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:19.839 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:19.840 +00:00 [DBG] Attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:19.845 +00:00 [DBG] Done attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:19.845 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:19.847 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:19.847 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:19.848 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:19.849 +00:00 [DBG] The request has model state errors, returning an error response.
+2023-11-30 04:05:19.850 +00:00 [DBG] Request was short circuited at action filter 'Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter'.
+2023-11-30 04:05:19.853 +00:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2023-11-30 04:05:19.855 +00:00 [DBG] No information found on request to perform content negotiation.
+2023-11-30 04:05:19.855 +00:00 [DBG] Attempting to select the first output formatter in the output formatters list which supports a content type from the explicitly specified content types '["application/problem+json","application/problem+xml","application/problem+json","application/problem+xml"]'.
+2023-11-30 04:05:19.857 +00:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/problem+json' to write the response.
+2023-11-30 04:05:19.857 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-11-30 04:05:19.873 +00:00 [INF] Executed action Web.API.Endpoints.CartController.Get (WebApi) in 44.1862ms
+2023-11-30 04:05:19.873 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:19.875 +00:00 [INF] HTTP GET /Cart responded 400 in 70.3142 ms
+2023-11-30 04:05:19.876 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/Cart - 400 null application/problem+json; charset=utf-8 94.7874ms
+2023-11-30 04:05:35.272 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - null null
+2023-11-30 04:05:35.273 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:05:35.273 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.Get (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:05:35.278 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:35.280 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:05:35.281 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:35.281 +00:00 [INF] Route matched with {action = "Get", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] Get(Application.Carts.List.ListCartQuery, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:05:35.282 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:05:35.282 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:05:35.282 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:35.283 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:05:35.283 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:35.283 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:35.284 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:35.285 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:35.286 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' using the name '' in request data ...
+2023-11-30 04:05:35.286 +00:00 [DBG] Attempting to bind parameter 'UserId' of type 'Domain.Users.UserId' using the name 'UserId' in request data ...
+2023-11-30 04:05:35.287 +00:00 [DBG] Attempting to bind parameter 'Value' of type 'System.Guid' using the name 'UserId.Value' in request data ...
+2023-11-30 04:05:35.288 +00:00 [DBG] Done attempting to bind parameter 'Value' of type 'System.Guid'.
+2023-11-30 04:05:35.288 +00:00 [DBG] Done attempting to bind parameter 'UserId' of type 'Domain.Users.UserId'.
+2023-11-30 04:05:35.289 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:35.289 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:35.289 +00:00 [DBG] Attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:35.291 +00:00 [DBG] Done attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:35.291 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:35.292 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:35.292 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:35.293 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:35.320 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:05:35.342 +00:00 [DBG] Compiling query expression: 
+'DbSet<Cart>()
+    .Where(c => c.UserId == __request_UserId_0)
+    .Select(c => new CartResponse(
+        c.UserId.Value, 
+        c.ProductId.Value, 
+        c.Quantity
+    ))'
+2023-11-30 04:05:35.464 +00:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<CartResponse>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> 0
+            1 -> 1
+            2 -> 2
+        SELECT c.UserId, c.ProductId, c.Quantity
+        FROM Carts AS c
+        WHERE c.UserId == @__request_UserId_0), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, CartResponse>, 
+    Persistence.ApplicationDbContext, 
+    False, 
+    False, 
+    True
+)'
+2023-11-30 04:05:35.486 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:05:35.487 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-30 04:05:35.489 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:35.490 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:35.490 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:05:35.491 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:35.496 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2023-11-30 04:05:35.499 +00:00 [DBG] Executing DbCommand [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:05:35.523 +00:00 [INF] Executed DbCommand (27ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:05:35.536 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:35.536 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 12ms reading results.
+2023-11-30 04:05:35.538 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:35.539 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:35.542 +00:00 [INF] Setting HTTP status code 200.
+2023-11-30 04:05:35.545 +00:00 [INF] Writing value of type 'List`1' as Json.
+2023-11-30 04:05:35.550 +00:00 [INF] Executed action Web.API.Endpoints.CartController.Get (WebApi) in 266.1752ms
+2023-11-30 04:05:35.550 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:35.551 +00:00 [INF] HTTP GET /Cart responded 200 in 270.2928 ms
+2023-11-30 04:05:35.553 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:05:35.556 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:35.557 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (1ms).
+2023-11-30 04:05:35.557 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - 200 null application/json; charset=utf-8 285.4742ms
+2023-11-30 04:05:42.201 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afaa - null null
+2023-11-30 04:05:42.201 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:05:42.202 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.Get (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:05:42.202 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:42.203 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:05:42.203 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:42.204 +00:00 [INF] Route matched with {action = "Get", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] Get(Application.Carts.List.ListCartQuery, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:05:42.205 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:05:42.205 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:05:42.205 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:42.206 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:05:42.206 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:42.207 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:42.207 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:42.208 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:42.209 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' using the name '' in request data ...
+2023-11-30 04:05:42.210 +00:00 [DBG] Attempting to bind parameter 'UserId' of type 'Domain.Users.UserId' using the name 'UserId' in request data ...
+2023-11-30 04:05:42.211 +00:00 [DBG] Attempting to bind parameter 'Value' of type 'System.Guid' using the name 'UserId.Value' in request data ...
+2023-11-30 04:05:42.211 +00:00 [DBG] Done attempting to bind parameter 'Value' of type 'System.Guid'.
+2023-11-30 04:05:42.212 +00:00 [DBG] Done attempting to bind parameter 'UserId' of type 'Domain.Users.UserId'.
+2023-11-30 04:05:42.213 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:42.213 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:42.214 +00:00 [DBG] Attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:42.214 +00:00 [DBG] Done attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:42.215 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:42.215 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:42.216 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:42.216 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:42.254 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:05:42.257 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:05:42.258 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-30 04:05:42.258 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:42.258 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:42.259 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:05:42.259 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:42.259 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:42.260 +00:00 [DBG] Executing DbCommand [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:05:42.286 +00:00 [INF] Executed DbCommand (6ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:05:42.334 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:42.336 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 47ms reading results.
+2023-11-30 04:05:42.337 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:42.337 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:42.337 +00:00 [INF] Setting HTTP status code 200.
+2023-11-30 04:05:42.338 +00:00 [INF] Writing value of type 'List`1' as Json.
+2023-11-30 04:05:42.338 +00:00 [INF] Executed action Web.API.Endpoints.CartController.Get (WebApi) in 131.758ms
+2023-11-30 04:05:42.339 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:42.339 +00:00 [INF] HTTP GET /Cart responded 200 in 135.7739 ms
+2023-11-30 04:05:42.339 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:05:42.340 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:42.341 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:42.342 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afaa - 200 null application/json; charset=utf-8 140.8808ms
+2023-11-30 04:05:45.541 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - null null
+2023-11-30 04:05:45.542 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:05:45.542 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.Get (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:05:45.543 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:45.543 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:05:45.544 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:45.544 +00:00 [INF] Route matched with {action = "Get", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] Get(Application.Carts.List.ListCartQuery, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:05:45.545 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:05:45.545 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:05:45.545 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:45.546 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:05:45.546 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:05:45.547 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:45.548 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:05:45.549 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:45.550 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' using the name '' in request data ...
+2023-11-30 04:05:45.551 +00:00 [DBG] Attempting to bind parameter 'UserId' of type 'Domain.Users.UserId' using the name 'UserId' in request data ...
+2023-11-30 04:05:45.551 +00:00 [DBG] Attempting to bind parameter 'Value' of type 'System.Guid' using the name 'UserId.Value' in request data ...
+2023-11-30 04:05:45.551 +00:00 [DBG] Done attempting to bind parameter 'Value' of type 'System.Guid'.
+2023-11-30 04:05:45.552 +00:00 [DBG] Done attempting to bind parameter 'UserId' of type 'Domain.Users.UserId'.
+2023-11-30 04:05:45.552 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:45.552 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:45.552 +00:00 [DBG] Attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:05:45.553 +00:00 [DBG] Done attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:05:45.553 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:45.553 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:45.553 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:05:45.554 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:05:45.555 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:05:45.557 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:05:45.558 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-30 04:05:45.558 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:45.559 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:45.559 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:05:45.559 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:45.559 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:05:45.560 +00:00 [DBG] Executing DbCommand [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:05:45.584 +00:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:05:45.608 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:45.609 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 22ms reading results.
+2023-11-30 04:05:45.611 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:45.612 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:45.612 +00:00 [INF] Setting HTTP status code 200.
+2023-11-30 04:05:45.612 +00:00 [INF] Writing value of type 'List`1' as Json.
+2023-11-30 04:05:45.613 +00:00 [INF] Executed action Web.API.Endpoints.CartController.Get (WebApi) in 66.1914ms
+2023-11-30 04:05:45.614 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:05:45.614 +00:00 [INF] HTTP GET /Cart responded 200 in 70.5911 ms
+2023-11-30 04:05:45.615 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:05:45.616 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:05:45.616 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:05:45.617 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - 200 null application/json; charset=utf-8 75.3228ms
+2023-11-30 04:06:18.434 +00:00 [INF] Request starting HTTP/2 PUT https://localhost:62498/Cart - application/json 164
+2023-11-30 04:06:18.456 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:06:18.456 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.UpdateById (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:06:18.457 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.UpdateById (WebApi)'
+2023-11-30 04:06:18.457 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:06:18.457 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.UpdateById (WebApi)'
+2023-11-30 04:06:18.461 +00:00 [INF] Route matched with {action = "UpdateById", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] UpdateById(Application.Carts.Update.UpdateCartRequest, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:06:18.462 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:06:18.462 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:06:18.463 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:18.464 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:06:18.464 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:18.464 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:18.465 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:18.465 +00:00 [DBG] Attempting to bind parameter 'body' of type 'Application.Carts.Update.UpdateCartRequest' ...
+2023-11-30 04:06:18.466 +00:00 [DBG] Attempting to bind parameter 'body' of type 'Application.Carts.Update.UpdateCartRequest' using the name '' in request data ...
+2023-11-30 04:06:18.468 +00:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2023-11-30 04:06:18.472 +00:00 [DBG] Connection id "0HMVHB672B170", Request id "0HMVHB672B170:0000000D": started reading request body.
+2023-11-30 04:06:18.473 +00:00 [DBG] Connection id "0HMVHB672B170", Request id "0HMVHB672B170:0000000D": done reading request body.
+2023-11-30 04:06:18.478 +00:00 [DBG] JSON input formatter succeeded, deserializing to type 'Application.Carts.Update.UpdateCartRequest'
+2023-11-30 04:06:18.479 +00:00 [DBG] Done attempting to bind parameter 'body' of type 'Application.Carts.Update.UpdateCartRequest'.
+2023-11-30 04:06:18.480 +00:00 [DBG] Done attempting to bind parameter 'body' of type 'Application.Carts.Update.UpdateCartRequest'.
+2023-11-30 04:06:18.481 +00:00 [DBG] Attempting to validate the bound parameter 'body' of type 'Application.Carts.Update.UpdateCartRequest' ...
+2023-11-30 04:06:18.483 +00:00 [DBG] Done attempting to validate the bound parameter 'body' of type 'Application.Carts.Update.UpdateCartRequest'.
+2023-11-30 04:06:18.484 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:18.484 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:18.484 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:18.485 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:18.491 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:06:18.496 +00:00 [DBG] Compiling query expression: 
+'DbSet<Cart>()
+    .SingleOrDefault(c => c.UserId == __p_0 && c.ProductId == __p_1)'
+2023-11-30 04:06:18.523 +00:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Cart>(
+    asyncEnumerable: new SingleQueryingEnumerable<Cart>(
+        (RelationalQueryContext)queryContext, 
+        RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Cart.UserId (UserId) Required PK AfterSave:Throw, 0], [Property: Cart.ProductId (ProductId) Required PK AfterSave:Throw, 1], [Property: Cart.Quantity (decimal) Required, 2] }
+            SELECT TOP(2) c.UserId, c.ProductId, c.Quantity
+            FROM Carts AS c
+            WHERE (c.UserId == @__p_0) && (c.ProductId == @__p_1)), 
+        null, 
+        Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Cart>, 
+        Persistence.ApplicationDbContext, 
+        False, 
+        False, 
+        True
+    ), 
+    cancellationToken: queryContext.CancellationToken)'
+2023-11-30 04:06:18.527 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:06:18.527 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-30 04:06:18.527 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.528 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.528 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:06:18.529 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:18.530 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2023-11-30 04:06:18.531 +00:00 [DBG] Executing DbCommand [Parameters=[@__p_0='?' (DbType = Guid), @__p_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__p_0 AND c."ProductId" = @__p_1
+LIMIT 2
+2023-11-30 04:06:18.577 +00:00 [INF] Executed DbCommand (25ms) [Parameters=[@__p_0='?' (DbType = Guid), @__p_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__p_0 AND c."ProductId" = @__p_1
+LIMIT 2
+2023-11-30 04:06:18.604 +00:00 [DBG] Context 'ApplicationDbContext' started tracking 'Cart' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-11-30 04:06:18.619 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.619 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 41ms reading results.
+2023-11-30 04:06:18.620 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.620 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:06:18.628 +00:00 [DBG] An entity of type 'Cart' tracked by 'ApplicationDbContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-11-30 04:06:18.632 +00:00 [DBG] DetectChanges starting for 'ApplicationDbContext'.
+2023-11-30 04:06:18.637 +00:00 [DBG] DetectChanges completed for 'ApplicationDbContext'.
+2023-11-30 04:06:18.640 +00:00 [DBG] SaveChanges starting for 'ApplicationDbContext'.
+2023-11-30 04:06:18.641 +00:00 [DBG] DetectChanges starting for 'ApplicationDbContext'.
+2023-11-30 04:06:18.642 +00:00 [DBG] DetectChanges completed for 'ApplicationDbContext'.
+2023-11-30 04:06:18.674 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.674 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.676 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:06:18.676 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:18.677 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2023-11-30 04:06:18.677 +00:00 [DBG] Executing DbCommand [Parameters=[@p1='?' (DbType = Guid), @p2='?' (DbType = Guid), @p0='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Carts" SET "Quantity" = @p0
+WHERE "ProductId" = @p1 AND "UserId" = @p2;
+2023-11-30 04:06:18.691 +00:00 [INF] Executed DbCommand (13ms) [Parameters=[@p1='?' (DbType = Guid), @p2='?' (DbType = Guid), @p0='?' (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Carts" SET "Quantity" = @p0
+WHERE "ProductId" = @p1 AND "UserId" = @p2;
+2023-11-30 04:06:18.694 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.694 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 2ms reading results.
+2023-11-30 04:06:18.695 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.696 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:06:18.699 +00:00 [DBG] An entity of type 'Cart' tracked by 'ApplicationDbContext' changed state from '"Modified"' to '"Unchanged"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-11-30 04:06:18.701 +00:00 [DBG] SaveChanges completed for 'ApplicationDbContext' with 1 entities written to the database.
+2023-11-30 04:06:18.703 +00:00 [INF] Setting HTTP status code 204.
+2023-11-30 04:06:18.703 +00:00 [INF] Executed action Web.API.Endpoints.CartController.UpdateById (WebApi) in 239.1229ms
+2023-11-30 04:06:18.704 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.UpdateById (WebApi)'
+2023-11-30 04:06:18.704 +00:00 [INF] HTTP PUT /Cart responded 204 in 246.5270 ms
+2023-11-30 04:06:18.704 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:06:18.705 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:18.705 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:06:18.705 +00:00 [INF] Request finished HTTP/2 PUT https://localhost:62498/Cart - 204 null null 272.2444ms
+2023-11-30 04:06:23.483 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - null null
+2023-11-30 04:06:23.483 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:06:23.484 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.Get (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:06:23.485 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:06:23.485 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:06:23.486 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:06:23.486 +00:00 [INF] Route matched with {action = "Get", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] Get(Application.Carts.List.ListCartQuery, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:06:23.486 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:06:23.487 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:06:23.487 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:23.488 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:06:23.488 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:23.489 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:23.489 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:23.489 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:06:23.490 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' using the name '' in request data ...
+2023-11-30 04:06:23.490 +00:00 [DBG] Attempting to bind parameter 'UserId' of type 'Domain.Users.UserId' using the name 'UserId' in request data ...
+2023-11-30 04:06:23.490 +00:00 [DBG] Attempting to bind parameter 'Value' of type 'System.Guid' using the name 'UserId.Value' in request data ...
+2023-11-30 04:06:23.491 +00:00 [DBG] Done attempting to bind parameter 'Value' of type 'System.Guid'.
+2023-11-30 04:06:23.491 +00:00 [DBG] Done attempting to bind parameter 'UserId' of type 'Domain.Users.UserId'.
+2023-11-30 04:06:23.492 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:06:23.493 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:06:23.493 +00:00 [DBG] Attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:06:23.493 +00:00 [DBG] Done attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:06:23.494 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:23.494 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:23.494 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:23.495 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:23.496 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:06:23.497 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:06:23.497 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-30 04:06:23.498 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:23.498 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:23.499 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:06:23.499 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:23.500 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2023-11-30 04:06:23.501 +00:00 [DBG] Executing DbCommand [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:06:23.549 +00:00 [INF] Executed DbCommand (26ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:06:23.552 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:23.552 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 1ms reading results.
+2023-11-30 04:06:23.553 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:23.577 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (23ms).
+2023-11-30 04:06:23.578 +00:00 [INF] Setting HTTP status code 200.
+2023-11-30 04:06:23.578 +00:00 [INF] Writing value of type 'List`1' as Json.
+2023-11-30 04:06:23.578 +00:00 [INF] Executed action Web.API.Endpoints.CartController.Get (WebApi) in 89.8429ms
+2023-11-30 04:06:23.579 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:06:23.579 +00:00 [INF] HTTP GET /Cart responded 200 in 93.5231 ms
+2023-11-30 04:06:23.579 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:06:23.580 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:23.581 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (1ms).
+2023-11-30 04:06:23.603 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - 200 null application/json; charset=utf-8 99.9451ms
+2023-11-30 04:06:37.795 +00:00 [INF] Request starting HTTP/2 DELETE https://localhost:62498/Cart - multipart/form-data; boundary=----WebKitFormBoundaryT1fBQ3BkHAmgk8eg 317
+2023-11-30 04:06:37.817 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:06:37.817 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.DeleteById (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:06:37.818 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.DeleteById (WebApi)'
+2023-11-30 04:06:37.818 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:06:37.819 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.DeleteById (WebApi)'
+2023-11-30 04:06:37.823 +00:00 [INF] Route matched with {action = "DeleteById", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] DeleteById(Application.Carts.Delete.DeleteCartCommand, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:06:37.824 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:06:37.824 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:06:37.824 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:37.825 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:06:37.825 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:37.825 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:37.825 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:37.830 +00:00 [DBG] Connection id "0HMVHB672B170", Request id "0HMVHB672B170:00000011": started reading request body.
+2023-11-30 04:06:37.830 +00:00 [DBG] Connection id "0HMVHB672B170", Request id "0HMVHB672B170:00000011": done reading request body.
+2023-11-30 04:06:37.835 +00:00 [DBG] Attempting to bind parameter 'request' of type 'Application.Carts.Delete.DeleteCartCommand' ...
+2023-11-30 04:06:37.836 +00:00 [DBG] Attempting to bind parameter 'request' of type 'Application.Carts.Delete.DeleteCartCommand' using the name '' in request data ...
+2023-11-30 04:06:37.836 +00:00 [DBG] Attempting to bind parameter 'UserId' of type 'Domain.Users.UserId' using the name 'UserId' in request data ...
+2023-11-30 04:06:37.837 +00:00 [DBG] Attempting to bind parameter 'Value' of type 'System.Guid' using the name 'UserId.Value' in request data ...
+2023-11-30 04:06:37.837 +00:00 [DBG] Done attempting to bind parameter 'Value' of type 'System.Guid'.
+2023-11-30 04:06:37.838 +00:00 [DBG] Done attempting to bind parameter 'UserId' of type 'Domain.Users.UserId'.
+2023-11-30 04:06:37.838 +00:00 [DBG] Attempting to bind parameter 'ProductId' of type 'Domain.Products.ProductId' using the name 'ProductId' in request data ...
+2023-11-30 04:06:37.838 +00:00 [DBG] Attempting to bind parameter 'Value' of type 'System.Guid' using the name 'ProductId.Value' in request data ...
+2023-11-30 04:06:37.839 +00:00 [DBG] Done attempting to bind parameter 'Value' of type 'System.Guid'.
+2023-11-30 04:06:37.839 +00:00 [DBG] Done attempting to bind parameter 'ProductId' of type 'Domain.Products.ProductId'.
+2023-11-30 04:06:37.840 +00:00 [DBG] Done attempting to bind parameter 'request' of type 'Application.Carts.Delete.DeleteCartCommand'.
+2023-11-30 04:06:37.840 +00:00 [DBG] Done attempting to bind parameter 'request' of type 'Application.Carts.Delete.DeleteCartCommand'.
+2023-11-30 04:06:37.841 +00:00 [DBG] Attempting to validate the bound parameter 'request' of type 'Application.Carts.Delete.DeleteCartCommand' ...
+2023-11-30 04:06:37.842 +00:00 [DBG] Done attempting to validate the bound parameter 'request' of type 'Application.Carts.Delete.DeleteCartCommand'.
+2023-11-30 04:06:37.842 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:37.842 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:37.843 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:37.843 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:37.846 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:06:37.847 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:06:37.847 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-30 04:06:37.848 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.848 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.848 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:06:37.849 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:37.849 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:37.849 +00:00 [DBG] Executing DbCommand [Parameters=[@__p_0='?' (DbType = Guid), @__p_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__p_0 AND c."ProductId" = @__p_1
+LIMIT 2
+2023-11-30 04:06:37.852 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Guid), @__p_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__p_0 AND c."ProductId" = @__p_1
+LIMIT 2
+2023-11-30 04:06:37.876 +00:00 [DBG] Context 'ApplicationDbContext' started tracking 'Cart' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-11-30 04:06:37.919 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.921 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 67ms reading results.
+2023-11-30 04:06:37.924 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.925 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (1ms).
+2023-11-30 04:06:37.927 +00:00 [DBG] An entity of type 'Cart' tracked by 'ApplicationDbContext' changed state from '"Unchanged"' to '"Deleted"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-11-30 04:06:37.929 +00:00 [DBG] DetectChanges starting for 'ApplicationDbContext'.
+2023-11-30 04:06:37.930 +00:00 [DBG] DetectChanges completed for 'ApplicationDbContext'.
+2023-11-30 04:06:37.931 +00:00 [DBG] SaveChanges starting for 'ApplicationDbContext'.
+2023-11-30 04:06:37.931 +00:00 [DBG] DetectChanges starting for 'ApplicationDbContext'.
+2023-11-30 04:06:37.932 +00:00 [DBG] DetectChanges completed for 'ApplicationDbContext'.
+2023-11-30 04:06:37.940 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.941 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.941 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:06:37.942 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:37.942 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:37.942 +00:00 [DBG] Executing DbCommand [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Carts"
+WHERE "ProductId" = @p0 AND "UserId" = @p1;
+2023-11-30 04:06:37.949 +00:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Carts"
+WHERE "ProductId" = @p0 AND "UserId" = @p1;
+2023-11-30 04:06:37.950 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.950 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 0ms reading results.
+2023-11-30 04:06:37.950 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.951 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:06:37.955 +00:00 [DBG] An entity of type 'Cart' tracked by 'ApplicationDbContext' changed state from '"Deleted"' to '"Detached"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-11-30 04:06:37.955 +00:00 [DBG] SaveChanges completed for 'ApplicationDbContext' with 1 entities written to the database.
+2023-11-30 04:06:37.956 +00:00 [INF] Setting HTTP status code 204.
+2023-11-30 04:06:37.956 +00:00 [INF] Executed action Web.API.Endpoints.CartController.DeleteById (WebApi) in 131.0632ms
+2023-11-30 04:06:37.957 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.DeleteById (WebApi)'
+2023-11-30 04:06:37.957 +00:00 [INF] HTTP DELETE /Cart responded 204 in 138.1409 ms
+2023-11-30 04:06:37.957 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:06:37.957 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:37.958 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:06:37.958 +00:00 [INF] Request finished HTTP/2 DELETE https://localhost:62498/Cart - 204 null null 163.124ms
+2023-11-30 04:06:41.037 +00:00 [INF] Request starting HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - null null
+2023-11-30 04:06:41.037 +00:00 [DBG] 1 candidate(s) found for the request path '/Cart'
+2023-11-30 04:06:41.037 +00:00 [DBG] Endpoint 'Web.API.Endpoints.CartController.Get (WebApi)' with route pattern 'Cart' is valid for the request path '/Cart'
+2023-11-30 04:06:41.038 +00:00 [DBG] Request matched endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:06:41.039 +00:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2023-11-30 04:06:41.039 +00:00 [INF] Executing endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:06:41.040 +00:00 [INF] Route matched with {action = "Get", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Http.IResult] Get(Application.Carts.List.ListCartQuery, MediatR.ISender) on controller Web.API.Endpoints.CartController (WebApi).
+2023-11-30 04:06:41.041 +00:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-11-30 04:06:41.041 +00:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2023-11-30 04:06:41.041 +00:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:41.042 +00:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-11-30 04:06:41.042 +00:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)","Microsoft.AspNetCore.Mvc.ReportApiVersionsAttribute (Order: 0)"]
+2023-11-30 04:06:41.043 +00:00 [DBG] Executing controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:41.043 +00:00 [DBG] Executed controller factory for controller Web.API.Endpoints.CartController (WebApi)
+2023-11-30 04:06:41.044 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:06:41.044 +00:00 [DBG] Attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery' using the name '' in request data ...
+2023-11-30 04:06:41.045 +00:00 [DBG] Attempting to bind parameter 'UserId' of type 'Domain.Users.UserId' using the name 'UserId' in request data ...
+2023-11-30 04:06:41.045 +00:00 [DBG] Attempting to bind parameter 'Value' of type 'System.Guid' using the name 'UserId.Value' in request data ...
+2023-11-30 04:06:41.045 +00:00 [DBG] Done attempting to bind parameter 'Value' of type 'System.Guid'.
+2023-11-30 04:06:41.046 +00:00 [DBG] Done attempting to bind parameter 'UserId' of type 'Domain.Users.UserId'.
+2023-11-30 04:06:41.047 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:06:41.047 +00:00 [DBG] Done attempting to bind parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:06:41.048 +00:00 [DBG] Attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery' ...
+2023-11-30 04:06:41.048 +00:00 [DBG] Done attempting to validate the bound parameter 'query' of type 'Application.Carts.List.ListCartQuery'.
+2023-11-30 04:06:41.049 +00:00 [DBG] Attempting to bind parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:41.049 +00:00 [DBG] Done attempting to bind parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:41.049 +00:00 [DBG] Attempting to validate the bound parameter 'sender' of type 'MediatR.ISender' ...
+2023-11-30 04:06:41.050 +00:00 [DBG] Done attempting to validate the bound parameter 'sender' of type 'MediatR.ISender'.
+2023-11-30 04:06:41.050 +00:00 [DBG] Entity Framework Core 8.0.0 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:8.0.0+2539d1f4bd0d429cbae20336d531d14938a54297' with options: None
+2023-11-30 04:06:41.051 +00:00 [DBG] Creating DbConnection.
+2023-11-30 04:06:41.051 +00:00 [DBG] Created DbConnection. (0ms).
+2023-11-30 04:06:41.052 +00:00 [DBG] Opening connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:41.052 +00:00 [DBG] Opened connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:41.052 +00:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-11-30 04:06:41.053 +00:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:41.053 +00:00 [DBG] Initialized DbCommand for 'ExecuteReader' (0ms).
+2023-11-30 04:06:41.054 +00:00 [DBG] Executing DbCommand [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:06:41.079 +00:00 [INF] Executed DbCommand (24ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."UserId", c."ProductId", c."Quantity"
+FROM "Carts" AS c
+WHERE c."UserId" = @__request_UserId_0
+2023-11-30 04:06:41.080 +00:00 [DBG] Closing data reader to 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:41.084 +00:00 [DBG] A data reader for 'storemanagement' on server 'tcp://storemanagement.db:5432' is being disposed after spending 4ms reading results.
+2023-11-30 04:06:41.085 +00:00 [DBG] Closing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:41.085 +00:00 [DBG] Closed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:06:41.085 +00:00 [INF] Setting HTTP status code 200.
+2023-11-30 04:06:41.086 +00:00 [INF] Writing value of type 'List`1' as Json.
+2023-11-30 04:06:41.086 +00:00 [INF] Executed action Web.API.Endpoints.CartController.Get (WebApi) in 43.6759ms
+2023-11-30 04:06:41.087 +00:00 [INF] Executed endpoint 'Web.API.Endpoints.CartController.Get (WebApi)'
+2023-11-30 04:06:41.087 +00:00 [INF] HTTP GET /Cart responded 200 in 47.5685 ms
+2023-11-30 04:06:41.087 +00:00 [DBG] 'ApplicationDbContext' disposed.
+2023-11-30 04:06:41.088 +00:00 [DBG] Disposing connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432'.
+2023-11-30 04:06:41.089 +00:00 [DBG] Disposed connection to database 'storemanagement' on server 'tcp://storemanagement.db:5432' (0ms).
+2023-11-30 04:06:41.091 +00:00 [INF] Request finished HTTP/2 GET https://localhost:62498/Cart?UserId.Value=3fa85f64-5717-4562-b3fc-2c963f66afa6 - 200 null application/json; charset=utf-8 54.349ms
