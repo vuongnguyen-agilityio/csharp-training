@@ -1,54 +1,58 @@
-﻿using Application.PurchaseHistories.Create;
+﻿using Microsoft.AspNetCore.Mvc;
+using MediatR;
+
+using Domain.PurchaseHistories;
+using Application.PurchaseHistories.Create;
 using Application.PurchaseHistories.Delete;
 using Application.PurchaseHistories.Get;
 using Application.PurchaseHistories.List;
-using Carter;
-using Domain.PurchaseHistories;
-using MediatR;
 
 namespace Web.API.Endpoints
 {
-    public class PurchaseHistories : ICarterModule
+    [ApiController]
+    [Route("[controller]")]
+    public class PurchaseHistoryController : ControllerBase
     {
-        public void AddRoutes(IEndpointRouteBuilder app)
+        [HttpPost]
+        public async Task<IResult> Create(CreatePurchaseHistoryCommand command, ISender sender)
         {
-            app.MapPost("purchases", async (CreatePurchaseHistoryCommand command, ISender sender) =>
+            await sender.Send(command);
+
+            return Results.Ok();
+        }
+
+        [HttpGet]
+        public async Task<IResult> Get(ISender sender)
+        {
+            return Results.Ok(await sender.Send(new ListPurchaseHistoryQuery()));
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<IResult> GetById(Guid id, ISender sender)
+        {
+            try
             {
-                await sender.Send(command);
-
-                return Results.Ok();
-            });
-
-            app.MapGet("purchases", async (ISender sender) =>
+                return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new PurchaseHistoryId(id))));
+            }
+            catch (PurchaseHistoryNotFoundException e)
             {
-                return Results.Ok(await sender.Send(new ListPurchaseHistoryQuery()));
-            });
+                return Results.NotFound(e.Message);
+            }
+        }
 
-            app.MapGet("purchases/{id:guid}", async (Guid id, ISender sender) =>
+        [HttpDelete("{id:guid}")]
+        public async Task<IResult> DeleteById(Guid id, ISender sender)
+        {
+            try
             {
-                try
-                {
-                    return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new PurchaseHistoryId(id))));
-                }
-                catch (PurchaseHistoryNotFoundException e)
-                {
-                    return Results.NotFound(e.Message);
-                }
-            });
+                await sender.Send(new DeletePurchaseHistoryCommand(new PurchaseHistoryId(id)));
 
-            app.MapDelete("purchases/{id:guid}", async (Guid id, ISender sender) =>
+                return Results.NoContent();
+            }
+            catch (PurchaseHistoryNotFoundException e)
             {
-                try
-                {
-                    await sender.Send(new DeletePurchaseHistoryCommand(new PurchaseHistoryId(id)));
-
-                    return Results.NoContent();
-                }
-                catch (PurchaseHistoryNotFoundException e)
-                {
-                    return Results.NotFound(e.Message);
-                }
-            });
+                return Results.NotFound(e.Message);
+            }
         }
     }
 }
