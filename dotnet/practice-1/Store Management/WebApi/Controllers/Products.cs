@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MediatR;
 
 using Domain.Products;
@@ -10,6 +11,7 @@ using Application.Products.Update;
 
 namespace Web.API.Endpoints
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProductController : ControllerBase

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 
-// TODO: Considering to manage authentication information here
 namespace Domain.Authentications
 {
-    internal class Authentication
+    public class Authentication : IdentityUser
     {
     }
 }

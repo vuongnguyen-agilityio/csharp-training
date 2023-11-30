@@ -1,4 +1,5 @@
 ﻿using Application.Data;
+using Domain.Authentications;
 using Domain.Carts;
 using Domain.Primitives;
 using Domain.Products;
@@ -6,11 +7,12 @@ using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
 using Domain.Users;
 using MediatR;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
+    public class ApplicationDbContext : IdentityDbContext<Authentication>, IApplicationDbContext, IUnitOfWork
     {
         private readonly IPublisher _publisher;
 
@@ -23,6 +25,7 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<User> Users { get; set; }
