@@ -1,5 +1,4 @@
 using Application;
-using Carter;
 //using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
@@ -29,8 +28,6 @@ builder.Services
 //.AddInfrastructure()
 
 builder.Services.AddControllers();
-
-builder.Services.AddCarter();
 
 // Add API versioning
 // E.g: URL based Versioning
@@ -63,7 +60,5 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 //app.UseAuthorization();
-
-app.MapCarter();
 
 app.Run();
