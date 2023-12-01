@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<Authentication>, IApplicationDbContext, IUnitOfWork
+    public class ApplicationDbContext : IdentityDbContext<BaseAuthentication>, IApplicationDbContext, IUnitOfWork
     {
         private readonly IPublisher _publisher;
 

@@ -7,6 +7,7 @@ using Application.Users.Delete;
 using Application.Users.Get;
 using Application.Users.List;
 using Application.Users.Update;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Endpoints
 {
@@ -14,6 +15,7 @@ namespace Web.API.Endpoints
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPost(Name = "Register")]
         public async Task<IResult> Register(CreateUserCommand command, ISender sender)
         {
@@ -22,12 +24,14 @@ namespace Web.API.Endpoints
             return Results.Ok();
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpGet(Name = "GetUser")]
         public Task<List<UserResponse>> Get(ISender sender)
         {
             return sender.Send(new ListUserQuery());
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpGet("{id:guid}")]
         public async Task<IResult> GetById(Guid id, ISender sender)
         {
@@ -41,6 +45,7 @@ namespace Web.API.Endpoints
             }
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPut("{id:guid}")]
         public async Task<IResult> UpdateById(Guid id, [FromBody] UpdateUserRequest request, ISender sender)
         {
@@ -54,6 +59,7 @@ namespace Web.API.Endpoints
             return Results.NoContent();
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
