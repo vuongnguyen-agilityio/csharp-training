@@ -42,14 +42,14 @@ namespace Application.Authentication.Register
                 throw new Exception("User creation failed! Please check user details and try again.");
             }
 
-            if (!await roleManager.RoleExistsAsync(UserRole.Admin.ToString()))
-                await roleManager.CreateAsync(new IdentityRole(UserRole.Admin.ToString()));
-            if (!await roleManager.RoleExistsAsync(UserRole.User.ToString()))
-                await roleManager.CreateAsync(new IdentityRole(UserRole.User.ToString()));
+            if (!await roleManager.RoleExistsAsync(nameof(UserRole.Admin)))
+                await roleManager.CreateAsync(new IdentityRole(nameof(UserRole.Admin)));
+            if (!await roleManager.RoleExistsAsync(nameof(UserRole.User)))
+                await roleManager.CreateAsync(new IdentityRole(nameof(UserRole.User)));
 
-            if (await roleManager.RoleExistsAsync(UserRole.Admin.ToString()))
+            if (await roleManager.RoleExistsAsync(nameof(UserRole.Admin)))
             {
-                await userManager.AddToRoleAsync(user, UserRole.Admin.ToString());
+                await userManager.AddToRoleAsync(user, nameof(UserRole.Admin));
             }
         }
     }

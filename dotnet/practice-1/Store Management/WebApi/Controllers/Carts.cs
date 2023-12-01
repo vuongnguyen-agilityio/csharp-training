@@ -8,6 +8,7 @@ using Application.Carts.Create;
 using Application.Carts.Delete;
 using Application.Carts.List;
 using Application.Carts.Update;
+using System.Security.Claims;
 
 namespace Web.API.Endpoints
 {
@@ -16,9 +17,10 @@ namespace Web.API.Endpoints
     public class CartController : ControllerBase
     {
         [HttpPost]
-        public async Task<IResult> Create(CreateCartCommand command, ISender sender)
+        public async Task<IResult> Create(CreateCartRequest command, ISender sender)
         {
-            await sender.Send(command);
+            string UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            await sender.Send(new CreateCartCommand(new UserId(new Guid(UserId)), new ProductId(command.ProductId.Value), command.Quantity));
 
             return Results.Ok();
         }
