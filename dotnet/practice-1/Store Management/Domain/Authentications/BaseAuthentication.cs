@@ -2,7 +2,7 @@
 
 namespace Domain.Authentications
 {
-    public class Authentication : IdentityUser
+    public class BaseAuthentication : IdentityUser
     {
     }
 }

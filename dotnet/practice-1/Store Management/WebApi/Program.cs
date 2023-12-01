@@ -51,7 +51,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // For Identity
-builder.Services.AddIdentity<Authentication, IdentityRole>()
+builder.Services.AddIdentity<BaseAuthentication, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
