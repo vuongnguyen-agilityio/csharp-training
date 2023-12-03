@@ -9,7 +9,7 @@ namespace Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<PurchaseHistory> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => new { x.Id, x.UserId });
 
             builder.Property(p => p.Id).HasConversion(
                 purchaseHistoryId => purchaseHistoryId.Value,

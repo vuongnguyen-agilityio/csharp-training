@@ -18,7 +18,7 @@ namespace Application.PurchaseHistories.Update
 
         public async Task Handle(UpdatePurchaseHistoryCommand request, CancellationToken cancellationToken)
         {
-            var purchaseHistory = await _repository.GetByIdAsync(request.PurchaseHistoryId);
+            var purchaseHistory = await _repository.GetByIdAsync(request.UserId, request.PurchaseHistoryId);
 
             if (purchaseHistory is null)
             {

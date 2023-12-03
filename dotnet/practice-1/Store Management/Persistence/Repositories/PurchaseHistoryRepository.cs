@@ -1,4 +1,5 @@
 ﻿using Domain.PurchaseHistories;
+using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Repositories
@@ -12,10 +13,10 @@ namespace Persistence.Repositories
             _context = context;
         }
 
-        public Task<PurchaseHistory?> GetByIdAsync(PurchaseHistoryId purchaseHistoryId)
+        public Task<PurchaseHistory?> GetByIdAsync(UserId userId, PurchaseHistoryId purchaseHistoryId)
         {
             return _context.PurchaseHistories
-                .SingleOrDefaultAsync(c => c.Id == new PurchaseHistoryId(purchaseHistoryId.Value));
+                .SingleOrDefaultAsync(c => c.Id == new PurchaseHistoryId(purchaseHistoryId.Value) && c.UserId == userId);
         }
 
         public Task<List<PurchaseHistory>> ListAsync()

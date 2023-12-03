@@ -8,9 +8,12 @@ using Application.Users.Get;
 using Application.Users.List;
 using Application.Users.Update;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Web.API.Endpoints
-{
+{               
+    // FIXME: This should be the Profile Management API.
+    // Because the User is managed by .Net Identity.
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
@@ -38,6 +41,20 @@ namespace Web.API.Endpoints
             try
             {
                 return Results.Ok(await sender.Send(new GetUserQuery(new UserId(id))));
+            }
+            catch (UserNotFoundException e)
+            {
+                return Results.NotFound(e.Message);
+            }
+        }
+
+        [HttpGet("/me")]
+        public async Task<IResult> GetByCurrentUserId(ISender sender)
+        {
+            try
+            {
+                string UserId = User.FindFirstValue("id")!;
+                return Results.Ok(await sender.Send(new GetUserQuery(new UserId(new Guid(UserId)))));
             }
             catch (UserNotFoundException e)
             {
