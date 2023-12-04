@@ -19,7 +19,7 @@ namespace Web.API.Endpoints
     public class UserController : ControllerBase
     {
         [Authorize(Roles = nameof(UserRole.Admin))]
-        [HttpPost(Name = "Register")]
+        [HttpPost]
         public async Task<IResult> Register(CreateUserCommand command, ISender sender)
         {
             await sender.Send(command);
@@ -28,7 +28,7 @@ namespace Web.API.Endpoints
         }
 
         [Authorize(Roles = nameof(UserRole.Admin))]
-        [HttpGet(Name = "GetUser")]
+        [HttpGet]
         public Task<List<UserResponse>> Get(ISender sender)
         {
             return sender.Send(new ListUserQuery());
