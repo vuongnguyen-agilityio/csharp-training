@@ -19,6 +19,6 @@ namespace Application.Data
 
         DbSet<PurchaseHistoryItem> PurchaseHistoryItems { get; set; }
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);        
     }
 }

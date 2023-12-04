@@ -1,14 +1,16 @@
 ﻿using Domain.Products;
 using Domain.PurchaseHistories;
+using Domain.Users;
 
 namespace Domain.PurchaseHistoryItems
 {
     public class PurchaseHistoryItem
     {
-        public PurchaseHistoryItem(PurchaseHistoryItemId id, PurchaseHistoryId purchaseHistoryId, ProductId productId, Products.Money price, decimal quantity)
+        public PurchaseHistoryItem(PurchaseHistoryItemId id, PurchaseHistoryId purchaseHistoryId, UserId userId, ProductId productId, Products.Money price, decimal quantity)
         {
             Id = id;
             PurchaseHistoryId = purchaseHistoryId;
+            UserId = userId;
             ProductId = productId;
             Price = price;
             Quantity = quantity;
@@ -19,6 +21,8 @@ namespace Domain.PurchaseHistoryItems
         public PurchaseHistoryItemId Id { get; private set; }
 
         public PurchaseHistoryId PurchaseHistoryId { get; private set; }
+
+        public UserId UserId { get; private set; }
 
         public ProductId ProductId { get; private set; }
 

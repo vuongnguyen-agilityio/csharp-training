@@ -1,8 +1,10 @@
-﻿namespace Domain.PurchaseHistories
+﻿using Domain.Users;
+
+namespace Domain.PurchaseHistories
 {
     public interface IPurchaseHistoryRepository
     {
-        Task<PurchaseHistory?> GetByIdAsync(PurchaseHistoryId id);
+        Task<PurchaseHistory?> GetByIdAsync(UserId userId, PurchaseHistoryId id);
 
         void Add(PurchaseHistory product);
 

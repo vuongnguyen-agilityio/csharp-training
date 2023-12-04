@@ -30,7 +30,8 @@ namespace Application.Authentication.Login
 
                 var authClaims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.Email, user.Id),
+                    new Claim("email", user.Email),
+                    new Claim("id", user.Id.ToString()),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
 

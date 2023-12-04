@@ -4,6 +4,8 @@
     {
         Task<Product?> GetByIdAsync(ProductId id);
 
+        Task<bool> IsSkuUniqueAsync(Sku sku);
+
         void Add(Product product);
 
         void Update(Product product);

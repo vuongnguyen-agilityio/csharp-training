@@ -13,9 +13,12 @@ namespace Persistence.Configurations
             builder.Property(p => p.Id).HasConversion(
                 productId => productId.Value,
                 value => new ProductId(value));
+
             builder.Property(p => p.Sku).HasConversion(
                 sku => sku.Value,
                 value => Sku.Create(value)!);
+
+            builder.HasIndex(p => p.Sku).IsUnique();
 
             builder.OwnsOne(p => p.Price, priceBuilder =>
             {

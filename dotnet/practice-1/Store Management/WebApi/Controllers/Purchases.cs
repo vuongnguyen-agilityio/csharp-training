@@ -6,6 +6,9 @@ using Application.PurchaseHistories.Create;
 using Application.PurchaseHistories.Delete;
 using Application.PurchaseHistories.Get;
 using Application.PurchaseHistories.List;
+using System.Security.Claims;
+using Domain.Users;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Endpoints
 {
@@ -14,9 +17,11 @@ namespace Web.API.Endpoints
     public class PurchaseHistoryController : ControllerBase
     {
         [HttpPost]
-        public async Task<IResult> Create(CreatePurchaseHistoryCommand command, ISender sender)
+        public async Task<IResult> Create(CreatePurchaseHistoryRequest command, ISender sender)
         {
-            await sender.Send(command);
+            string UserId = User.FindFirstValue("id")!;
+
+            await sender.Send(new CreatePurchaseHistoryRequest(new UserId(new Guid(UserId)), command.CreatePurchaseHistoryItemRequest));
 
             return Results.Ok();
         }
@@ -24,7 +29,9 @@ namespace Web.API.Endpoints
         [HttpGet]
         public async Task<IResult> Get(ISender sender)
         {
-            return Results.Ok(await sender.Send(new ListPurchaseHistoryQuery()));
+            string UserId = User.FindFirstValue("id")!;
+
+            return Results.Ok(await sender.Send(new ListPurchaseHistoryQuery(new UserId(new Guid(UserId)))));
         }
 
         [HttpGet("{id:guid}")]
@@ -32,7 +39,9 @@ namespace Web.API.Endpoints
         {
             try
             {
-                return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new PurchaseHistoryId(id))));
+                string UserId = User.FindFirstValue("id")!;
+
+                return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new UserId(new Guid(UserId)), new PurchaseHistoryId(id))));
             }
             catch (PurchaseHistoryNotFoundException e)
             {
@@ -40,12 +49,15 @@ namespace Web.API.Endpoints
             }
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
             try
             {
-                await sender.Send(new DeletePurchaseHistoryCommand(new PurchaseHistoryId(id)));
+                string UserId = User.FindFirstValue("id")!;
+
+                await sender.Send(new DeletePurchaseHistoryCommand(new UserId(new Guid(UserId)),new PurchaseHistoryId(id)));
 
                 return Results.NoContent();
             }

@@ -12,13 +12,11 @@ namespace Application.Authentication.Register
     {
         private readonly UserManager<BaseAuthentication> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
-        private readonly IConfiguration _configuration;
 
-        public RegisterAdminCommandHandler(UserManager<BaseAuthentication> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public RegisterAdminCommandHandler(UserManager<BaseAuthentication> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
-            _configuration = configuration;
         }
 
         public async Task Handle(RegisterAdminCommand command, CancellationToken cancellationToken)
@@ -42,11 +40,18 @@ namespace Application.Authentication.Register
                 throw new Exception("User creation failed! Please check user details and try again.");
             }
 
+            // Create Admin Role if not existed
             if (!await roleManager.RoleExistsAsync(nameof(UserRole.Admin)))
+            {
                 await roleManager.CreateAsync(new IdentityRole(nameof(UserRole.Admin)));
+            }
+            // Create User Role if not existed
             if (!await roleManager.RoleExistsAsync(nameof(UserRole.User)))
+            {
                 await roleManager.CreateAsync(new IdentityRole(nameof(UserRole.User)));
+            }
 
+            // Set Admin Role
             if (await roleManager.RoleExistsAsync(nameof(UserRole.Admin)))
             {
                 await userManager.AddToRoleAsync(user, nameof(UserRole.Admin));

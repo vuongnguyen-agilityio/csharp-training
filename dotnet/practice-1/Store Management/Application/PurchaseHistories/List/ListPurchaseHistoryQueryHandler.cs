@@ -18,11 +18,13 @@ namespace Application.PurchaseHistories.List
         {
             var PurchaseHistories = await _context
                 .PurchaseHistories
+                .Where(p => p.UserId == request.UserId)
                 .Select(p => new PurchaseHistoryResponse(
                     p.Id.Value,
                     p.UserId.Value,
                     p.Amount.Currency,
-                    p.Amount.Amount))
+                    p.Amount.Amount,
+                    p.PurchaseHistoryItems.ToList()))
                 .ToListAsync(cancellationToken);
 
             return PurchaseHistories;

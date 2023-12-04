@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 using Application.Authentication.Login;
 using Application.Authentication.Register;
+using Application.Authentication.RegisterAdmin;
 
 namespace WebApi.Controllers
 {
@@ -48,7 +49,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("register-admin")]
-        public async Task<IResult> RegisterAdmin([FromBody] RegisterCommand command, ISender sender)
+        public async Task<IResult> RegisterAdmin([FromBody] RegisterAdminCommand command, ISender sender)
         {
             try
             {

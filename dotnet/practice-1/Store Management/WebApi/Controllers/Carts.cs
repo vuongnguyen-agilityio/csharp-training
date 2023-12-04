@@ -9,6 +9,7 @@ using Application.Carts.Delete;
 using Application.Carts.List;
 using Application.Carts.Update;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Endpoints
 {
@@ -19,23 +20,25 @@ namespace Web.API.Endpoints
         [HttpPost]
         public async Task<IResult> Create(CreateCartRequest command, ISender sender)
         {
-            string UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            string UserId = User.FindFirstValue("id")!;
             await sender.Send(new CreateCartCommand(new UserId(new Guid(UserId)), new ProductId(command.ProductId.Value), command.Quantity));
 
             return Results.Ok();
         }
 
         [HttpGet]
-        public async Task<IResult> Get([FromQuery] ListCartQuery query, ISender sender)
+        public async Task<IResult> Get(ISender sender)
         {
-            return Results.Ok(await sender.Send(new ListCartQuery(new UserId(query.UserId.Value))));
+            string UserId = User.FindFirstValue("id")!;
+            return Results.Ok(await sender.Send(new ListCartQuery(new UserId(new Guid(UserId)))));
         }
 
         [HttpPut]
         public async Task<IResult> UpdateById([FromBody] UpdateCartRequest body, ISender sender)
         {
+            string UserId = User.FindFirstValue("id")!;
             var command = new UpdateCartCommand(
-                new UserId(body.UserId.Value),
+                new UserId(new Guid(UserId)),
                 new ProductId(body.ProductId.Value),
                 body.Quantity);
 
@@ -45,11 +48,12 @@ namespace Web.API.Endpoints
         }
 
         [HttpDelete]
-        public async Task<IResult> DeleteById([FromQuery] DeleteCartCommand request, ISender sender)
+        public async Task<IResult> DeleteById([FromQuery] DeleteCartRequest request, ISender sender)
         {
+            string UserId = User.FindFirstValue("id")!;
             try
             {
-                await sender.Send(new DeleteCartCommand(new UserId(request.UserId.Value), new ProductId(request.ProductId.Value)));
+                await sender.Send(new DeleteCartCommand(new UserId(new Guid(UserId)), new ProductId(request.ProductId.Value)));
 
                 return Results.NoContent();
             }

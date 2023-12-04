@@ -17,7 +17,7 @@ namespace Application.PurchaseHistories.Delete
 
         public async Task Handle(DeletePurchaseHistoryCommand request, CancellationToken cancellationToken)
         {
-            var purchaseHistory = await _repository.GetByIdAsync(request.PurchaseHistoryId);
+            var purchaseHistory = await _repository.GetByIdAsync(request.UserId, request.PurchaseHistoryId);
 
             if (purchaseHistory is null)
             {
