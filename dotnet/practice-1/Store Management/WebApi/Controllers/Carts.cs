@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Endpoints
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class CartController : ControllerBase

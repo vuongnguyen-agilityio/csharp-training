@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Endpoints
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class PurchaseHistoryController : ControllerBase
@@ -21,7 +22,7 @@ namespace Web.API.Endpoints
         {
             string UserId = User.FindFirstValue("id")!;
 
-            await sender.Send(new CreatePurchaseHistoryRequest(new UserId(new Guid(UserId)), command.CreatePurchaseHistoryItemRequest));
+            await sender.Send(new CreatePurchaseHistoryCommand(new UserId(new Guid(UserId)), command.CreatePurchaseHistoryItemRequest));
 
             return Results.Ok();
         }
