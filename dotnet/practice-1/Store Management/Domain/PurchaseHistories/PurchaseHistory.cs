@@ -1,4 +1,5 @@
-﻿using Domain.Users;
+﻿using Domain.PurchaseHistoryItems;
+using Domain.Users;
 
 namespace Domain.PurchaseHistories
 {
@@ -18,6 +19,8 @@ namespace Domain.PurchaseHistories
         public UserId UserId { get; private set; }
 
         public Money Amount { get; private set; }
+
+        public ICollection<PurchaseHistoryItem> PurchaseHistoryItems { get; } = new List<PurchaseHistoryItem>();
 
         public void Update(UserId userId, Money amount)
         {

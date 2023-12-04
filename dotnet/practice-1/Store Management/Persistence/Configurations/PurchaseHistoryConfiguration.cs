@@ -11,6 +11,11 @@ namespace Persistence.Configurations
         {
             builder.HasKey(x => new { x.Id, x.UserId });
 
+            builder.HasMany(x => x.PurchaseHistoryItems)
+                .WithOne()
+                .HasForeignKey(b => new { b.PurchaseHistoryId, b.UserId })
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Property(p => p.Id).HasConversion(
                 purchaseHistoryId => purchaseHistoryId.Value,
                 value => new PurchaseHistoryId(value));

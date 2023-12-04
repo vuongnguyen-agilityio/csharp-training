@@ -23,7 +23,8 @@ namespace Application.PurchaseHistories.List
                     p.Id.Value,
                     p.UserId.Value,
                     p.Amount.Currency,
-                    p.Amount.Amount))
+                    p.Amount.Amount,
+                    p.PurchaseHistoryItems.ToList()))
                 .ToListAsync(cancellationToken);
 
             return PurchaseHistories;

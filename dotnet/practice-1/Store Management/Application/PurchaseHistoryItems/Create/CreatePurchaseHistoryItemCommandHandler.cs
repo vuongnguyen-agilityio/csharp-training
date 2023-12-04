@@ -2,6 +2,7 @@
 using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
+using Domain.Users;
 using MediatR;
 
 namespace Application.PurchaseHistoryItems.Create
@@ -23,6 +24,7 @@ namespace Application.PurchaseHistoryItems.Create
             var purchaseHistoryItem = new PurchaseHistoryItem(
                 new PurchaseHistoryItemId(Guid.NewGuid()),
                 new PurchaseHistoryId(request.PurchaseHistoryId.Value),
+                new UserId(request.UserId.Value),
                 new ProductId(request.ProductId.Value),
                 new Domain.Products.Money(request.ProductCurrency, request.ProductAmount),
                 request.Quantity);

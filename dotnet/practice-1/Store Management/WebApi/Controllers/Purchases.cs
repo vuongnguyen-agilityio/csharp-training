@@ -21,7 +21,7 @@ namespace Web.API.Endpoints
         {
             string UserId = User.FindFirstValue("id")!;
 
-            await sender.Send(new CreatePurchaseHistoryCommand(new UserId(new Guid(UserId)), command.Currency, command.Amount));
+            await sender.Send(new CreatePurchaseHistoryRequest(new UserId(new Guid(UserId)), command.CreatePurchaseHistoryItemRequest));
 
             return Results.Ok();
         }

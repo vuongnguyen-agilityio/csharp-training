@@ -1,6 +1,7 @@
 ﻿using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
+using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,6 +20,10 @@ namespace Persistence.Configurations
             builder.Property(p => p.PurchaseHistoryId).HasConversion(
                 purchaseHistoryId => purchaseHistoryId.Value,
                 value => new PurchaseHistoryId(value));
+
+            builder.Property(p => p.UserId).HasConversion(
+                userId => userId.Value,
+                value => new UserId(value));
 
             builder.Property(p => p.ProductId).HasConversion(
                 productId => productId.Value,

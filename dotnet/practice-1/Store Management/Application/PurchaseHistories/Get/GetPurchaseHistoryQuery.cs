@@ -1,4 +1,5 @@
 ﻿using Domain.PurchaseHistories;
+using Domain.PurchaseHistoryItems;
 using Domain.Users;
 using MediatR;
 
@@ -10,5 +11,6 @@ namespace Application.PurchaseHistories.Get
         Guid Id,
         Guid UserId,
         string Currency,
-        decimal Amount);
+        decimal Amount,
+        List<PurchaseHistoryItem> PurchaseHistoryItems);
 }

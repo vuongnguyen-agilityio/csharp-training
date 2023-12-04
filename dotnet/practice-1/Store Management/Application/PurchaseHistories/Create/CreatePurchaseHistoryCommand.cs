@@ -1,14 +1,14 @@
-﻿using Domain.Users;
+﻿using Application.PurchaseHistoryItems.Create;
+using Domain.Users;
 using MediatR;
 
 namespace Application.PurchaseHistories.Create
 {
     public record CreatePurchaseHistoryRequest(
-        string Currency,
-        decimal Amount) : IRequest;
+        UserId UserId,
+        List<CreatePurchaseHistoryItemRequest> CreatePurchaseHistoryItemRequest) : IRequest;
 
     public record CreatePurchaseHistoryCommand(
         UserId UserId,
-        string Currency,
-        decimal Amount) : IRequest;
+        List<CreatePurchaseHistoryItemCommand> CreatePurchaseHistoryItemCommand) : IRequest;
 }

@@ -23,7 +23,8 @@ namespace Application.PurchaseHistories.Get
                     p.Id.Value,
                     p.UserId.Value,
                     p.Amount.Currency,
-                    p.Amount.Amount))
+                    p.Amount.Amount,
+                    p.PurchaseHistoryItems.ToList()))
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (purchaseHistory is null)
