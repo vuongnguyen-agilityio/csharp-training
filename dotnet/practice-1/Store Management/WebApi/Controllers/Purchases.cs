@@ -8,6 +8,7 @@ using Application.PurchaseHistories.Get;
 using Application.PurchaseHistories.List;
 using System.Security.Claims;
 using Domain.Users;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.API.Endpoints
 {
@@ -48,6 +49,7 @@ namespace Web.API.Endpoints
             }
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {

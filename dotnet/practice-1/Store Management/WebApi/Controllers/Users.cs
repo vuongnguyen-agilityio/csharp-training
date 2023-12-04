@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
 namespace Web.API.Endpoints
-{               
+{
     // FIXME: This should be the Profile Management API.
     // Because the User is managed by .Net Identity.
     [ApiController]

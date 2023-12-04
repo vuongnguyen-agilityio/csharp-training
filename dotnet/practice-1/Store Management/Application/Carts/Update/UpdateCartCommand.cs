@@ -10,6 +10,5 @@ public record UpdateCartCommand(
     decimal Quantity) : IRequest;
 
 public record UpdateCartRequest(
-    UserId UserId,
     ProductId ProductId,
     decimal Quantity);

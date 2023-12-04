@@ -8,14 +8,15 @@ using Application.Products.Delete;
 using Application.Products.Get;
 using Application.Products.List;
 using Application.Products.Update;
+using Domain.Users;
 
 namespace Web.API.Endpoints
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPost]
         public async Task<IResult> CreateProduct(CreateProductCommand command, ISender sender)
         {
@@ -43,6 +44,7 @@ namespace Web.API.Endpoints
             }
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPut("{id:guid}")]
         public async Task<IResult> UpdateById(Guid id, [FromBody] UpdateProductRequest request, ISender sender)
         {
@@ -58,6 +60,7 @@ namespace Web.API.Endpoints
             return Results.NoContent();
         }
 
+        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {

@@ -2,16 +2,19 @@
 using Microsoft.AspNetCore.Identity;
 
 using Domain.Authentications;
+using Domain.Users;
 
 namespace Application.Authentication.Register
 {
     internal sealed class RegisterCommandHandler : IRequestHandler<RegisterCommand>
     {
         private readonly UserManager<BaseAuthentication> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public RegisterCommandHandler(UserManager<BaseAuthentication> userManager)
+        public RegisterCommandHandler(UserManager<BaseAuthentication> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         public async Task Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -32,6 +35,24 @@ namespace Application.Authentication.Register
             if (!result.Succeeded)
             {
                 throw new Exception("User creation failed! Please check user details and try again.");
+            }
+
+            // Create Admin Role if not existed
+            if (!await roleManager.RoleExistsAsync(nameof(UserRole.Admin)))
+            {
+                await roleManager.CreateAsync(new IdentityRole(nameof(UserRole.Admin)));
+            }
+
+            // Create User Role if not existed
+            if (!await roleManager.RoleExistsAsync(nameof(UserRole.User)))
+            {
+                await roleManager.CreateAsync(new IdentityRole(nameof(UserRole.User)));
+            }
+
+            // Set User Role
+            if (await roleManager.RoleExistsAsync(nameof(UserRole.User)))
+            {
+                await userManager.AddToRoleAsync(user, nameof(UserRole.User));
             }
         }
     }
