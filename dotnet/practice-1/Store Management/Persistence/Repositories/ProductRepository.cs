@@ -18,6 +18,11 @@ namespace Persistence.Repositories
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
 
+        public async Task<bool> IsSkuUniqueAsync(Sku sku)
+        {
+            return !await _context.Products.AnyAsync(c => c.Sku == sku);
+        }
+
         public Task<List<Product>> ListAsync()
         {
             return _context.Products.ToListAsync();
