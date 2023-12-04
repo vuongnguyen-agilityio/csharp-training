@@ -21,13 +21,6 @@ namespace Application.Authentication.Register
 
         public async Task Handle(RegisterAdminCommand command, CancellationToken cancellationToken)
         {
-            var userExists = await userManager.FindByNameAsync(command.Email);
-            if (userExists != null)
-            {
-                throw new Exception("User already exists!");
-            }
-
-
             BaseAuthentication user = new BaseAuthentication()
             {
                 Email = command.Email,
