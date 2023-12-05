@@ -12,6 +12,15 @@ namespace WebApi.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private RegisterCommandValidator _validator;
+        private RegisterAdminCommandValidator _registerAdminCommandValidator;
+
+        public AuthController(RegisterCommandValidator validator, RegisterAdminCommandValidator registerAdminCommandValidator)
+        {
+            _validator = validator;
+            _registerAdminCommandValidator = registerAdminCommandValidator;
+        }
+
         [HttpPost]
         [Route("login")]
         public async Task<IResult> Login([FromBody] LoginCommand command, ISender sender)
@@ -38,6 +47,12 @@ namespace WebApi.Controllers
         {
             try
             {
+                var validatorResult = await _validator.ValidateAsync(command);
+                if (!validatorResult.IsValid)
+                {
+                    return Results.ValidationProblem(validatorResult.ToDictionary());
+                }
+
                 await sender.Send(command);
                 return Results.Ok();
             }
@@ -53,6 +68,12 @@ namespace WebApi.Controllers
         {
             try
             {
+                var validatorResult = await _registerAdminCommandValidator.ValidateAsync(command);
+                if (!validatorResult.IsValid)
+                {
+                    return Results.ValidationProblem(validatorResult.ToDictionary());
+                }
+
                 await sender.Send(command);
                 return Results.Ok();
             }

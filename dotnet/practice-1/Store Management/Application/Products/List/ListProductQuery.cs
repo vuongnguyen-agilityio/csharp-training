@@ -3,4 +3,7 @@ using MediatR;
 
 namespace Application.Products.List;
 
-public record ListProductQuery() : IRequest<List<ProductResponse>>;
+public record ListProductQuery(
+    int Skip,
+    int Take
+    ) : IRequest<List<ProductResponse>>;

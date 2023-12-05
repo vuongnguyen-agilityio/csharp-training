@@ -40,10 +40,10 @@ namespace Web.API.Endpoints
             return Results.Ok();
         }
 
-        [HttpGet(Name = "GetProduct")]
-        public async Task<IResult> Get(ISender sender)
+        [HttpGet]
+        public async Task<IResult> Get([FromQuery] ListProductQuery command, ISender sender)
         {
-            return Results.Ok(await sender.Send(new ListProductQuery()));
+            return Results.Ok(await sender.Send(command));
         }
 
         [HttpGet("{id:guid}")]

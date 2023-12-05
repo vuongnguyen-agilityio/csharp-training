@@ -5,11 +5,10 @@ using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
 using Domain.Users;
 using MediatR;
-using Money = Domain.PurchaseHistories.Money;
 
 namespace Application.PurchaseHistories.Create
 {
-    internal sealed class CreatePurchaseHistoryCommandHandler : IRequestHandler<CreatePurchaseHistoryRequest>
+    internal sealed class CreatePurchaseHistoryCommandHandler : IRequestHandler<CreatePurchaseHistoryCommand>
     {
         private readonly IPurchaseHistoryRepository _repository;
         private readonly IPurchaseHistoryItemRepository _purchaseHistoryItemRepository;
@@ -23,18 +22,16 @@ namespace Application.PurchaseHistories.Create
             _unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(CreatePurchaseHistoryRequest request, CancellationToken cancellationToken)
+        public async Task Handle(CreatePurchaseHistoryCommand request, CancellationToken cancellationToken)
         {
             List<CreatePurchaseHistoryItemRequest> purchaseHistoryItems = request.CreatePurchaseHistoryItemRequest;
             var currency = purchaseHistoryItems[0].ProductCurrency;
-            // Calc Amount
-
-            var total = purchaseHistoryItems[0].ProductAmount;
+            decimal amount = purchaseHistoryItems.Aggregate(0m, (total, item) => total + (item.Quantity * item.ProductAmount));
 
             var purchaseHistory = new PurchaseHistory(
                 new PurchaseHistoryId(Guid.NewGuid()),
                 new UserId(request.UserId.Value),
-                new Money(currency, total));
+                new Domain.PurchaseHistories.Money(currency, amount));
 
             _repository.Add(purchaseHistory);
 
