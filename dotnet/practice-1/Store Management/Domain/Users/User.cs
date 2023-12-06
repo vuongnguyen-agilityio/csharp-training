@@ -1,6 +1,8 @@
-﻿namespace Domain.Users
+﻿using Domain.Primitives;
+
+namespace Domain.Users
 {
-    public class User
+    public class User : BaseEntity
     {
         public User(UserId id, string name, string email, string password, UserRole role)
         {

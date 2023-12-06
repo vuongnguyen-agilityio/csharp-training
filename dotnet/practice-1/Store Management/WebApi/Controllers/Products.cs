@@ -16,25 +16,10 @@ namespace Web.API.Endpoints
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
-        private CreateProductCommandValidator _createProductValidator;
-        private UpdateProductCommandValidator _updateProductValidator;
-
-        public ProductController(CreateProductCommandValidator createProductValidator, UpdateProductCommandValidator updateProductValidator)
-        {
-            _createProductValidator = createProductValidator;
-            _updateProductValidator = updateProductValidator;
-        }
-
         [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPost]
         public async Task<IResult> CreateProduct(CreateProductCommand command, ISender sender)
         {
-            var validatorResult = await _createProductValidator.ValidateAsync(command);
-            if (!validatorResult.IsValid)
-            {
-                return Results.ValidationProblem(validatorResult.ToDictionary());
-            }
-
             await sender.Send(command);
 
             return Results.Ok();
@@ -63,12 +48,6 @@ namespace Web.API.Endpoints
         [HttpPut("{id:guid}")]
         public async Task<IResult> UpdateById(Guid id, [FromBody] UpdateProductRequest request, ISender sender)
         {
-            var validatorResult = await _updateProductValidator.ValidateAsync(request);
-            if (!validatorResult.IsValid)
-            {
-                return Results.ValidationProblem(validatorResult.ToDictionary());
-            }
-
             var command = new UpdateProductCommand(
                 new ProductId(id),
                 request.Name,

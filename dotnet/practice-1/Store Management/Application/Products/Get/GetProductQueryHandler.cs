@@ -24,7 +24,9 @@ internal sealed class ListProductQueryHandler : IRequestHandler<GetProductQuery,
                 p.Name,
                 p.Sku.Value,
                 p.Price.Currency,
-                p.Price.Amount))
+                p.Price.Amount,
+                p.CreatedDate,
+                p.UpdatedDate))
             .FirstOrDefaultAsync(cancellationToken);
 
         if (product is null)

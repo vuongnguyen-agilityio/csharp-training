@@ -10,7 +10,8 @@ using Microsoft.OpenApi.Models;
 using Application;
 using Domain.Authentications;
 using Persistence;
-using Web.API.Extensions;
+using WebApi.Extensions;
+using WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -109,9 +110,10 @@ if (app.Environment.IsDevelopment())
     app.ApplyMigrations();
 }
 
-app.UseSerilogRequestLogging();
-
 app.UseHttpsRedirection();
+
+app.UseSerilogRequestLogging();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Application.Abstractions.Messaging;
 
 namespace Application.Products.Create
 {
@@ -6,5 +6,5 @@ namespace Application.Products.Create
         string Name,
         string Sku,
         string Currency,
-        decimal Amount) : IRequest;
+        decimal Amount) : ICommand;
 }
