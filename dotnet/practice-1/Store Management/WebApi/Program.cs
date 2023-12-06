@@ -11,6 +11,7 @@ using Application;
 using Domain.Authentications;
 using Persistence;
 using Web.API.Extensions;
+using Web.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,6 +84,8 @@ builder.Services
     .AddApplication();
 //.AddInfrastructure()
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllers();
 
 // Add API versioning
@@ -110,8 +113,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseSerilogRequestLogging();
-
-app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 
