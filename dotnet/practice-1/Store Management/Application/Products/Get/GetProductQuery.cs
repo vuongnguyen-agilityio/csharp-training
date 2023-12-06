@@ -10,4 +10,6 @@ public record ProductResponse(
     string Name,
     string Sku,
     string Currency,
-    decimal Amount);
+    decimal Amount,
+    DateTime CreatedDate,
+    DateTime UpdatedDate);

@@ -24,7 +24,9 @@ internal sealed class ListProductQueryHandler : IRequestHandler<ListProductQuery
                 p.Name,
                 p.Sku.Value,
                 p.Price.Currency,
-                p.Price.Amount))
+                p.Price.Amount,
+                p.CreatedDate,
+                p.UpdatedDate))
             .Skip(request.Skip)
             .Take(request.Take)
             .ToListAsync(cancellationToken);
