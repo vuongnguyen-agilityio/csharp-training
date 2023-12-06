@@ -1,6 +1,8 @@
-﻿namespace Domain.Products
+﻿using Domain.Primitives;
+
+namespace Domain.Products
 {
-    public class Product
+    public class Product : BaseEntity
     {
         public Product(ProductId id, string name, Money price, Sku sku)
         {

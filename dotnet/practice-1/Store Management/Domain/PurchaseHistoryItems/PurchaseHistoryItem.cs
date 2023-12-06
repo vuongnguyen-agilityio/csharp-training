@@ -1,10 +1,11 @@
-﻿using Domain.Products;
+﻿using Domain.Primitives;
+using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.Users;
 
 namespace Domain.PurchaseHistoryItems
 {
-    public class PurchaseHistoryItem
+    public class PurchaseHistoryItem : BaseEntity
     {
         public PurchaseHistoryItem(PurchaseHistoryItemId id, PurchaseHistoryId purchaseHistoryId, UserId userId, ProductId productId, Products.Money price, decimal quantity)
         {

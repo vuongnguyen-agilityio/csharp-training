@@ -1,4 +1,5 @@
-﻿using Domain.Products;
+﻿using Domain.Primitives;
+using Domain.Products;
 using Domain.Users;
 
 namespace Domain.Carts
@@ -6,7 +7,7 @@ namespace Domain.Carts
     /*
      * The CartId is the combination of UserId and ProductId
      */
-    public class Cart
+    public class Cart : BaseEntity
     {
         public Cart(UserId userId, ProductId productId, decimal quantity)
         {

@@ -1,9 +1,10 @@
-﻿using Domain.PurchaseHistoryItems;
+﻿using Domain.Primitives;
+using Domain.PurchaseHistoryItems;
 using Domain.Users;
 
 namespace Domain.PurchaseHistories
 {
-    public class PurchaseHistory
+    public class PurchaseHistory : BaseEntity
     {
         public PurchaseHistory(PurchaseHistoryId id, UserId userId, Money amount)
         {

@@ -40,17 +40,23 @@ namespace Persistence
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            //var domainEvents = ChangeTracker.Entries<Entity>()
-            //    .Select(e => e.Entity)
-            //    .Where(e => e.GetDomainEvents().Any())
-            //    .SelectMany(e => e.GetDomainEvents());
+            var entries = ChangeTracker
+            .Entries()
+            .Where(e => e.Entity is BaseEntity && (
+                    e.State == EntityState.Added
+                    || e.State == EntityState.Modified));
+
+            foreach (var entityEntry in entries)
+            {
+                ((BaseEntity)entityEntry.Entity).UpdatedDate = DateTime.Now;
+
+                if (entityEntry.State == EntityState.Added)
+                {
+                    ((BaseEntity)entityEntry.Entity).CreatedDate = DateTime.Now;
+                }
+            }
 
             var result = await base.SaveChangesAsync(cancellationToken);
-        
-            //foreach (var domainEvent in domainEvents)
-            //{
-            //    await _publisher.Publish(domainEvent, cancellationToken);
-            //}
 
             return result;
         }
