@@ -84,8 +84,6 @@ builder.Services
     .AddApplication();
 //.AddInfrastructure()
 
-builder.Services.AddHttpContextAccessor();
-
 builder.Services.AddControllers();
 
 // Add API versioning
@@ -111,6 +109,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }
+
+app.UseHttpsRedirection();
 
 app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
