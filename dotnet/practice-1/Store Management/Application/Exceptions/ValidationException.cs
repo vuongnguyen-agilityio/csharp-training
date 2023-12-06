@@ -1,14 +1,15 @@
-﻿namespace Application.Exceptions;
-
-public class ValidationException : Exception
+﻿namespace Application.Exceptions
 {
-    public ValidationException(IReadOnlyCollection<ValidationError> errors)
-        : base("Validation failed")
+    public class ValidationException : Exception
     {
-        Errors = errors;
+        public ValidationException(IReadOnlyCollection<ValidationError> errors)
+            : base("Validation failed")
+        {
+            Errors = errors;
+        }
+
+        public IReadOnlyCollection<ValidationError> Errors { get; }
     }
 
-    public IReadOnlyCollection<ValidationError> Errors { get; }
+    public record ValidationError(string PropertyName, string ErrorMessage);
 }
-
-public record ValidationError(string PropertyName, string ErrorMessage);

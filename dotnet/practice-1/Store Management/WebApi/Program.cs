@@ -10,8 +10,8 @@ using Microsoft.OpenApi.Models;
 using Application;
 using Domain.Authentications;
 using Persistence;
-using Web.API.Extensions;
-using Web.API.Middleware;
+using WebApi.Extensions;
+using WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
