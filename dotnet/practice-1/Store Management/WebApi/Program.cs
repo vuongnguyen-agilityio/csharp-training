@@ -121,3 +121,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.Run();
+
+// Public Program for Integration Testing
+public partial class Program { }
