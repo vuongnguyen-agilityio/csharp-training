@@ -7,8 +7,6 @@ namespace IntegrationTest.Products
     {
         public ProductTest(IntegrationTestWebFactory webFactory) : base(webFactory)
         {
-            webFactory.DisposeAsync();
-            webFactory.InitializeAsync();
         }
 
         [Fact]
