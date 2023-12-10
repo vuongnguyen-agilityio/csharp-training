@@ -5,7 +5,7 @@ using Domain.Primitives;
 using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
-using Domain.Users;
+using Domain.Profiles;
 using MediatR;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +28,7 @@ namespace Persistence
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
 
         public DbSet<Product> Products { get; set; }
 

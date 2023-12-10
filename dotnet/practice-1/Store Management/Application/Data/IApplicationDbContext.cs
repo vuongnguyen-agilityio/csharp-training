@@ -2,14 +2,14 @@
 using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
-using Domain.Users;
+using Domain.Profiles;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Data
 {
     public interface IApplicationDbContext
     {
-        DbSet<User> Users { get; set; }
+        DbSet<Profile> Profiles { get; set; }
         
         DbSet<Product> Products { get; set; }
 

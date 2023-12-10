@@ -1,26 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 
-using Domain.Users;
-using Application.Users.Create;
-using Application.Users.Delete;
-using Application.Users.Get;
-using Application.Users.List;
-using Application.Users.Update;
+using Domain.Profiles;
+using Application.Profiles.Create;
+using Application.Profiles.Delete;
+using Application.Profiles.Get;
+using Application.Profiles.List;
+using Application.Profiles.Update;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Domain.Users;
 
 namespace Web.API.Endpoints
 {
-    // FIXME: This should be the Profile Management API.
-    // Because the User is managed by .Net Identity.
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class ProfileController : ControllerBase
     {
         [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPost]
-        public async Task<IResult> Register(CreateUserCommand command, ISender sender)
+        public async Task<IResult> Register(CreateProfileCommand command, ISender sender)
         {
             await sender.Send(command);
 
@@ -29,9 +28,9 @@ namespace Web.API.Endpoints
 
         [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpGet]
-        public Task<List<UserResponse>> Get(ISender sender)
+        public Task<List<ProfileResponse>> Get(ISender sender)
         {
-            return sender.Send(new ListUserQuery());
+            return sender.Send(new ListProfileQuery());
         }
 
         [Authorize(Roles = nameof(UserRole.Admin))]
@@ -40,23 +39,23 @@ namespace Web.API.Endpoints
         {
             try
             {
-                return Results.Ok(await sender.Send(new GetUserQuery(new UserId(id))));
+                return Results.Ok(await sender.Send(new GetProfileQuery(new ProfileId(id))));
             }
-            catch (UserNotFoundException e)
+            catch (ProfileNotFoundException e)
             {
                 return Results.NotFound(e.Message);
             }
         }
 
         [HttpGet("/me")]
-        public async Task<IResult> GetByCurrentUserId(ISender sender)
+        public async Task<IResult> GetByCurrentProfileId(ISender sender)
         {
             try
             {
                 string UserId = User.FindFirstValue("id")!;
-                return Results.Ok(await sender.Send(new GetUserQuery(new UserId(new Guid(UserId)))));
+                return Results.Ok(await sender.Send(new GetProfileByUserIdQuery(new UserId(new Guid(UserId)))));
             }
-            catch (UserNotFoundException e)
+            catch (ProfileNotFoundException e)
             {
                 return Results.NotFound(e.Message);
             }
@@ -64,12 +63,13 @@ namespace Web.API.Endpoints
 
         [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPut("{id:guid}")]
-        public async Task<IResult> UpdateById(Guid id, [FromBody] UpdateUserRequest request, ISender sender)
+        public async Task<IResult> UpdateById(Guid id, [FromBody] UpdateProfileRequest request, ISender sender)
         {
-            var command = new UpdateUserCommand(
-                new UserId(id),
-                request.Name,
-                request.Password);
+            var command = new UpdateProfileCommand(
+                new ProfileId(id),
+                request.FirstName,
+                request.LastName,
+                request.Age);
 
             await sender.Send(command);
 
@@ -82,11 +82,11 @@ namespace Web.API.Endpoints
         {
             try
             {
-                await sender.Send(new DeleteUserCommand(new UserId(id)));
+                await sender.Send(new DeleteProfileCommand(new ProfileId(id)));
 
                 return Results.NoContent();
             }
-            catch (UserNotFoundException e)
+            catch (ProfileNotFoundException e)
             {
                 return Results.NotFound(e.Message);
             }

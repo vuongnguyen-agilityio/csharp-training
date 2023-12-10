@@ -3,7 +3,7 @@ using Domain.Carts;
 using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
-using Domain.Users;
+using Domain.Profiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +29,7 @@ namespace Persistence
 
             services.AddScoped<IProductRepository, ProductRepository>();
 
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProfileRepository, ProfileRepository>();
 
             services.AddScoped<ICartRepository, CartRepository>();
 
