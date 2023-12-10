@@ -13,15 +13,16 @@ using Domain.Users;
 
 namespace Web.API.Endpoints
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProfileController : ControllerBase
     {
-        [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPost]
-        public async Task<IResult> Register(CreateProfileCommand command, ISender sender)
+        public async Task<IResult> Create(CreateProfileRequest request, ISender sender)
         {
-            await sender.Send(command);
+            string userId = User.FindFirstValue("id")!;
+            await sender.Send(new CreateProfileCommand(new UserId(new Guid(userId)), request.FirstName, request.LastName, request.Age));
 
             return Results.Ok();
         }

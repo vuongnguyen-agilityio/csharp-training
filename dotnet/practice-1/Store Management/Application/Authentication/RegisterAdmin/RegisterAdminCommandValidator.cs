@@ -16,6 +16,7 @@ namespace Application.Authentication.RegisterAdmin
 
             RuleFor(user => user.Email).MustAsync(async (email, _) =>
             {
+                var user = await userManager.FindByNameAsync(email);
                 return await this.userManager.FindByNameAsync(email) != null;
             }).WithMessage("Admin already existed");
 

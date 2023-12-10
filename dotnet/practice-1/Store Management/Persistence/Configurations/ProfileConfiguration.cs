@@ -14,6 +14,11 @@ namespace Persistence.Configurations
             builder.Property(p => p.Id).HasConversion(
                 profileId => profileId.Value,
                 value => new ProfileId(value));
+
+            builder.Property(p => p.UserId).HasConversion(
+                userId => userId.Value,
+                value => new UserId(value));
+            builder.HasIndex(p => p.UserId).IsUnique();
         }
     }
 }
