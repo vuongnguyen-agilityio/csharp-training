@@ -16,8 +16,7 @@ namespace Application.Authentication.RegisterAdmin
 
             RuleFor(user => user.Email).MustAsync(async (email, _) =>
             {
-                var user = await userManager.FindByNameAsync(email);
-                return await this.userManager.FindByNameAsync(email) != null;
+                return await this.userManager.FindByNameAsync(email) == null;
             }).WithMessage("Admin already existed");
 
             RuleFor(user => user.Password).MinimumLength(8).WithMessage("Password must be larger than 8 characters");
