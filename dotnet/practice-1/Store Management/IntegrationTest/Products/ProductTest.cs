@@ -4,13 +4,20 @@ using Application.Products.Delete;
 using Application.Products.Get;
 using Application.Products.Update;
 using Domain.Products;
+using Microsoft.EntityFrameworkCore;
 
 namespace IntegrationTest.Products
 {
-    public class ProductTest : BaseIntegrationTest
+    public class ProductTest : BaseIntegrationTest, IDisposable
     {
         public ProductTest(IntegrationTestWebFactory webFactory) : base(webFactory)
         {
+        }
+
+        public void Dispose()
+        {
+            //Do cleanup actions here
+            this.DbContext.Products.ExecuteDeleteAsync();
         }
 
         [Fact]
@@ -51,6 +58,9 @@ namespace IntegrationTest.Products
         [Fact]
         public async Task Get_Should_Return_ProductById()
         {
+            var command = new CreateProductCommand("P1", "12121212", "USD", 1);
+            await Sender.Send(command);
+
             var product = DbContext.Products.First();
 
             var productById = await Sender.Send(new GetProductQuery(product.Id));
@@ -62,8 +72,8 @@ namespace IntegrationTest.Products
         [Fact]
         public async Task Update_Should_Update_ProductToDatabase()
         {
-            //var command = new CreateProductCommand("P1", "12121212", "USD", 1);
-            //await Sender.Send(command);
+            var command = new CreateProductCommand("P1", "12121212", "USD", 1);
+            await Sender.Send(command);
 
             var product = DbContext.Products.First();
             var updateCommand = new UpdateProductCommand(
