@@ -1,16 +1,17 @@
 ﻿using Application.Data;
 using Application.Products.Create;
+using Application.Products.Update;
 using Domain.Products;
 using Moq;
 
-namespace UnitTest.Products.Create
+namespace UnitTest.Products.Update
 {
-    public class CreateProductCommandHandlerTest
+    public class UpdateProductCommandHandlerTest
     {
         private readonly Mock<IProductRepository> _mockRepository;
         private readonly Mock<IUnitOfWork> _unitOfWork;
 
-        public CreateProductCommandHandlerTest ()
+        public UpdateProductCommandHandlerTest ()
         {
             _mockRepository = new();
             _unitOfWork = new();
@@ -20,9 +21,16 @@ namespace UnitTest.Products.Create
         public async Task Handle_Should_RunOnce_WhenProductValid()
         {
             // Arrange
-            var command = new CreateProductCommand("P1", "12121212", "USD", 1);
+            ProductId productId = new ProductId(new Guid());
+            var existedProduct = new Product(productId, "P1", new Money("USD", 1), Sku.Create("12121212")!);
 
-            var handler = new CreateProductCommandHandler(_mockRepository.Object, _unitOfWork.Object);
+            var command = new UpdateProductCommand(productId, "P1", "12121212", "USD", 1);
+
+            var handler = new UpdateProductCommandHandler(_mockRepository.Object, _unitOfWork.Object);
+
+            _mockRepository.Setup(
+                x => x.GetByIdAsync(productId))
+                .ReturnsAsync(existedProduct);
 
             // Act
             await handler.Handle(command, default);
