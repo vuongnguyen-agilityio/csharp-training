@@ -27,24 +27,24 @@
 
 ### Tech-stack
 
-- [ ] Architecture: Clean Architecture
-- [ ] Database: SQL Server (Windows)
-- [ ] EF Core for data access
+- [x] Architecture: Clean Architecture
+- [x] Database: PostgreSql
+- [x] EF Core for data access
   - [ ] Generic Repository Pattern
-  - [ ] Unit of work patterns
-- [ ] Dependency Injection
+  - [x] Unit of work patterns
+- [x] Dependency Injection
 - [ ] API versioning
 - [ ] Using a mapper package For mapping (Mapster or AutoMapper)
-- [ ] Swashbuckle For API documentation
-- [ ] FluentValidation  For Model validations
-- [ ] Using Serilog for logging capabilities
-- [ ] Custom middleware to show the request and response with the timeline
-- [ ] XUnit & MOQ for Unit Testing
-- [ ] Integration Test
-- [ ] Source code analysis
-  - [ ] Using .Net Analyzer
-- [ ] Test app by Postman / Visual studio .http files
-- [ ] Deploy Using Docker
+- [x] Swashbuckle For API documentation
+- [x] FluentValidation  For Model validations
+- [x] Using Serilog for logging capabilities
+- [x] Custom middleware to show the request and response with the timeline
+- [x] XUnit & MOQ for Unit Testing
+- [x] Integration Test With Docker
+- [x] Source code analysis
+  - [x] Using .Net Analyzer
+- [x] Test app by Postman / Visual studio .http files
+- [x] Deploy Using Docker
 
 ### Break Down Tasks and Estimation (Total: 9 Days)
 

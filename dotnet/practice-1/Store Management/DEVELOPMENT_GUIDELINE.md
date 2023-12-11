@@ -1,5 +1,13 @@
 # Development Guidelines
 
+### How To Run
+1. Open solution: Store Management.sln
+2. Run Docker Compose
+
+### How To Run TestCase
+1. Open Test Explore
+2. Run All TestCase
+
 ### Common Issues & Solutions
 
 1. Migration Database in Clean Architecture

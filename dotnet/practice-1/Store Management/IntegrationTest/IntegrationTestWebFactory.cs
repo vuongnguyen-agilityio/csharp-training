@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence;
-using Renci.SshNet;
 using Testcontainers.PostgreSql;
 
 namespace IntegrationTest
@@ -46,6 +45,5 @@ namespace IntegrationTest
         {
             return _dbContainer.StopAsync();
         }
-
     }
 }
