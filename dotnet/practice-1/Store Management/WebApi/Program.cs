@@ -86,6 +86,9 @@ builder.Services
 
 builder.Services.AddControllers();
 
+builder.Services.AddExceptionHandler<ExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 // Add API versioning
 // E.g: URL based Versioning
 // [ApiController]  
@@ -98,7 +101,7 @@ builder.Services.AddApiVersioning(x =>
     x.ReportApiVersions = true;
 });
 
-builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+//builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
 var app = builder.Build();
 
@@ -112,8 +115,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseSerilogRequestLogging();
-app.UseMiddleware<ExceptionHandlingMiddleware>();
+//app.UseSerilogRequestLogging();
+app.UseExceptionHandler();
 
 app.MapControllers();
 
