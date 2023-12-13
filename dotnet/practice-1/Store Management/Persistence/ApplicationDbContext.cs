@@ -6,7 +6,6 @@ using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
 using Domain.Profiles;
-using MediatR;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,12 +13,9 @@ namespace Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<BaseAuthentication>, IApplicationDbContext, IUnitOfWork
     {
-        private readonly IPublisher _publisher;
-
-        public ApplicationDbContext(DbContextOptions options, IPublisher publisher)
+        public ApplicationDbContext(DbContextOptions options)
             : base(options)
         {
-            _publisher = publisher;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
