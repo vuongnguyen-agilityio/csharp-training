@@ -1,5 +1,5 @@
-﻿using Domain.Products;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Domain.Products;
 
 namespace Application.Products.Update;
 
@@ -8,7 +8,7 @@ public record UpdateProductCommand(
     string Name,
     string Sku,
     string Currency,
-    decimal Amount) : IRequest;
+    decimal Amount) : ICommand;
 
 public record UpdateProductRequest(
     string Name,

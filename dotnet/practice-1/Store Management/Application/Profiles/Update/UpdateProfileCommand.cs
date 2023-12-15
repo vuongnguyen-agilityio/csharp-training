@@ -1,5 +1,5 @@
-﻿using Domain.Profiles;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Domain.Profiles;
 
 namespace Application.Profiles.Update;
 
@@ -8,7 +8,7 @@ public record UpdateProfileCommand(
     string FirstName,
     string LastName,
     int Age
-    ) : IRequest;
+    ) : ICommand;
 
 public record UpdateProfileRequest(
     string FirstName,

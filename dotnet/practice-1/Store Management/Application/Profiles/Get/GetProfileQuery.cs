@@ -1,12 +1,12 @@
-﻿using Domain.Profiles;
+﻿using Application.Abstractions.Messaging;
+using Domain.Profiles;
 using Domain.Users;
-using MediatR;
 
 namespace Application.Profiles.Get;
 
-public record GetProfileQuery(ProfileId ProfileId) : IRequest<ProfileResponse>;
+public record GetProfileQuery(ProfileId ProfileId) : ICommand<ProfileResponse>;
 
-public record GetProfileByUserIdQuery(UserId UserId) : IRequest<ProfileResponse>;
+public record GetProfileByUserIdQuery(UserId UserId) : ICommand<ProfileResponse>;
 
 public record ProfileResponse(
     Guid Id,

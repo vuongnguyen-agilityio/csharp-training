@@ -34,14 +34,7 @@ namespace Web.API.Endpoints
         [HttpGet("{id:guid}")]
         public async Task<IResult> GetById(Guid id, ISender sender)
         {
-            try
-            {
-                return Results.Ok(await sender.Send(new GetProductQuery(new ProductId(id))));
-            }
-            catch (ProductNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.Ok(await sender.Send(new GetProductQuery(new ProductId(id))));
         }
 
         [Authorize(Roles = nameof(UserRole.Admin))]
@@ -64,16 +57,9 @@ namespace Web.API.Endpoints
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
-            try
-            {
-                await sender.Send(new DeleteProductCommand(new ProductId(id)));
+            await sender.Send(new DeleteProductCommand(new ProductId(id)));
 
-                return Results.NoContent();
-            }
-            catch (ProductNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.NoContent();
         }
     }
 }

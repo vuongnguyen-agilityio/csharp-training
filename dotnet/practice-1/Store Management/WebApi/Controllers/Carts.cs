@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 
-using Domain.Carts;
 using Domain.Products;
 using Domain.Users;
 using Application.Carts.Create;
@@ -52,16 +51,9 @@ namespace Web.API.Endpoints
         public async Task<IResult> DeleteById([FromQuery] DeleteCartRequest request, ISender sender)
         {
             string UserId = User.FindFirstValue("id")!;
-            try
-            {
-                await sender.Send(new DeleteCartCommand(new UserId(new Guid(UserId)), new ProductId(request.ProductId.Value)));
+            await sender.Send(new DeleteCartCommand(new UserId(new Guid(UserId)), new ProductId(request.ProductId.Value)));
 
-                return Results.NoContent();
-            }
-            catch (CartNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.NoContent();
         }
     }
 }

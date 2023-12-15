@@ -1,6 +1,6 @@
-﻿using Application.Profiles.Get;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Application.Profiles.Get;
 
 namespace Application.Profiles.List;
 
-public record ListProfileQuery() : IRequest<List<ProfileResponse>>;
+public record ListProfileQuery() : ICommand<List<ProfileResponse>>;
