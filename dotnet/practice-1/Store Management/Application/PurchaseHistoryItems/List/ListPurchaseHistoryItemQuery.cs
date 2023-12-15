@@ -1,7 +1,7 @@
-﻿using Application.PurchaseHistoryItems.Get;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Application.PurchaseHistoryItems.Get;
 
 namespace Application.PurchaseHistoryItems.List
 {
-    public record ListPurchaseHistoryItemQuery() : IRequest<List<PurchaseHistoryItemResponse>>;
+    public record ListPurchaseHistoryItemQuery() : ICommand<List<PurchaseHistoryItemResponse>>;
 }

@@ -1,8 +1,8 @@
-﻿using Domain.PurchaseHistories;
+﻿using Application.Abstractions.Messaging;
+using Domain.PurchaseHistories;
 using Domain.Users;
-using MediatR;
 
 namespace Application.PurchaseHistories.Delete
 {
-    public record DeletePurchaseHistoryCommand(UserId UserId, PurchaseHistoryId PurchaseHistoryId) : IRequest;
+    public record DeletePurchaseHistoryCommand(UserId UserId, PurchaseHistoryId PurchaseHistoryId) : ICommand;
 }

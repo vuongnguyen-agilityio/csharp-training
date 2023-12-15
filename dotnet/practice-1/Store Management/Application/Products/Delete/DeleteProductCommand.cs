@@ -1,6 +1,6 @@
-﻿using Domain.Products;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Domain.Products;
 
 namespace Application.Products.Delete;
 
-public record DeleteProductCommand(ProductId ProductId) : IRequest;
+public record DeleteProductCommand(ProductId ProductId) : ICommand;

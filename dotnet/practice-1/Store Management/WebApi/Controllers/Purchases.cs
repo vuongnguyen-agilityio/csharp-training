@@ -38,34 +38,20 @@ namespace Web.API.Endpoints
         [HttpGet("{id:guid}")]
         public async Task<IResult> GetById(Guid id, ISender sender)
         {
-            try
-            {
-                string UserId = User.FindFirstValue("id")!;
+            var UserId = User.FindFirstValue("id");
 
-                return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new UserId(new Guid(UserId)), new PurchaseHistoryId(id))));
-            }
-            catch (PurchaseHistoryNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new UserId(new Guid(UserId)), new PurchaseHistoryId(id))));
         }
 
         [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
-            try
-            {
-                string UserId = User.FindFirstValue("id")!;
+            string UserId = User.FindFirstValue("id")!;
 
-                await sender.Send(new DeletePurchaseHistoryCommand(new UserId(new Guid(UserId)),new PurchaseHistoryId(id)));
+            await sender.Send(new DeletePurchaseHistoryCommand(new UserId(new Guid(UserId)),new PurchaseHistoryId(id)));
 
-                return Results.NoContent();
-            }
-            catch (PurchaseHistoryNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.NoContent();
         }
     }
 }

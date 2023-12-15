@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 
-using Domain.Carts;
 using Domain.Products;
 using Domain.Users;
 using Application.Carts.Create;
@@ -21,8 +20,8 @@ namespace Web.API.Endpoints
         [HttpPost]
         public async Task<IResult> Create(CreateCartRequest command, ISender sender)
         {
-            string UserId = User.FindFirstValue("id")!;
-            await sender.Send(new CreateCartCommand(new UserId(new Guid(UserId)), new ProductId(command.ProductId.Value), command.Quantity));
+            string userId = User.FindFirstValue("id")!;
+            await sender.Send(new CreateCartCommand(new UserId(new Guid(userId)), new ProductId(command.ProductId.Value), command.Quantity));
 
             return Results.Ok();
         }
@@ -30,16 +29,16 @@ namespace Web.API.Endpoints
         [HttpGet]
         public async Task<IResult> Get(ISender sender)
         {
-            string UserId = User.FindFirstValue("id")!;
-            return Results.Ok(await sender.Send(new ListCartQuery(new UserId(new Guid(UserId)))));
+            string userId = User.FindFirstValue("id")!;
+            return Results.Ok(await sender.Send(new ListCartQuery(new UserId(new Guid(userId)))));
         }
 
         [HttpPut]
         public async Task<IResult> UpdateById([FromBody] UpdateCartRequest body, ISender sender)
         {
-            string UserId = User.FindFirstValue("id")!;
+            string userId = User.FindFirstValue("id")!;
             var command = new UpdateCartCommand(
-                new UserId(new Guid(UserId)),
+                new UserId(new Guid(userId)),
                 new ProductId(body.ProductId.Value),
                 body.Quantity);
 
@@ -51,17 +50,10 @@ namespace Web.API.Endpoints
         [HttpDelete]
         public async Task<IResult> DeleteById([FromQuery] DeleteCartRequest request, ISender sender)
         {
-            string UserId = User.FindFirstValue("id")!;
-            try
-            {
-                await sender.Send(new DeleteCartCommand(new UserId(new Guid(UserId)), new ProductId(request.ProductId.Value)));
+            string userId = User.FindFirstValue("id")!;
+            await sender.Send(new DeleteCartCommand(new UserId(new Guid(userId)), new ProductId(request.ProductId.Value)));
 
-                return Results.NoContent();
-            }
-            catch (CartNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.NoContent();
         }
     }
 }

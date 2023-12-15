@@ -1,9 +1,9 @@
-﻿using Domain.Products;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Domain.Products;
 
 namespace Application.Products.Get;
 
-public record GetProductQuery(ProductId ProductId) : IRequest<ProductResponse>;
+public record GetProductQuery(ProductId ProductId) : ICommand<ProductResponse>;
 
 public record ProductResponse(
     Guid Id,

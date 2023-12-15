@@ -1,7 +1,7 @@
-﻿using Domain.Products;
+﻿using Application.Abstractions.Messaging;
+using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
-using MediatR;
 
 namespace Application.PurchaseHistoryItems.Update
 {
@@ -11,7 +11,7 @@ namespace Application.PurchaseHistoryItems.Update
         ProductId ProductId,
         string ProductCurrency,
         decimal ProductAmount,
-        decimal Quantity) : IRequest;
+        decimal Quantity) : ICommand;
 
     public record UpdatePurchaseHistoryItemRequest(
         PurchaseHistoryId PurchaseHistoryId,

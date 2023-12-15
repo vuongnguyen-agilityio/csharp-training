@@ -1,7 +1,7 @@
-﻿using Domain.PurchaseHistoryItems;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Domain.PurchaseHistoryItems;
 
 namespace Application.PurchaseHistoryItems.Delete
 {
-    public record DeletePurchaseHistoryItemCommand(PurchaseHistoryItemId PurchaseHistoryItemId) : IRequest;
+    public record DeletePurchaseHistoryItemCommand(PurchaseHistoryItemId PurchaseHistoryItemId) : ICommand;
 }

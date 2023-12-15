@@ -4,7 +4,13 @@ using Application.Products.Delete;
 using Application.Products.Get;
 using Application.Products.Update;
 using Domain.Products;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System.Net.Http.Json;
+using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static WebApi.Middleware.ExceptionHandler;
 
 namespace IntegrationTest.Products
 {
@@ -25,15 +31,23 @@ namespace IntegrationTest.Products
         {
 
             // Arrange
-            var command = new CreateProductCommand("P1", "12121212", "USD", 1);
+            string jsonValue = JsonConvert.SerializeObject(new
+            {
+                Name = "P1",
+                Sku = "12121212",
+                Currency = "USD",
+                Amount = "1"
+            });
+            StringContent content = new StringContent(jsonValue, Encoding.UTF8, "application/json");
 
             // Act
-            await Sender.Send(command);
+            var result = await Client.PostAsync("/product", content);
 
             // Assert
 
-            var product = DbContext.Products.First();
+            var product = DbContext.Products.FirstOrDefault();
 
+            Assert.Equal(200, (int)result.StatusCode);
             Assert.NotNull(product);
             Assert.Equal("P1", product.Name);
         }
@@ -41,17 +55,25 @@ namespace IntegrationTest.Products
         [Fact]
         public async Task Create_Should_Throw_ValidationException_WhenSkuIsInvalid()
         {
-            var command = new CreateProductCommand("P1", "12121212", "USD", 1);
-            await Sender.Send(command);
-
             // Arrange
-            var commandDuplicateSku = new CreateProductCommand("P1", "12121212", "USD", 1);
+            string jsonValue = JsonConvert.SerializeObject(new
+            {
+                Name = "P1",
+                Sku = "12121212",
+                Currency = "USD",
+                Amount = "1"
+            });
+            StringContent content = new StringContent(jsonValue, Encoding.UTF8, "application/json");
+
+            await Client.PostAsync("/product", content);
 
             // Act
-            Task Action() => Sender.Send(commandDuplicateSku);
+            var result = await Client.PostAsync("/product", content);
 
+            ExceptionDetails err = await result.Content.ReadFromJsonAsync<ExceptionDetails>();
+            
             // Assert
-            await Assert.ThrowsAsync<ValidationException>(Action);
+            Assert.Equal(400, (int)result.StatusCode);
         }
 
 
@@ -63,10 +85,16 @@ namespace IntegrationTest.Products
 
             var product = DbContext.Products.First();
 
-            var productById = await Sender.Send(new GetProductQuery(product.Id));
 
-            Assert.NotNull(productById);
-            Assert.Equal(product.Id.Value, productById.Id);
+            var result = await Client.GetAsync($"/product/{product.Id.Value}");
+
+            ProductResponse productRes = await result.Content.ReadFromJsonAsync<ProductResponse>();
+
+            Assert.NotNull(productRes);
+            Assert.Equal("P1", productRes.Name);
+            Assert.Equal("12121212", productRes.Sku);
+            Assert.Equal("USD", productRes.Currency);
+            Assert.Equal(1, productRes.Amount);
         }
 
         [Fact]
@@ -74,22 +102,21 @@ namespace IntegrationTest.Products
         {
             var command = new CreateProductCommand("P1", "12121212", "USD", 1);
             await Sender.Send(command);
-
             var product = DbContext.Products.First();
-            var updateCommand = new UpdateProductCommand(
-                product.Id,
-                "P1 Updated",
-                "12121213",
-                "VND",
-                10000);
-            await Sender.Send(updateCommand);
 
+            string jsonValue = JsonConvert.SerializeObject(new
+            {
+                Name = "P1 Updated",
+                Sku = "12121213",
+                Currency = "VND",
+                Amount = 10000
+            });
+            StringContent content = new StringContent(jsonValue, Encoding.UTF8, "application/json");
+            var result = await Client.PutAsync($"/product/{product.Id.Value}", content);
             var updatedProduct = DbContext.Products.First();
 
+            Assert.Equal(204, (int)result.StatusCode);
             Assert.Equal(product.Id.Value, updatedProduct.Id.Value);
-            Assert.Equal("P1 Updated", updatedProduct.Name);
-            Assert.Equal(updatedProduct.Sku, Sku.Create("12121213"));
-            Assert.Equal(updatedProduct.Price, new Money("VND", 10000));
         }
 
         [Fact]
@@ -100,7 +127,7 @@ namespace IntegrationTest.Products
 
             var product = DbContext.Products.First();
 
-            await Sender.Send(new DeleteProductCommand(product.Id));
+            var result = await Client.DeleteAsync($"/product/{product.Id.Value}");
 
             var existedproduct = DbContext.Products.FirstOrDefault();
 

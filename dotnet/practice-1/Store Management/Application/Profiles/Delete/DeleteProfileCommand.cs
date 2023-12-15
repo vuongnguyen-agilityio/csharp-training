@@ -1,6 +1,6 @@
-﻿using Domain.Profiles;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
+using Domain.Profiles;
 
 namespace Application.Profiles.Delete;
 
-public record DeleteProfileCommand(ProfileId ProfileId) : IRequest;
+public record DeleteProfileCommand(ProfileId ProfileId) : ICommand;

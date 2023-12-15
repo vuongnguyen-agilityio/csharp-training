@@ -1,11 +1,11 @@
-﻿using Domain.PurchaseHistories;
+﻿using Application.Abstractions.Messaging;
+using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
 using Domain.Users;
-using MediatR;
 
 namespace Application.PurchaseHistories.Get
 {
-    public record GetPurchaseHistoryQuery(UserId UserId, PurchaseHistoryId PurchaseHistoryId) : IRequest<PurchaseHistoryResponse>;
+    public record GetPurchaseHistoryQuery(UserId UserId, PurchaseHistoryId PurchaseHistoryId) : ICommand<PurchaseHistoryResponse>;
 
     public record PurchaseHistoryResponse(
         Guid Id,
