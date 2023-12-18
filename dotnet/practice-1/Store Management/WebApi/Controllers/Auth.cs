@@ -25,62 +25,29 @@ namespace WebApi.Controllers
         [Route("login")]
         public async Task<IResult> Login([FromBody] LoginCommand command, ISender sender)
         {   
-            try
-            {
-                JwtSecurityToken token = await sender.Send(command);
+            JwtSecurityToken token = await sender.Send(command);
 
-                return Results.Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
-                });
-            }
-            catch
+            return Results.Ok(new
             {
-                return Results.Unauthorized();
-            }
+                token = new JwtSecurityTokenHandler().WriteToken(token),
+                expiration = token.ValidTo
+            });
         }
 
         [HttpPost]
         [Route("register")]
         public async Task<IResult> Register([FromBody] RegisterCommand command, ISender sender)
         {
-            try
-            {
-                var validatorResult = await _validator.ValidateAsync(command);
-                if (!validatorResult.IsValid)
-                {
-                    return Results.ValidationProblem(validatorResult.ToDictionary());
-                }
-
-                await sender.Send(command);
-                return Results.Ok();
-            }
-            catch(Exception ex)
-            {
-                return Results.Problem(new ProblemDetails { Detail = ex.Message ?? "Unknown", Status = StatusCodes.Status403Forbidden });
-            }
+            await sender.Send(command);
+            return Results.Ok();
         }
 
         [HttpPost]
         [Route("register-admin")]
         public async Task<IResult> RegisterAdmin([FromBody] RegisterAdminCommand command, ISender sender)
         {
-            try
-            {
-                var validatorResult = await _registerAdminCommandValidator.ValidateAsync(command);
-                if (!validatorResult.IsValid)
-                {
-                    return Results.ValidationProblem(validatorResult.ToDictionary());
-                }
-
-                await sender.Send(command);
-                return Results.Ok();
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(new ProblemDetails { Detail = ex.Message ?? "Unknown", Status = StatusCodes.Status403Forbidden });
-            }
+            await sender.Send(command);
+            return Results.Ok();
         }
     }
 }

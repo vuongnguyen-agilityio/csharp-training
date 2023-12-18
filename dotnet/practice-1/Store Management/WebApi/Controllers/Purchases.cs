@@ -20,9 +20,9 @@ namespace Web.API.Endpoints
         [HttpPost]
         public async Task<IResult> Create(CreatePurchaseHistoryRequest command, ISender sender)
         {
-            string UserId = User.FindFirstValue("id")!;
+            string userId = User.FindFirstValue("id")!;
 
-            await sender.Send(new CreatePurchaseHistoryCommand(new UserId(new Guid(UserId)), command.CreatePurchaseHistoryItemRequest));
+            await sender.Send(new CreatePurchaseHistoryCommand(new UserId(new Guid(userId)), command.CreatePurchaseHistoryItemRequest));
 
             return Results.Ok();
         }
@@ -30,42 +30,28 @@ namespace Web.API.Endpoints
         [HttpGet]
         public async Task<IResult> Get(ISender sender)
         {
-            string UserId = User.FindFirstValue("id")!;
+            string userId = User.FindFirstValue("id")!;
 
-            return Results.Ok(await sender.Send(new ListPurchaseHistoryQuery(new UserId(new Guid(UserId)))));
+            return Results.Ok(await sender.Send(new ListPurchaseHistoryQuery(new UserId(new Guid(userId)))));
         }
 
         [HttpGet("{id:guid}")]
         public async Task<IResult> GetById(Guid id, ISender sender)
         {
-            try
-            {
-                string UserId = User.FindFirstValue("id")!;
+            string userId = User.FindFirstValue("id")!;
 
-                return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new UserId(new Guid(UserId)), new PurchaseHistoryId(id))));
-            }
-            catch (PurchaseHistoryNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.Ok(await sender.Send(new GetPurchaseHistoryQuery(new UserId(new Guid(userId)), new PurchaseHistoryId(id))));
         }
 
         [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
-            try
-            {
-                string UserId = User.FindFirstValue("id")!;
+            string userId = User.FindFirstValue("id")!;
 
-                await sender.Send(new DeletePurchaseHistoryCommand(new UserId(new Guid(UserId)),new PurchaseHistoryId(id)));
+            await sender.Send(new DeletePurchaseHistoryCommand(new UserId(new Guid(userId)),new PurchaseHistoryId(id)));
 
-                return Results.NoContent();
-            }
-            catch (PurchaseHistoryNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.NoContent();
         }
     }
 }

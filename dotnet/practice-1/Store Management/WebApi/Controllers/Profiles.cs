@@ -38,28 +38,14 @@ namespace Web.API.Endpoints
         [HttpGet("{id:guid}")]
         public async Task<IResult> GetById(Guid id, ISender sender)
         {
-            try
-            {
-                return Results.Ok(await sender.Send(new GetProfileQuery(new ProfileId(id))));
-            }
-            catch (ProfileNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.Ok(await sender.Send(new GetProfileQuery(new ProfileId(id))));
         }
 
         [HttpGet("/me")]
         public async Task<IResult> GetByCurrentProfileId(ISender sender)
         {
-            try
-            {
-                string UserId = User.FindFirstValue("id")!;
-                return Results.Ok(await sender.Send(new GetProfileByUserIdQuery(new UserId(new Guid(UserId)))));
-            }
-            catch (ProfileNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            string userId = User.FindFirstValue("id")!;
+            return Results.Ok(await sender.Send(new GetProfileByUserIdQuery(new UserId(new Guid(userId)))));
         }
 
         [Authorize(Roles = nameof(UserRole.Admin))]
@@ -81,16 +67,9 @@ namespace Web.API.Endpoints
         [HttpDelete("{id:guid}")]
         public async Task<IResult> DeleteById(Guid id, ISender sender)
         {
-            try
-            {
-                await sender.Send(new DeleteProfileCommand(new ProfileId(id)));
+            await sender.Send(new DeleteProfileCommand(new ProfileId(id)));
 
-                return Results.NoContent();
-            }
-            catch (ProfileNotFoundException e)
-            {
-                return Results.NotFound(e.Message);
-            }
+            return Results.NoContent();
         }
     }
 }

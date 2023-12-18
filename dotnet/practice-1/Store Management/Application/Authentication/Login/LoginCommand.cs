@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Application.Abstractions.Messaging;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace Application.Authentication.Login
@@ -6,6 +6,6 @@ namespace Application.Authentication.Login
     public record LoginCommand(
         string Email,
         string Password
-        ) : IRequest<JwtSecurityToken>;
+        ) : ICommand<JwtSecurityToken>;
 
 }
