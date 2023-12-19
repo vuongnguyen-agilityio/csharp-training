@@ -1,8 +1,11 @@
 ﻿using Application.Exceptions;
+using Domain.Carts;
+using Domain.Products;
+using Domain.Profiles;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Middleware
+namespace WebApi.Exceptions
 {
     public class ExceptionHandler : IExceptionHandler
     {
@@ -65,6 +68,33 @@ namespace WebApi.Middleware
                     "Validation error",
                     "One or more validation errors has occurred",
                     validationException.Errors),
+                UnauthorizedAccessException => new ExceptionDetails(
+                    StatusCodes.Status401Unauthorized,
+                    "Unauthorized",
+                    "Unauthorized Error",
+                    "Unauthorized",
+                    null),
+                ProductNotFoundException productNotFoundException => new ExceptionDetails(
+                    StatusCodes.Status404NotFound,
+                    "NotFound",
+                    "Product not found",
+                    productNotFoundException.Message,
+                    null
+                    ),
+                CartNotFoundException cartNotFoundException => new ExceptionDetails(
+                    StatusCodes.Status404NotFound,
+                    "NotFound",
+                    "Cart not found",
+                    cartNotFoundException.Message,
+                    null
+                    ),
+                ProfileNotFoundException profileNotFoundException => new ExceptionDetails(
+                    StatusCodes.Status404NotFound,
+                    "NotFound",
+                    "Profile not found",
+                    profileNotFoundException.Message,
+                    null
+                    ),
                 _ => new ExceptionDetails(
                     StatusCodes.Status500InternalServerError,
                     "ServerError",

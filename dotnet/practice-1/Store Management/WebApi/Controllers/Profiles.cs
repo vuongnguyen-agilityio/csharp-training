@@ -44,8 +44,8 @@ namespace Web.API.Endpoints
         [HttpGet("/me")]
         public async Task<IResult> GetByCurrentProfileId(ISender sender)
         {
-            string UserId = User.FindFirstValue("id")!;
-            return Results.Ok(await sender.Send(new GetProfileByUserIdQuery(new UserId(new Guid(UserId)))));
+            string userId = User.FindFirstValue("id")!;
+            return Results.Ok(await sender.Send(new GetProfileByUserIdQuery(new UserId(new Guid(userId)))));
         }
 
         [Authorize(Roles = nameof(UserRole.Admin))]

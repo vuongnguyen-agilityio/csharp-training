@@ -50,7 +50,7 @@ namespace Application.Authentication.Login
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );
             }
-            throw new Exception("Unauthorized");
+            throw new UnauthorizedAccessException("Unauthorized");
         }
     }
 }
