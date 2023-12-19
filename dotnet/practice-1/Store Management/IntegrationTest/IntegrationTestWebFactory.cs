@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Domain.Users;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,9 @@ namespace IntegrationTest
             .WithPassword("postgres")
             .Build();
 
+        public string DefaultUserId { get; set; } = new Guid().ToString();
+        public string DefaultUserRole { get; set; } = nameof(UserRole.Admin);
+
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.ConfigureTestServices(services =>
@@ -32,6 +37,17 @@ namespace IntegrationTest
                 {
                     options.UseNpgsql(_dbContainer.GetConnectionString());
                 });
+
+                services.Configure<TestAuthHandlerOptions>(options => {
+                    options.DefaultUserId = DefaultUserId;
+                    options.DefaultUserRole = DefaultUserRole;
+                });
+
+                services.AddAuthentication(o =>
+                {
+                    o.DefaultAuthenticateScheme = "Test";
+                    o.DefaultChallengeScheme = "Test";
+                }).AddScheme<TestAuthHandlerOptions, TestAuthHandler>(TestAuthHandler.AuthenticationScheme, options => { });
             });
             base.ConfigureWebHost(builder);
         }

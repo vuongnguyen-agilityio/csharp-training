@@ -1,7 +1,7 @@
-﻿using Domain.Products;
+﻿using Application.Abstractions.Messaging;
+using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.Users;
-using MediatR;
 
 namespace Application.PurchaseHistoryItems.Create
 {
@@ -9,7 +9,7 @@ namespace Application.PurchaseHistoryItems.Create
         ProductId ProductId,
         decimal ProductAmount,
         decimal Quantity,
-        string ProductCurrency) : IRequest;
+        string ProductCurrency) : ICommand;
 
     public record CreatePurchaseHistoryItemCommand(
         PurchaseHistoryId PurchaseHistoryId,
@@ -17,5 +17,5 @@ namespace Application.PurchaseHistoryItems.Create
         ProductId ProductId,
         decimal ProductAmount,
         decimal Quantity,
-        string ProductCurrency) : IRequest;
+        string ProductCurrency) : ICommand;
 }

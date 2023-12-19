@@ -18,7 +18,7 @@ namespace Web.API.Endpoints
     {
         [Authorize(Roles = nameof(UserRole.Admin))]
         [HttpPost]
-        public async Task<IResult> CreateProduct(CreateProductCommand command, ISender sender)
+        public async Task<IResult> CreateProduct([FromBody] CreateProductCommand command, ISender sender)
         {
             await sender.Send(command);
 

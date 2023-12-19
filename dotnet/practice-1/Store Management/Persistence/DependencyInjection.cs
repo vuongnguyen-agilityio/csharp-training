@@ -24,8 +24,7 @@ namespace Persistence
             services.AddScoped<IApplicationDbContext>(sp =>
                 sp.GetRequiredService<ApplicationDbContext>());
 
-            services.AddScoped<IUnitOfWork>(sp =>
-                sp.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<IUnitOfWork>(sp =>sp.GetRequiredService<ApplicationDbContext>());
 
             services.AddScoped<IProductRepository, ProductRepository>();
 

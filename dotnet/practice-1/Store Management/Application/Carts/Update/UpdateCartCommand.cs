@@ -1,13 +1,13 @@
-﻿using Domain.Products;
+﻿using Application.Abstractions.Messaging;
+using Domain.Products;
 using Domain.Users;
-using MediatR;
 
 namespace Application.Carts.Update;
 
 public record UpdateCartCommand(
     UserId UserId,
     ProductId ProductId,
-    decimal Quantity) : IRequest;
+    decimal Quantity) : ICommand;
 
 public record UpdateCartRequest(
     ProductId ProductId,

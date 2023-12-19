@@ -50,7 +50,6 @@ namespace Web.API.Endpoints
             string userId = User.FindFirstValue("id")!;
 
             await sender.Send(new DeletePurchaseHistoryCommand(new UserId(new Guid(userId)),new PurchaseHistoryId(id)));
-
             return Results.NoContent();
         }
     }
