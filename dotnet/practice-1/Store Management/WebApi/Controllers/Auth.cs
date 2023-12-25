@@ -38,12 +38,6 @@ namespace WebApi.Controllers
         [Route("register")]
         public async Task<IResult> Register([FromBody] RegisterCommand command, ISender sender)
         {
-            var validatorResult = await _validator.ValidateAsync(command);
-            if (!validatorResult.IsValid)
-            {
-                return Results.ValidationProblem(validatorResult.ToDictionary());
-            }
-
             await sender.Send(command);
             return Results.Ok();
         }
@@ -52,12 +46,6 @@ namespace WebApi.Controllers
         [Route("register-admin")]
         public async Task<IResult> RegisterAdmin([FromBody] RegisterAdminCommand command, ISender sender)
         {
-            var validatorResult = await _registerAdminCommandValidator.ValidateAsync(command);
-            if (!validatorResult.IsValid)
-            {
-                return Results.ValidationProblem(validatorResult.ToDictionary());
-            }
-
             await sender.Send(command);
             return Results.Ok();
         }

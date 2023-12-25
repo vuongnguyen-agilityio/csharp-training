@@ -11,7 +11,7 @@ using Application;
 using Domain.Authentications;
 using Persistence;
 using WebApi.Extensions;
-using WebApi.Middleware;
+using WebApi.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
