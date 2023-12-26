@@ -21,10 +21,17 @@ namespace Persistence
                 options
                     .UseNpgsql(configuration.GetConnectionString("Database")));
 
+            services.AddDbContext<OtherApplicationDbContext>(options =>
+                options
+                    .UseNpgsql(configuration.GetConnectionString("OtherDatabase")));
+
             services.AddScoped<IApplicationDbContext>(sp =>
                 sp.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<IOtherApplicationDbContext>(sp =>
+                sp.GetRequiredService<OtherApplicationDbContext>());
 
             services.AddScoped<IUnitOfWork>(sp =>sp.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<OtherApplicationDbContext>());
 
             services.AddScoped<IProductRepository, ProductRepository>();
 

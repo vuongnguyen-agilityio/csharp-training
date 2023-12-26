@@ -19,3 +19,14 @@ services:
       - ./.containers/db:/var/lib/postgresql/data
     ports:
       - 5432:5432
+  otherstoremanagement.db:
+    image: postgres:latest
+    container_name: otherstoremanagement-db
+    environment:
+      - POSTGRES_DB=storemanagement
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/db:/var/lib/postgresql/data
+    ports:
+      - 5433:5432

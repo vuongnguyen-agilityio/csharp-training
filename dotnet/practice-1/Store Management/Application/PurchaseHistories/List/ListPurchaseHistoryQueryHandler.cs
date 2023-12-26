@@ -18,7 +18,7 @@ namespace Application.PurchaseHistories.List
         {
             var PurchaseHistories = await _context
                 .PurchaseHistories
-                .Where(p => p.UserId == request.UserId)
+                //.Where(p => p.UserId == request.UserId)
                 .Select(p => new PurchaseHistoryResponse(
                     p.Id.Value,
                     p.UserId.Value,

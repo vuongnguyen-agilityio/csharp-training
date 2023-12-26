@@ -1,26 +1,24 @@
 ﻿using Application.Data;
-using Domain.Authentications;
 using Domain.Carts;
 using Domain.Primitives;
 using Domain.Products;
 using Domain.PurchaseHistories;
 using Domain.PurchaseHistoryItems;
 using Domain.Profiles;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class ApplicationDbContext : IdentityDbContext<BaseAuthentication>, IApplicationDbContext, IUnitOfWork
+    public class OtherApplicationDbContext : DbContext, IOtherApplicationDbContext, IUnitOfWork
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public OtherApplicationDbContext(DbContextOptions<OtherApplicationDbContext> options)
             : base(options)
         {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(OtherApplicationDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
 
