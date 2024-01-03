@@ -4,14 +4,15 @@ using Microsoft.AspNetCore.Http.Timeouts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Net;
 using System.Text;
 using System.Threading.RateLimiting;
+using TodoApi.GraphQL;
 using TodoApi.Models;
 using TodoApi.Services;
+using GraphQL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,10 @@ builder.Configuration.GetSection("TodoDatabase"));
 builder.Services.AddSingleton<ITodoTasksService, TodoTasksService>();
 
 builder.Services.AddControllers();
+
+builder.Services.AddGraphQL(b => b
+    .AddAutoSchema<Query>()  // schema
+    .AddSystemTextJson());   // serializer
 
 // For Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
@@ -152,6 +157,21 @@ app.MapControllers();
 
 app.UseRequestTimeouts();
 app.UseRateLimiter();
+
+// url to host GraphQL endpoint https://localhost:7202/graphql
+app.UseGraphQL("/graphql");
+
+// url to host Playground at https://localhost:7202/
+app.UseGraphQLPlayground(
+    "/",                               
+    new GraphQL.Server.Ui.Playground.PlaygroundOptions
+    {
+        GraphQLEndPoint = "/graphql",         // url of GraphQL endpoint
+        SubscriptionsEndPoint = "/graphql",   // url of GraphQL endpoint
+    });
+
+// url to host GraphQL endpoint https://localhost:7202/ui/altair
+app.UseGraphQLAltair();
 
 // API for test timeout and rate limiter
 app.MapGet("/test-timeout", async (HttpContext context) => {
