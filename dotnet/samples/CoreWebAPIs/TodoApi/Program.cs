@@ -25,8 +25,10 @@ builder.Services.AddSingleton<ITodoTasksService, TodoTasksService>();
 builder.Services.AddControllers();
 
 builder.Services.AddGraphQL(b => b
-    .AddAutoSchema<Query>()  // schema
-    .AddSystemTextJson());   // serializer
+    .AddSchema<TodoTaskSchema>()  // schema
+    .AddSystemTextJson()   // serializer
+    .AddGraphTypes(typeof(TodoTaskSchema).Assembly)
+    .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = true)); // Expose error details
 
 // For Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
@@ -70,7 +72,7 @@ builder.Services.AddSwaggerGen(s =>
         Description = "Chat API Swagger Surface",
         Contact = new OpenApiContact
         {
-            Name = "João Victor Ignacio",
+            Name = "Joï¿½o Victor Ignacio",
             Email = "ignaciojvig@gmail.com",
             Url = new Uri("https://www.linkedin.com/in/ignaciojv/")
         },

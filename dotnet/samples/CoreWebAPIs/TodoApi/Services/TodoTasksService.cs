@@ -24,8 +24,8 @@ namespace TodoApi.Services
         public async Task<List<TodoTask>> GetAsync() =>
             await _todoTasksCollection.Find(_ => true).ToListAsync();
 
-        public async Task<TodoTask?> GetAsync(string id) =>
-            await _todoTasksCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        public Task<TodoTask> GetAsync(string id) =>
+            Task.FromResult(_todoTasksCollection.Find(x => x.Id == id).FirstOrDefault());
 
         public async Task CreateAsync(TodoTask newTodoTask) =>
             await _todoTasksCollection.InsertOneAsync(newTodoTask);

@@ -5,16 +5,17 @@ using TodoApi.Models;
 namespace TodoApi.GraphQL
 {
 
-    public class TestQuery : ObjectGraphType
+    public class TodoTaskQuery : ObjectGraphType<object>
     {
         private readonly ITodoTasksService _todoTasksService;
         
-        public TestQuery(ITodoTasksService todoTasksService)
+        public TodoTaskQuery(ITodoTasksService todoTasksService)
         {
+            Name = "Query";
             _todoTasksService = todoTasksService;
 
             Field<TodoTaskType>("todo")
-                .Resolve((context) => _todoTasksService.GetAsync("1"));
+                .Resolve(context => _todoTasksService.GetAsync("6596851ddbbcfb949e4ec4ce"));
         }
     }
 
@@ -22,10 +23,12 @@ namespace TodoApi.GraphQL
     {
         public TodoTaskType()
         {
-            Name = "TodoTaskType"; // or any other name you consider
+            Name = "TodoTask"; // or any other name you consider
 
-            Field(x => x.Id).Description("The Id of the Task.");
+            Field(x => x.Id, nullable: true).Description("The Id of the Task.");
             Field(x => x.Title).Description("The title of the Task.");
+            Field(x => x.Priority);
+            Field(x => x.Status);
         }
     }
 }

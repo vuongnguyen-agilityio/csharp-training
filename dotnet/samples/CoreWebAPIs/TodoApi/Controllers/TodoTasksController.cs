@@ -6,7 +6,7 @@ using TodoApi.Services;
 
 namespace TodoApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class TodoTasksController : ControllerBase
@@ -16,7 +16,7 @@ namespace TodoApi.Controllers
         public TodoTasksController(ITodoTasksService todoTasksService) =>
             _todoTasksService = todoTasksService;
 
-        [Authorize(Roles = UserRoles.Admin)]
+        //[Authorize(Roles = UserRoles.Admin)]
         [HttpGet]
         public async Task<List<TodoTask>> Get() =>
             await _todoTasksService.GetAsync();
