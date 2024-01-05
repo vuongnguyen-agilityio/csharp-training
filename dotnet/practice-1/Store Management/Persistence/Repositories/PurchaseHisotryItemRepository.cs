@@ -6,12 +6,10 @@ namespace Persistence.Repositories
     internal sealed class PurchaseHistoryItemRepository : IPurchaseHistoryItemRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly OtherApplicationDbContext _otherContext;
 
-        public PurchaseHistoryItemRepository(ApplicationDbContext context, OtherApplicationDbContext otherContext)
+        public PurchaseHistoryItemRepository(ApplicationDbContext context)
         {
             _context = context;
-            _otherContext = otherContext;
         }
 
         public Task<PurchaseHistoryItem?> GetByIdAsync(PurchaseHistoryItemId purchaseHistoryItemId)
@@ -28,19 +26,16 @@ namespace Persistence.Repositories
         public void Add(PurchaseHistoryItem item)
         {
             _context.PurchaseHistoryItems.Add(item);
-            _otherContext.PurchaseHistoryItems.Add(item);
         }
 
         public void Update(PurchaseHistoryItem item)
         {
             _context.PurchaseHistoryItems.Update(item);
-            _otherContext.PurchaseHistoryItems.Update(item);
         }
 
         public void Remove(PurchaseHistoryItem item)
         {
             _context.PurchaseHistoryItems.Remove(item);
-            _otherContext.PurchaseHistoryItems.Remove(item);
         }
     }
 }

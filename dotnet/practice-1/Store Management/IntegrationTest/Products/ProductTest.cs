@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using static WebApi.Middleware.ExceptionHandler;
+using static WebApi.Exceptions.ExceptionHandler;
 
 namespace IntegrationTest.Products
 {
