@@ -13,6 +13,9 @@ using Persistence;
 using WebApi.Extensions;
 using WebApi.Exceptions;
 
+using GraphQL;
+using WebApi.GraphQLs.Schemas;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -103,6 +106,12 @@ builder.Services.AddApiVersioning(x =>
 
 //builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
+
+builder.Services.AddGraphQL(b => b
+    .AddSchema<ProductSchema>()  // schema
+    .AddSystemTextJson()   // serializer
+    .AddGraphTypes(typeof(ProductSchema).Assembly)
+    .AddErrorInfoProvider(opt => opt.ExposeExceptionStackTrace = true)); // Expose error details
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -122,6 +131,19 @@ app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseGraphQL("/graphql");
+app.UseGraphQLPlayground(
+    "/",
+    new GraphQL.Server.Ui.Playground.PlaygroundOptions
+    {
+        GraphQLEndPoint = "/graphql",         // url of GraphQL endpoint
+        SubscriptionsEndPoint = "/graphql",   // url of GraphQL endpoint
+    });
+
+// url to host GraphQL endpoint https://localhost:7202/ui/altair
+app.UseGraphQLAltair();
+
 
 app.Run();
 

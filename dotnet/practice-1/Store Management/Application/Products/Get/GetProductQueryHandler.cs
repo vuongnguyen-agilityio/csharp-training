@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Products.Get;
 
-internal sealed class ListProductQueryHandler : IRequestHandler<GetProductQuery, ProductResponse>
+public sealed class GetProductQueryHandler : IRequestHandler<GetProductQuery, ProductResponse>
 {
     private readonly IApplicationDbContext _context;
 
-    public ListProductQueryHandler(IApplicationDbContext context)
+    public GetProductQueryHandler(IApplicationDbContext context)
     {
         _context = context;
     }
