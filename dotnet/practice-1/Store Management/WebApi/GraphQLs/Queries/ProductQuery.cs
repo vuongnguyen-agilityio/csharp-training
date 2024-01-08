@@ -19,7 +19,8 @@ namespace WebApi.GraphQLs.Queries
                 .ResolveAsync(async context =>
                 {
                     var id = new ProductId(new Guid(context.GetArgument<string>("id")));
-                    return await sender.Send(new GetProductQuery(id));
+                    return new ProductResponse(new Guid(context.GetArgument<string>("id")), "P1", "12121212", "VND", 1, new DateTime(), new DateTime());
+                    //return await sender.Send(new GetProductQuery(id));
                 });
         }
 	}
