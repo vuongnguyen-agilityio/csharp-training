@@ -1,6 +1,10 @@
 # Practice Dotnet gRPC
 Timeline: 4 days
 
+### How To Run
+- Run Grpc.Server: `cd Grpc.Server && dotnet run --launch-profile https`
+- Run Grpc.Client: `cd Grpc.Client && dotnet run`
+
 ### Technical
 1. .net 8
 2. gRPC
