@@ -1,5 +1,9 @@
 # Practice Dotnet gRPC
-Timeline: x days
+Timeline: 4 days
+
+### How To Run
+- Run Grpc.Server: `cd Grpc.Server && dotnet run --launch-profile https`
+- Run Grpc.Client: `cd Grpc.Client && dotnet run`
 
 ### Technical
 1. .net 8
@@ -10,13 +14,13 @@ Timeline: x days
 - Implement Authentication
 - Implement Razor Page to send Bi-directional streaming message
 
-### Breakdown Tasks
-- Implement a console application is used as the gRPC client
-- Implement Authentication for gRPC client
-- Implement a gRPC server to validate the access token
-- Add Razor Pages to gRPC service
+### Breakdown Tasks (4 days)
+- Implement a console application is used as the gRPC client - 0.25 days
+- Implement Authentication for gRPC client - 0.25 days
+- Implement a gRPC server to validate the access token - 0.5 days
+- Add Razor Pages to gRPC service - 0.25 days
 - Setup Bi-directional Streaming gRPC server
-  - Add the client into the list of subscribers if client send a message
-  - Broadcast message from sender (client) to all other clients
-  - Remove client from list if the gRPC client closed
-  - Update Razor Page to send a broadcast message to all clients
+  - Add the client into the list of subscribers if client send a message - 0.75 days
+  - Broadcast message from sender (client) to all other clients - 0.75 days
+  - Remove client from list if the gRPC client closed - 0.5 days
+  - Update Razor Page to send a broadcast message to all clients - 0.5 days
