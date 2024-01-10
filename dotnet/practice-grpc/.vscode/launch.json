@@ -1,6 +1,18 @@
 {
   "version": "0.2.0",
   "configurations": [
+
+    {
+      "name": ".NET Core Launch (console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/Grpc.Client/bin/Debug/net8.0/Grpc.Client.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Grpc.Client",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
+    },
     {
       // Use IntelliSense to find out which attributes exist for C# debugging
       // Use hover for the description of the existing attributes

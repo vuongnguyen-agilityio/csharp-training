@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Grpc.Server.Services;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 
 // Add Authentication
-SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Guid.NewGuid().ToByteArray());
+SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]!));
 builder.Services.AddAuthorization(options =>
 {
   options.AddPolicy(JwtBearerDefaults.AuthenticationScheme, policy =>
@@ -46,7 +47,7 @@ app.MapGet("/", () => "Not Available! Communication with gRPC endpoints must be 
 
 app.MapGet("/generateJwtToken", context =>
 {
-  return context.Response.WriteAsync(AuthenticationService.GenerateJwtToken(context.Request.Query["name"]!));
+  return context.Response.WriteAsync(AuthenticationService.GenerateJwtToken(context.Request.Query["name"]!, securityKey));
 });
 
 app.Run();

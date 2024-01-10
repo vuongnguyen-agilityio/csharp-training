@@ -3,7 +3,7 @@ using Grpc.Client.Services;
 using Grpc.Client.Channel;
 
 // The port number must match the port of the gRPC server.
-using var channel = await ChannelService.CreateAuthenticationChannel("https://localhost:7164");
+using var channel = ChannelService.CreateAuthenticationChannel("https://localhost:7164");
 var client = new Greeter.GreeterClient(channel);
 
 static void DisplayOptions() {
