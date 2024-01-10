@@ -1,25 +1,22 @@
 using Grpc.Net.Client;
 using Grpc.Core;
 using System.Web;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Authentication;
 
 namespace Grpc.Client.Channel;
 
 public class ChannelService() {
 
-  public static async Task<GrpcChannel> CreateAuthenticationChannel(string address) {
-    string token = await Authenticate(address);
-    var credentials = CallCredentials.FromInterceptor((context, metadata) =>
+  public static GrpcChannel CreateAuthenticationChannel(string address) {
+    var credentials = CallCredentials.FromInterceptor(async (context, metadata) =>
       {
+        string token = await Authenticate(address);
         Console.WriteLine("Adding Access Token to Channel");
-        Console.WriteLine($"Token: {token}");
         if (!string.IsNullOrEmpty(token))
         {
           metadata.Add("Authorization", $"Bearer {token}");
+          Console.WriteLine("Added Access Token to Channel");
         }
-        Console.WriteLine("Added Access Token to Channel");
-        return Task.CompletedTask;
+        return;
       });
 
     Console.WriteLine("Credentials: ", credentials);

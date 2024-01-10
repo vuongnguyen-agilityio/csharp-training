@@ -7,10 +7,9 @@ namespace Grpc.Server.Services;
 
 public class AuthenticationService() {
 
-  public static string GenerateJwtToken(string name)
+  public static string GenerateJwtToken(string name, SymmetricSecurityKey securityKey)
   {
     JwtSecurityTokenHandler jwtTokenHandler = new JwtSecurityTokenHandler();
-    SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()));
 
     if (string.IsNullOrEmpty(name))
     {
