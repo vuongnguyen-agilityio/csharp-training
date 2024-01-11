@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 
+builder.Services.AddRazorPages();
+
 // Add Authentication
 SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]!));
 builder.Services.AddAuthorization(options =>
@@ -43,11 +45,13 @@ app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 app.MapGrpcService<GreeterService>();
-app.MapGet("/", () => "Not Available! Communication with gRPC endpoints must be made through a gRPC client.");
 
 app.MapGet("/generateJwtToken", context =>
 {
   return context.Response.WriteAsync(AuthenticationService.GenerateJwtToken(context.Request.Query["name"]!, securityKey));
 });
+
+app.UseStaticFiles();
+app.MapRazorPages();
 
 app.Run();
