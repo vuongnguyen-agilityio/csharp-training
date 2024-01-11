@@ -1,3 +1,4 @@
+using Greet;
 using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
 

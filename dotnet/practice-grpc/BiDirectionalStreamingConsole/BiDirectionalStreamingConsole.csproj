@@ -5,16 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <Protobuf Include="..\Protos\*.proto" GrpcServices="Server" />
-    <Content Include="@(Protobuf)" LinkBase="" />
+    <Protobuf Include="..\Protos\duplex.proto" Link="duplex.proto" GrpcServices="Client" Generator="MSBuild:Compile"/>
+    <None Remove="@(Protobuf)"/>
+    <Content Include="@(Protobuf)" LinkBase=""/>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Grpc.Core" Version="2.46.6"/>
     <PackageReference Include="Google.Protobuf" Version="4.0.0-rc2"/>
     <PackageReference Include="Grpc.Net.Client" Version="2.60.0"/>
     <PackageReference Include="Grpc.Tools" Version="2.60.0"/>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.57.0"/>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0"/>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3"/>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.1"/>
   </ItemGroup>
 </Project>

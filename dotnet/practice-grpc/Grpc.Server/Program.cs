@@ -3,11 +3,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Grpc.Server.Services;
 using System.Text;
+using Grpc.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+
+//builder.Services.AddRazorPages();
+builder.Services.AddMvc()
+               .AddNewtonsoftJson();
+
+builder.Services.AddSingleton<ServerGrpcSubscribers>();
 
 // Add Authentication
 SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]!));
@@ -43,11 +50,14 @@ app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 app.MapGrpcService<GreeterService>();
-app.MapGet("/", () => "Not Available! Communication with gRPC endpoints must be made through a gRPC client.");
+app.MapGrpcService<DuplexService>();
 
 app.MapGet("/generateJwtToken", context =>
 {
   return context.Response.WriteAsync(AuthenticationService.GenerateJwtToken(context.Request.Query["name"]!, securityKey));
 });
+
+app.UseStaticFiles();
+app.MapRazorPages();
 
 app.Run();
