@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Mvc;
+using Duplex;
+using Grpc.Server.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RazorPageWebApp.Pages;
@@ -6,14 +7,21 @@ namespace RazorPageWebApp.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    private readonly ServerGrpcSubscribers _serverGrpcSubscribers;
+    public IndexModel(ServerGrpcSubscribers serverGrpcSubscribers, ILogger<IndexModel> logger)
     {
         _logger = logger;
+        _serverGrpcSubscribers = serverGrpcSubscribers;
     }
 
     public void OnGet()
     {
 
+    }
+
+    public async Task OnPostAsync(string message)
+    {
+        await _serverGrpcSubscribers.BroadcastMessageAsync(
+          new MessageContent { Message = message, Name = "Server" });
     }
 }

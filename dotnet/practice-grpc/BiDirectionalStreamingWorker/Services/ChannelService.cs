@@ -2,7 +2,7 @@ using Grpc.Net.Client;
 using Grpc.Core;
 using System.Web;
 
-namespace Grpc.Client.Services;
+namespace BiDirectionalStreamingWorker.Services;
 
 public class ChannelService() {
 

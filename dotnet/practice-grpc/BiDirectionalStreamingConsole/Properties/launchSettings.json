@@ -1,0 +1,8 @@
+﻿{
+  "profiles": {
+    "Chatter": {
+      "commandName": "Project",
+      "commandLineArgs": "Dam"
+    }
+  }
+}

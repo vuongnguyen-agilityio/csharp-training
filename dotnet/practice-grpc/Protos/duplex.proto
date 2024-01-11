@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Duplex;
 
-service Messaging {
+service Messenger {
   rpc SendData (stream MessageContent) returns (stream MessageContent) {}
 }
 
