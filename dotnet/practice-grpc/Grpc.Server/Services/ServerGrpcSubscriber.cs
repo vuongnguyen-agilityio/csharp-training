@@ -15,6 +15,7 @@ public class ServerGrpcSubscribers
 
   public async Task BroadcastMessageAsync(MessageContent message)
   {
+    Console.WriteLine("Server received a message");
     await BroadcastMessages(message);
   }
 
@@ -44,8 +45,10 @@ public class ServerGrpcSubscribers
 
   private async Task BroadcastMessages(MessageContent message)
   {
+    Console.WriteLine("Server start broadcast message to subscribers");
     foreach (var subscriber in Subscribers.Values)
     {
+      Console.WriteLine($"Server start broadcast message to subscriber: {subscriber.Name}");
       var item = await SendMessageToSubscriber(subscriber, message);
       if (item != null)
       {
