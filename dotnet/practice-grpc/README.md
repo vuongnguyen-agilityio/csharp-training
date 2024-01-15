@@ -4,6 +4,9 @@ Timeline: 4 days
 ### How To Run
 - Run Grpc.Server: `cd Grpc.Server && dotnet run --launch-profile https`
 - Run Grpc.Client: `cd Grpc.Client && dotnet run`
+- Run BiDirectionalStreamingConsole: `cd BiDirectionalStreamingConsole && dotnet run`
+- Run BiDirectionalStreamingWorker: `cd BiDirectionalStreamingWorker && dotnet run`
+- Send a message to subscribe to streaming
 
 ### Technical
 1. .net 8
