@@ -1,8 +1,8 @@
 ﻿{
-  "profiles": {
-    "Chatter": {
-      "commandName": "Project",
-      "commandLineArgs": "Dam"
+    "profiles": {
+        "Chatter": {
+            "commandName": "Project",
+            "commandLineArgs": "Dam"
+        }
     }
-  }
 }

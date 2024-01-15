@@ -6,24 +6,24 @@ namespace Grpc.Server.Services;
 
 public class AuthenticationService() {
 
-  public static string GenerateJwtToken(string name, SymmetricSecurityKey securityKey)
-  {
-    JwtSecurityTokenHandler jwtTokenHandler = new JwtSecurityTokenHandler();
-
-    if (string.IsNullOrEmpty(name))
+    public static string GenerateJwtToken(string name, SymmetricSecurityKey securityKey)
     {
-      throw new InvalidOperationException("Name is not specified.");
-    }
+        JwtSecurityTokenHandler jwtTokenHandler = new JwtSecurityTokenHandler();
 
-    var claims = new[] { new Claim(ClaimTypes.Name, name) };
-    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-    var token = new JwtSecurityToken(
-      "ExampleServer",
-      "ExampleClients",
-      claims,
-      expires: DateTime.Now.AddSeconds(60),
-      signingCredentials: credentials
-    );
-    return jwtTokenHandler.WriteToken(token);
-  }
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new InvalidOperationException("Name is not specified.");
+        }
+
+        var claims = new[] { new Claim(ClaimTypes.Name, name) };
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        var token = new JwtSecurityToken(
+            "ExampleServer",
+            "ExampleClients",
+            claims,
+            expires: DateTime.Now.AddSeconds(60),
+            signingCredentials: credentials
+        );
+        return jwtTokenHandler.WriteToken(token);
+    }
 }

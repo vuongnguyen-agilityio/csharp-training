@@ -6,7 +6,11 @@ Timeline: 4 days
 - Run Grpc.Client: `cd Grpc.Client && dotnet run`
 - Run BiDirectionalStreamingConsole: `cd BiDirectionalStreamingConsole && dotnet run`
 - Run BiDirectionalStreamingWorker: `cd BiDirectionalStreamingWorker && dotnet run`
-- Send a message to subscribe to streaming
+- Send a message from Console and Worker to subscribe and start received streaming message
+- Send a message from Razor Page: open this url in browser `https://localhost:7164`
+
+#### Troubleshooting
+- If console throw `HttpRequestException: The SSL connection could not be established` and `The remote certificate is invalid`: Run this command to trust all certificate from localhost: `dotnet dev-certs https --trust` [Reference Link](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-dev-certs)
 
 ### Technical
 1. .net 8

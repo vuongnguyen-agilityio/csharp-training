@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Grpc.Server.Services;
 using System.Text;
-using Grpc.Server;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +11,7 @@ builder.Services.AddGrpc();
 
 //builder.Services.AddRazorPages();
 builder.Services.AddMvc()
-               .AddNewtonsoftJson();
+            .AddNewtonsoftJson();
 
 builder.Services.AddSingleton<ServerGrpcSubscribers>();
 
@@ -20,25 +19,25 @@ builder.Services.AddSingleton<ServerGrpcSubscribers>();
 SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]!));
 builder.Services.AddAuthorization(options =>
 {
-  options.AddPolicy(JwtBearerDefaults.AuthenticationScheme, policy =>
-  {
-    policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
-    policy.RequireClaim(ClaimTypes.Name);
-  });
+    options.AddPolicy(JwtBearerDefaults.AuthenticationScheme, policy =>
+    {
+        policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+        policy.RequireClaim(ClaimTypes.Name);
+    });
 });
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-  .AddJwtBearer(options =>
-  {
+.AddJwtBearer(options =>
+{
     options.TokenValidationParameters =
-      new TokenValidationParameters
-      {
+    new TokenValidationParameters
+    {
         ValidateAudience = false,
         ValidateIssuer = false,
         ValidateActor = false,
         ValidateLifetime = true,
         IssuerSigningKey = securityKey
-      };
-  });
+    };
+});
 
 var app = builder.Build();
 
@@ -54,7 +53,7 @@ app.MapGrpcService<DuplexService>();
 
 app.MapGet("/generateJwtToken", context =>
 {
-  return context.Response.WriteAsync(AuthenticationService.GenerateJwtToken(context.Request.Query["name"]!, securityKey));
+    return context.Response.WriteAsync(AuthenticationService.GenerateJwtToken(context.Request.Query["name"]!, securityKey));
 });
 
 app.UseStaticFiles();

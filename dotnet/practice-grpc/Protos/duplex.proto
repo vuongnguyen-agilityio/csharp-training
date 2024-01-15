@@ -3,10 +3,10 @@ syntax = "proto3";
 package Duplex;
 
 service Messenger {
-  rpc SendData (stream MessageContent) returns (stream MessageContent) {}
+    rpc SendData (stream MessageContent) returns (stream MessageContent) {}
 }
 
 message MessageContent {
-  string name = 1;
-  string message = 2;
+    string name = 1;
+    string message = 2;
 }

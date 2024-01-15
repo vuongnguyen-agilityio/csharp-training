@@ -1,3 +1,10 @@
 {
-  "dotnet.defaultSolution": "Grpc.sln"
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+  "dotnet.defaultSolution": "Grpc.sln",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.tabSize": 4,
+  "editor.detectIndentation": true
 }

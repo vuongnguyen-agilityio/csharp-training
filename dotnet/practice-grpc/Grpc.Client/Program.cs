@@ -6,11 +6,11 @@ using var channel = ChannelService.CreateAuthenticationChannel("https://localhos
 var client = new Greeter.GreeterClient(channel);
 
 static void DisplayOptions() {
-  Console.WriteLine("--------");
-  Console.WriteLine("Select Options:");
-  Console.WriteLine("<1>: Run Greeting");
-  Console.WriteLine("<Esc>: Quit");
-  Console.WriteLine("--------");
+    Console.WriteLine("--------");
+    Console.WriteLine("Select Options:");
+    Console.WriteLine("<1>: Run Greeting");
+    Console.WriteLine("<Esc>: Quit");
+    Console.WriteLine("--------");
 }
 
 DisplayOptions();
@@ -18,14 +18,14 @@ DisplayOptions();
 ConsoleKeyInfo consoleKeyInfo;
 do
 {
-  consoleKeyInfo = Console.ReadKey(intercept: true);
-  switch (consoleKeyInfo.KeyChar)
-  {
-    case '1':
-      Console.WriteLine("Selected <1>: Running GreeterFunc.SayHello.");
-      await GreeterFunc.SayHello(client);
-      Console.WriteLine("Finished GreeterFunc.SayHello.");
-      DisplayOptions();
-      break;
-  }
+    consoleKeyInfo = Console.ReadKey(intercept: true);
+    switch (consoleKeyInfo.KeyChar)
+    {
+        case '1':
+            Console.WriteLine("Selected <1>: Running GreeterFunc.SayHello.");
+        await GreeterFunc.SayHello(client);
+            Console.WriteLine("Finished GreeterFunc.SayHello.");
+            DisplayOptions();
+            break;
+    }
 } while (consoleKeyInfo.Key != ConsoleKey.Escape);
