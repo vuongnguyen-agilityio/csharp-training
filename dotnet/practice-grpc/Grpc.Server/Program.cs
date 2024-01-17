@@ -46,9 +46,10 @@ app.UseRouting();
 // Add Authentication
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
 
 // Configure the HTTP request pipeline.
-app.MapGrpcService<GreeterService>();
+app.MapGrpcService<GreeterService>().EnableGrpcWeb();
 app.MapGrpcService<DuplexService>();
 
 app.MapGet("/generateJwtToken", context =>
