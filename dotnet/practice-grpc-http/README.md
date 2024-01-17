@@ -4,3 +4,4 @@
 ### How To Run
 - Run command: `cd SampleServer && dotnet run`
 - Access the API endpoint at: `https://localhost:7258/v1/greeter/vuong`
+- Access the Swagger API at: `https://localhost:7258/swagger/index.html`
